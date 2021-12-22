@@ -50,9 +50,7 @@ Plug 'https://github.com/sainnhe/edge.git', {'as': 'edge'}
 
 "Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-"Formating
-Plug 'Chiel92/vim-autoformat'
+Plug 'mattn/emmet-vim'
 
 "Surrounding vim
 Plug 'https://github.com/tpope/vim-surround.git'
@@ -66,9 +64,14 @@ Plug 'https://github.com/itchyny/vim-gitbranch.git'
 
 "Icon for vim
 Plug 'https://github.com/ryanoasis/vim-devicons.git'
+"Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 "Git
 Plug 'https://github.com/tpope/vim-fugitive.git'
+
+"Animation and resize
+"Plug 'camspiers/animate.vim'
+"Plug 'camspiers/lens.vim'
 
 " Initialize plugin system
 call plug#end()
@@ -84,14 +87,14 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 set linespace=8
 set textwidth=80
 set belloff=all "Disable all sound effect"
-set scrollbind
-set scrollopt=""
+"set scrollbind
+"set scrolloff
 "set shell=C:/Users/hungpham/AppData/Local/Microsoft/WindowsApps/wt.exe
 
 augroup vim_title
-    au!
-    auto BufEnter * let &titlestring = hostname() . "/" . expand("%:p")
-    set title titlestring=%<%F%=%l/%L-%P titlelen=70
+au!
+auto BufEnter * let &titlestring = hostname() . "/" . expand("%:p")
+set title titlestring=%<%F%=%l/%L-%P titlelen=70
 augroup END
 " set list listchars=tab:»·,trail:·,nbsp:·
 
@@ -102,7 +105,6 @@ autocmd BufEnter * silent! lcd %:p:h
 "Auto save file
 set autowriteall
 set autoread
-
 
 "Open file in reasonable location
 set splitbelow
@@ -121,9 +123,9 @@ set incsearch
 set cursorline
 set cursorcolumn
 augroup vimrc-incsearch-highlight
-  autocmd!
-  autocmd CmdlineEnter /,\? :set hlsearch
-  autocmd CmdlineLeave /,\? :set nohlsearch
+autocmd!
+autocmd CmdlineEnter /,\? :set hlsearch
+autocmd CmdlineLeave /,\? :set nohlsearch
 augroup END
 
 "Indexing settings
@@ -139,20 +141,21 @@ set wildmenu
 set wildmode=longest:list,full
 set wildoptions=tagfile
 set wildignorecase
+set viewoptions="folds,cursor,curdir"
 augroup dynamic_smartcase
-    autocmd!
-    set ignorecase "ignore case in search patterns
-    autocmd CmdLineEnter : set nosmartcase
-    autocmd CmdLineLeave : set smartcase
+autocmd!
+set ignorecase "ignore case in search patterns
+autocmd CmdLineEnter : set nosmartcase
+autocmd CmdLineLeave : set smartcase
 augroup END
-set completeopt+=menuone,preview
+"set completeopt+=menu,preview
 "Open Help in vertical
 autocmd BufWinEnter * if &buftype == 'help' | wincmd L | endif
 
 "Status line settings
 set guioptions=
 set shortmess=cT
-set cmdheight=1 "This is the best"
+set cmdheight=2 "1 is the best but 2 can disable "Press Enter""
 
 " remap <leader>
 let mapleader = " "
@@ -177,45 +180,51 @@ let g:edge_lightline_disable_bold = 1
 set laststatus=2
 
 let g:lightline = {
-    \ 'colorscheme': 'edge',
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-	\             [ 'cocstatus', 'readonly' ], 
-    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-    \ },
-    \ 'component': {
-    \   'filename': '%F',
-    \ },
-    \ 'component_function': {
-    \   'cocstatus': 'coc#status',
-    \   'filetype': 'MyFiletype',
-    \   'fileformat': 'MyFileformat',
-    \   'gitbranch': 'gitbranch#name'
-    \ },
+\ 'colorscheme': 'edge',
+\ 'active': {
+\   'left': [ [ 'mode', 'paste' ],
+\             [ 'cocstatus', 'readonly' ], 
+\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+\ },
+\ 'component': {
+\   'filename': '%F',
+\ },
+\ 'component_function': {
+\   'cocstatus': 'coc#status',
+\   'filetype': 'MyFiletype',
+\   'fileformat': 'MyFileformat',
+\   'gitbranch': 'gitbranch#name'
+\ },
 \ }
 function! MyFiletype()
-    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfunction
 
 function! MyFileformat()
-    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
 
 " Use autocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
-colorscheme edge
 
 "Appearance
 "Vim in terminal
 if !has('gui_win32') && has('termguicolors')
-    set termguicolors
-    let g:webdevicons_enable = 0
-    set guifont=Consolas:h10:cANSI:qDRAFT
+set termguicolors
+let g:webdevicons_enable = 0
+set guifont=Consolas:h12:cANSI:qDRAFT
+let g:dracula_italic = 0
+let g:lightline = {
+\ 'colorscheme': 'dracula',
+\ }
+
+colorscheme dracula
 else 
-    " set guifont=* 
-    " set guifont?
-    set guifont=Cousine_NF:h10:cANSI:qDRAFT
+" set guifont=* 
+" set guifont?
+set guifont=Cousine_Nerd_Font_Mono:h12:cANSI:qDRAFT
+colorscheme edge
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -234,7 +243,7 @@ autocmd BufEnter * silent if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTr
 
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * silent if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-            \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+\ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 let NERDTreeIgnore = ['\.DAT$[[file]]', '\.LOG1$[[file]]', '\.LOG1$[[file]]','\c^ntuser\..*']
 let g:NERDTreeDirArrowExpandable = '+'
@@ -248,30 +257,49 @@ let g:webdevicons_conceal_nerdtree_brackets = 1
 "                               RUN CODE                                     "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup c_settings
-    au!
-    au FileType c nnoremap <buffer> <silent> <F9> :!clang % -o %<.exe && %<.exe <CR><CR>
-    au FileType c inoremap <buffer> <silent> <F9> <esc> :!clang % -o %<.exe && %<.exe <CR><CR>
+au!
+au FileType c nnoremap <buffer> <silent> <Enter> :!clang % -o %<.exe && %<.exe <CR><CR>
 augroup END
 
 augroup python_settings
-    "Use buffer before silent
-    au Filetype python nnoremap <buffer> <silent> <F9> :exec '!python' shellescape(@%, 1)<Cr><CR>
-    au FileType python inoremap <buffer> <silent> <F9> <esc> :exec '!python' shellescape(@%, 1)<CR><CR>
+"Use buffer before silent
+au Filetype python nnoremap <buffer> <silent> <Enter> :exec '!python' shellescape(@%, 1)<Cr><CR>
 augroup END
 
 augroup rust_settings
-    autocmd!
-    au Filetype rust nnoremap <buffer> <silent> <F9> :!cargo run <Cr><CR>
-    au FileType rust inoremap <buffer> <silent> <F9> <esc> :!cargo run<CR><CR>
+autocmd!
+au Filetype rust nnoremap <buffer> <silent> <Enter> :!cargo run <Cr><CR>
 augroup END
 
 "Keybindings
 nnoremap <leader>x :x<Cr>
-nnoremap <leader>w :w<Cr>
+nnoremap <leader>w :up<Cr>
 nnoremap <leader>a ggVG<Cr>
+tnoremap <Esc> <C-\><C-n>
+
+"Navigate block of code 
+xnoremap J :m '>+1<CR>gv=gv
+xnoremap K :m '<-2<CR>gv=gv
+xnoremap H <gv
+xnoremap L >gv
+
+
+"run block of code in visual mose
+vnoremap <Enter> :w !
 
 "Negate u in visual mode
-vnoremap u <nul>
+"IMPORTANT!!!
+vnoremap u <nul> 
+
+nnoremap ; :
+"Command mode more ergonomic
+vnoremap ; :
+
+"Resize
+nnoremap <Up> :resize +1<CR>
+nnoremap <Down> :resize -1<CR>
+nnoremap <Left> :vert resize +2 <CR>
+nnoremap <Right> :vert resize -2 <CR>
 
 "Vimrc config
 nnoremap <leader>ev :edit $MYVIMRC<CR>
@@ -292,12 +320,20 @@ nnoremap y "*y
 vnoremap y "*y
 
 "Dump output
-nnoremap <leader>d :vnew +pu=execute('')<left><left>
+function! Dump(cmd)
+vnew
+setlocal buftype=nowrite bufhidden=delete noswapfile
+let result = trim(execute(a:cmd))
+put! =result
+1
+endfunction
+command! -nargs=* -complete=command Dump call Dump(<q-args>)
+nnoremap <leader>d :Dump 
 
 "Buffers navigation
 "TODO:need to map <M-j> and <M-K> for snippets
-nnoremap <M-j> :bpre<CR>
-nnoremap <M-k> :bnext<CR>
+nnoremap <S-h> :bpre<CR>
+nnoremap <S-l> :bnext<CR>
 
 "Split navigation
 nnoremap <leader>j <C-W>j
@@ -311,54 +347,67 @@ nnoremap <leader>h <C-W>h
 "                             Plugin: Coc-nvim                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Completion settings
- "use <tab> for trigger completion and navigate to the next complete item
+"use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+\ pumvisible() ? coc#_select_confirm() :
+\ coc#expandableOrJumpable() ?
+\ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ coc#refresh()
+
+inoremap <silent><expr> <TAB>
+\ pumvisible() ? "\<C-n>" :
+\ <SID>check_back_space() ? "\<TAB>" :
+\ coc#refresh()
 
 "Select the first completion item and confirm the completion when no item has been selected:
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-				\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+    \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+nnoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+vnoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+vnoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
+nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-"Format settings
-let verbose=1
-let g:autoformat_autoindent = 0
-let g:autoformat_retab = 0
-let g:autoformat_remove_trailing_spaces = 0
-let g:formaterpath=['C:\Program Files\LLVM\bin\clang-format.exe', ]
-noremap <F3> :Autoformat<CR>
+function! s:show_documentation()
+if (index(['vim','help'], &filetype) >= 0)
+execute 'h '.expand('<cword>')
+elseif (coc#rpc#ready())
+
+call CocActionAsync('doHover')
+else
+execute '!' . &keywordprg . " " . expand('<cword>')
+endif
+endfunction
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Easymotion-Incsearch                   "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 function! s:config_easyfuzzymotion(...) abort
-  return extend(copy({
-  \   'converters': [incsearch#config#fuzzy#converter()],
-  \   'modules': [incsearch#config#easymotion#module()],
-  \   'keymap': {"\<CR>": '<Over>(easymotion)'},
-  \   'is_expr': 0,
-  \   'is_stay': 1
-  \ }), get(a:, 1, {}))
+return extend(copy({
+\   'converters': [incsearch#config#fuzzy#converter()],
+\   'modules': [incsearch#config#easymotion#module()],
+\   'keymap': {"\<CR>": '<Over>(easymotion)'},
+\   'is_expr': 0,
+\   'is_stay': 1
+\ }), get(a:, 1, {}))
 endfunction
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 let g:EasyMotion_do_mapping = 0
@@ -458,9 +507,24 @@ let g:tagbar_ctags_bin = 'C:\Users\hungpham\Downloads\Programs\C_tag\ctags.exe'
 nnoremap <silent> <F7> :TagbarToggle<CR>
 let g:tagbar_width = 43 
 let g:tagbar_visibility_symbols = {
-    \ 'public'    : 'O',
-    \ 'protected' : '!',
-    \ 'private'   : 'X'
-    \ }
+\ 'public'    : 'O',
+\ 'protected' : '!',
+\ 'private'   : 'X'
+\ }
 let g:tagbar_singleclick = 1
 let g:tagbar_wrap = 1
+let g:tagbar_map_showproto = ''
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             Plugin: Lens.vim                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"TODO: are on the way
+"let g:lens#disabled_filetypes = ['NERDTree', 'FZF', 'Help']
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"                             Plugin: Lens.vim                               "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:user_emmet_mode = 'n'
+let g:user_emmet_leader_key = "," 
+
+
+

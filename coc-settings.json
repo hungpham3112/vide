@@ -1,0 +1,17 @@
+{
+    "suggest.noselect": false,
+    "vimlsp.trace.server": "verbose",
+    "vimlsp.debug": true,
+    "coc.preferences.formatOnType": true,
+    "coc.preferences.formatOnTypeFiletypes": ["c", "rust"],
+    "coc.preferences.formatOnSaveFiletypes": ["python", "c", "rust"],
+    "rust-analyzer.cargo.unsetTest": [
+        "derivative"
+    ],
+    "python.formatting.provider": "black",
+    "python.formatting.blackPath": "C:/Users/hungpham/AppData/Local/Programs/Python/Python310/Scripts/black.exe",
+    "python.linting.pylintArgs": ["--generate-members"],
+    "rust-analyzer.inlayHints.typeHints": true,
+    "rust-analyzer.inlayHints.refreshOnInsertMode": true
+}
+
