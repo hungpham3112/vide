@@ -24,7 +24,7 @@ Plug 'https://github.com/preservim/nerdcommenter.git'
 Plug 'https://github.com/Yggdroot/indentLine.git'
 
 "Float terminal
-Plug 'https://github.com/voldikss/vim-floaterm.git'
+"Plug 'https://github.com/voldikss/vim-floaterm.git'
 Plug 'voldikss/fzf-floaterm'
 
 "Powerful Movement
@@ -138,7 +138,7 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 "Commandline completions
 set wildmenu
-set wildmode=longest:list,full
+"set wildmode=longest:list,full
 set wildoptions=tagfile
 set wildignorecase
 set viewoptions="folds,cursor,curdir"
