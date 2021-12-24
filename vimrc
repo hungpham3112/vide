@@ -1,5 +1,4 @@
 call plug#begin('~/vimfiles/plugged')
-
 " make sure you use single quotes
 " shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 " plug 'junegunn/vim-easy-align'
@@ -7,7 +6,7 @@ call plug#begin('~/vimfiles/plugged')
 " plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
 " multiple plug commands can be written in a single line using | separators
-" plug 'sirver/ultisnips' | plug 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 
 " on-demand loading
 Plug 'https://github.com/preservim/nerdtree.git'
@@ -52,13 +51,13 @@ Plug 'https://github.com/sainnhe/edge.git', {'as': 'edge'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mattn/emmet-vim'
 
-"Surrounding vim
+"Vim-brackets
 Plug 'https://github.com/tpope/vim-surround.git'
 
 "Auto pairs
 Plug 'jiangmiao/auto-pairs'
 
-"Statusline Plugin
+"Statusline 
 Plug 'itchyny/lightline.vim'
 Plug 'https://github.com/itchyny/vim-gitbranch.git'
 
@@ -171,8 +170,6 @@ let g:edge_enable_italic = 0
 let g:edge_disable_italic_comment = 1
 let g:edge_lightline_disable_bold = 1
 
-
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Lightline                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -207,19 +204,19 @@ endfunction
 " Use autocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
-
 "Appearance
 "Vim in terminal
 if !has('gui_win32') && has('termguicolors')
+let g:theme = 'dracula'
 set termguicolors
 let g:webdevicons_enable = 0
 set guifont=Consolas:h12:cANSI:qDRAFT
 let g:dracula_italic = 0
 let g:lightline = {
-\ 'colorscheme': 'dracula',
+\ 'colorscheme': 'edge' ,
 \ }
 
-colorscheme dracula
+colorscheme edge
 else 
 " set guifont=* 
 " set guifont?
@@ -525,6 +522,3 @@ let g:tagbar_map_showproto = ''
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:user_emmet_mode = 'n'
 let g:user_emmet_leader_key = "," 
-
-
-
