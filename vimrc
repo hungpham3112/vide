@@ -91,9 +91,9 @@ set belloff=all "Disable all sound effect"
 "set shell=C:/Users/hungpham/AppData/Local/Microsoft/WindowsApps/wt.exe
 
 augroup vim_title
-au!
-auto BufEnter * let &titlestring = hostname() . "/" . expand("%:p")
-set title titlestring=%<%F%=%l/%L-%P titlelen=70
+    au!
+    auto BufEnter * let &titlestring = hostname() . "/" . expand("%:p")
+    set title titlestring=%<%F%=%l/%L-%P titlelen=70
 augroup END
 " set list listchars=tab:»·,trail:·,nbsp:·
 
@@ -122,9 +122,9 @@ set incsearch
 set cursorline
 set cursorcolumn
 augroup vimrc-incsearch-highlight
-autocmd!
-autocmd CmdlineEnter /,\? :set hlsearch
-autocmd CmdlineLeave /,\? :set nohlsearch
+    autocmd!
+    autocmd CmdlineEnter /,\? :set hlsearch
+    autocmd CmdlineLeave /,\? :set nohlsearch
 augroup END
 
 "Indexing settings
@@ -194,11 +194,11 @@ let g:lightline = {
 \ },
 \ }
 function! MyFiletype()
-return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
 endfunction
 
 function! MyFileformat()
-return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
 
 " Use autocmd to force lightline update.
@@ -207,13 +207,13 @@ autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 "Appearance
 "Vim in terminal
 if !has('gui_win32') && has('termguicolors')
-let g:theme = 'dracula'
-set termguicolors
-let g:webdevicons_enable = 0
-set guifont=Consolas:h12:cANSI:qDRAFT
-let g:dracula_italic = 0
-let g:lightline = {
-\ 'colorscheme': 'edge' ,
+    let g:theme = 'dracula'
+    set termguicolors
+    let g:webdevicons_enable = 0
+    set guifont=Consolas:h12:cANSI:qDRAFT
+    let g:dracula_italic = 0
+    let g:lightline = {
+    \ 'colorscheme': 'edge' ,
 \ }
 
 colorscheme edge
@@ -240,7 +240,7 @@ autocmd BufEnter * silent if winnr('$') == 1 && exists('b:NERDTree') && b:NERDTr
 
 " If another buffer tries to replace NERDTree, put it in the other window, and bring back NERDTree.
 autocmd BufEnter * silent if bufname('#') =~ 'NERD_tree_\d\+' && bufname('%') !~ 'NERD_tree_\d\+' && winnr('$') > 1 |
-\ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
+    \ let buf=bufnr() | buffer# | execute "normal! \<C-W>w" | execute 'buffer'.buf | endif
 
 let NERDTreeIgnore = ['\.DAT$[[file]]', '\.LOG1$[[file]]', '\.LOG1$[[file]]','\c^ntuser\..*']
 let g:NERDTreeDirArrowExpandable = '+'
@@ -253,19 +253,11 @@ let g:webdevicons_conceal_nerdtree_brackets = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               RUN CODE                                     "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-augroup c_settings
-au!
-au FileType c nnoremap <buffer> <silent> <Enter> :!clang % -o %<.exe && %<.exe <CR><CR>
-augroup END
-
-augroup python_settings
-"Use buffer before silent
-au Filetype python nnoremap <buffer> <silent> <Enter> :exec '!python' shellescape(@%, 1)<Cr><CR>
-augroup END
-
-augroup rust_settings
-autocmd!
-au Filetype rust nnoremap <buffer> <silent> <Enter> :!cargo run <Cr><CR>
+augroup exe_code
+    au!
+    au FileType c nnoremap <buffer> <silent> <Enter> :sp<CR> :!clang % -o %<.exe && %<.exe <CR><CR>
+    au Filetype python nnoremap <buffer> <silent> <Enter> :vert term python %<Cr>
+    au Filetype rust nnoremap <buffer> <silent> <Enter> :sp<CR> :!cargo run <Cr><CR>
 augroup END
 
 "Keybindings
@@ -318,11 +310,11 @@ vnoremap y "*y
 
 "Dump output
 function! Dump(cmd)
-vnew
-setlocal buftype=nowrite bufhidden=delete noswapfile
-let result = trim(execute(a:cmd))
-put! =result
-1
+    vnew
+    setlocal buftype=nowrite bufhidden=delete noswapfile
+    let result = trim(execute(a:cmd))
+    put! =result
+    1
 endfunction
 command! -nargs=* -complete=command Dump call Dump(<q-args>)
 nnoremap <leader>d :Dump 
@@ -346,14 +338,14 @@ nnoremap <leader>h <C-W>h
 "Completion settings
 "use <tab> for trigger completion and navigate to the next complete item
 function! s:check_back_space() abort
-let col = col('.') - 1
-return !col || getline('.')[col - 1]  =~# '\s'
+    let col = col('.') - 1
+    return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 inoremap <silent><expr> <TAB>
-\ pumvisible() ? coc#_select_confirm() :
-\ coc#expandableOrJumpable() ?
-\ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+    \ pumvisible() ? coc#_select_confirm() :
+    \ coc#expandableOrJumpable() ?
+    \ "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
 \ <SID>check_back_space() ? "\<TAB>" :
 \ coc#refresh()
 
@@ -370,25 +362,24 @@ let g:coc_snippet_next = '<TAB>'
 let g:coc_snippet_prev = '<S-TAB>'
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
-nnoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-nnoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-inoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-inoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-vnoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-vnoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    nnoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    nnoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    inoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+    inoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+    vnoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    vnoremap <silent><nowait><expr> <C-u> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-if (index(['vim','help'], &filetype) >= 0)
-execute 'h '.expand('<cword>')
-elseif (coc#rpc#ready())
-
-call CocActionAsync('doHover')
-else
-execute '!' . &keywordprg . " " . expand('<cword>')
-endif
+    if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+    elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+    else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+    endif
 endfunction
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -398,13 +389,13 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 function! s:config_easyfuzzymotion(...) abort
-return extend(copy({
-\   'converters': [incsearch#config#fuzzy#converter()],
-\   'modules': [incsearch#config#easymotion#module()],
-\   'keymap': {"\<CR>": '<Over>(easymotion)'},
-\   'is_expr': 0,
-\   'is_stay': 1
-\ }), get(a:, 1, {}))
+    return extend(copy({
+    \   'converters': [incsearch#config#fuzzy#converter()],
+    \   'modules': [incsearch#config#easymotion#module()],
+    \   'keymap': {"\<CR>": '<Over>(easymotion)'},
+    \   'is_expr': 0,
+    \   'is_stay': 1
+    \ }), get(a:, 1, {}))
 endfunction
 noremap <silent><expr> <Space>/ incsearch#go(<SID>config_easyfuzzymotion())
 let g:EasyMotion_do_mapping = 0
