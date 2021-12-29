@@ -1,4 +1,5 @@
 call plug#begin('~/vimfiles/plugged')
+
 " make sure you use single quotes
 " shorthand notation; fetches https://github.com/junegunn/vim-easy-align
 " plug 'junegunn/vim-easy-align'
@@ -23,7 +24,7 @@ Plug 'https://github.com/preservim/nerdcommenter.git'
 Plug 'https://github.com/Yggdroot/indentLine.git'
 
 "Float terminal
-"Plug 'https://github.com/voldikss/vim-floaterm.git'
+Plug 'https://github.com/voldikss/vim-floaterm.git'
 Plug 'voldikss/fzf-floaterm'
 
 "Powerful Movement
@@ -71,6 +72,13 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 "Animation and resize
 "Plug 'camspiers/animate.vim'
 "Plug 'camspiers/lens.vim'
+
+"Jupyter Notebook
+"TODO: Test
+Plug 'https://github.com/jupyter-vim/jupyter-vim.git'
+
+"Markdown preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Initialize plugin system
 call plug#end()
@@ -218,10 +226,10 @@ if !has('gui_win32') && has('termguicolors')
 
 colorscheme edge
 else 
-" set guifont=* 
-" set guifont?
-set guifont=Cousine_Nerd_Font_Mono:h12:cANSI:qDRAFT
-colorscheme edge
+    " set guifont=* "Choose font
+    " set guifont?  "Currently font
+    set guifont=Cousine_NF:h12:cANSI:qDRAFT
+    colorscheme edge
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -255,9 +263,11 @@ let g:webdevicons_conceal_nerdtree_brackets = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup exe_code
     au!
-    au FileType c nnoremap <buffer> <silent> <Enter> :sp<CR> :!clang % -o %<.exe && %<.exe <CR><CR>
-    au Filetype python nnoremap <buffer> <silent> <Enter> :vert term python %<Cr>
-    au Filetype rust nnoremap <buffer> <silent> <Enter> :sp<CR> :!cargo run <Cr><CR>
+    au FileType c nnoremap <buffer> <silent> <Enter> :!clang % -o %<.exe && %<.exe <CR>
+    au FileType cpp nnoremap <buffer> <silent> <Enter> :!clang++ % -o %<.exe && %<.exe <CR>
+    au Filetype python nnoremap <buffer> <silent> <Enter> :exec '!python' shellescape(@%, 1)<Cr>
+    au Filetype rust nnoremap <buffer> <silent> <Enter> :!cargo run <Cr>
+    au Filetype html nnoremap <buffer> <silent> <Enter> :!start %<Cr>
 augroup END
 
 "Keybindings
@@ -383,6 +393,15 @@ function! s:show_documentation()
 endfunction
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
+let g:coc_global_extensions = ['coc-json',
+            \'coc-vimlsp', 
+            \'coc-snippets', 
+            \'coc-rust-analyzer', 
+            \'coc-emmet', 
+            \'coc-pyright', 
+            \'coc-clangd', 
+            \'coc-markdownlint',]
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Easymotion-Incsearch                   "
@@ -495,10 +514,10 @@ let g:tagbar_ctags_bin = 'C:\Users\hungpham\Downloads\Programs\C_tag\ctags.exe'
 nnoremap <silent> <F7> :TagbarToggle<CR>
 let g:tagbar_width = 43 
 let g:tagbar_visibility_symbols = {
-\ 'public'    : 'O',
-\ 'protected' : '!',
-\ 'private'   : 'X'
-\ }
+    \ 'public'    : 'O',
+    \ 'protected' : '!',
+    \ 'private'   : 'X'
+    \ }
 let g:tagbar_singleclick = 1
 let g:tagbar_wrap = 1
 let g:tagbar_map_showproto = ''
@@ -513,3 +532,56 @@ let g:tagbar_map_showproto = ''
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:user_emmet_mode = 'n'
 let g:user_emmet_leader_key = "," 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"                             Plugin: Markdown-preview                       "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:mkdp_auto_close = 0
+let g:mkdp_command_for_global = 1
+" options for markdown render
+" mkit: markdown-it options for render
+" katex: katex options for math
+" uml: markdown-it-plantuml options
+" maid: mermaid options
+" disable_sync_scroll: if disable sync scroll, default 0
+" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
+"   middle: mean the cursor position alway show at the middle of the preview page
+"   top: mean the vim top viewport alway show at the top of the preview page
+"   relative: mean the cursor position alway show at the relative positon of the preview page
+" hide_yaml_meta: if hide yaml metadata, default is 1
+" sequence_diagrams: js-sequence-diagrams options
+" content_editable: if enable content editable for preview page, default: v:false
+" disable_filename: if disable filename header for preview page, default: 0
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'sequence_diagrams': {},
+    \ 'flowchart_diagrams': {},
+    \ 'content_editable': v:false,
+    \ 'disable_filename': 0
+    \ }
+
+" use a custom markdown style must be absolute path
+" like '/Users/username/markdown.css' or expand('~/markdown.css')
+let g:mkdp_markdown_css = ''
+
+" use a custom highlight style must absolute path
+" like '/Users/username/highlight.css' or expand('~/highlight.css')
+let g:mkdp_highlight_css = ''
+
+" use a custom port to start server or random for empty
+let g:mkdp_port = ''
+
+" preview page title
+" ${name} will be replace with the file name
+let g:mkdp_page_title = '「${name}」'
+
+" recognized filetypes
+" these filetypes will have MarkdownPreview... commands
+let g:mkdp_filetypes = ['markdown']
+
