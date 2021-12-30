@@ -1,15 +1,7 @@
-<<<<<<< HEAD
 # VIDE
-=======
-# Vim-as-IDE
-
-## Required:
-LLVM: llvm for  
->>>>>>> da52e7726f412efe8d6d4132f354e88d99a75d30
 
 ## _The config for lazy people who want to learn vim faster_
 
-<<<<<<< HEAD
 ## Introduction
 
 ### TODO
@@ -17,27 +9,16 @@ LLVM: llvm for
 ## Requirements
 
 - Nerd-Fonts: Choose the font you like in [Nerd-Fonts](https://www.nerdfonts.com/)
-=======
-Vim version >= 8.0 : Download from source (https://www.vim.org/download.php)
-
-If you are using MS-Windows: (https://github.com/vim/vim-win32-installer/releases). 
-Find the latest Signed-Files and download (recommended)
-
-## Installation:
-
-Step 1: Clone repository to your home directory
->>>>>>> da52e7726f412efe8d6d4132f354e88d99a75d30
 
 - Vim version >= 8.0 : Download from source  
   - UNIX: [https://www.vim.org/download.php](https://www.vim.org/download.php)
   - MS-Windows: [https://github.com/vim/vim-win32-installer/releases](https://github.com/vim/vim-win32-installer/releases)
 
-<<<<<<< HEAD
     Find the latest Signed-Files and download (_recommented_)
 - LLVM (optional): [llvm-project](https://github.com/llvm/llvm-project/releases/tag/llvmorg-13.0.0)
 
   If you work with C-family , `clangd`, `clang-formatter`,.. are really
-  helpful. 
+  helpful.  
 
 ## Installation  
 
@@ -46,15 +27,11 @@ __Step 1__: Clone repository to your home directory
 __Windows__: open terminal and run the following command
 
 ```bat
-=======
-```
->>>>>>> da52e7726f412efe8d6d4132f354e88d99a75d30
 cd %userprofile%
 rd /q /s vimfiles
 git clone https://github.com/HungPham3112/vim-as-IDE.git vimfiles
 ```
 
-<<<<<<< HEAD
 __Step 2__: Set Nerd Fonts  
 
 In normal mode:
@@ -90,17 +67,8 @@ To know current font.
 | Beautiful statusline | lightline |  <https://github.com/itchyny/lightline.vim> |
 and more ...
 
-## :star: Support Me  
+## :star: Support Me 
 
 - Open issue and ask if you have any trouble. I will do my best to help you.
 - Add pull request.  
 - <3 __Give me a star if you like my config__ <3
-=======
-Step 2: Set Nerd Fonts 
-
-In normal mode:
-```
-:set guifont=*
-```
-And choose Nerd-Font you've already installed.
->>>>>>> da52e7726f412efe8d6d4132f354e88d99a75d30
