@@ -1,10 +1,10 @@
-# VIDE
+# VIDE :mortar_board: 
 
 ## _The config for lazy people who want to learn vim faster_
 
 ## Introduction
 
-### TODO
+VIDE is abbreviation of vim as IDE
 
 ## Requirements
 
@@ -15,14 +15,15 @@
   - MS-Windows: [https://github.com/vim/vim-win32-installer/releases](https://github.com/vim/vim-win32-installer/releases)
 
     Find the latest Signed-Files and download (_recommented_)
-- LLVM (optional): [llvm-project](https://github.com/llvm/llvm-project/releases/tag/llvmorg-13.0.0)
-
+  - [LLVM](https://github.com/llvm/llvm-project/releases/tag/llvmorg-13.0.0) (optional):
   If you work with C-family , `clangd`, `clang-formatter`,.. are really
   helpful.  
+- [MSYS2](https://www.msys2.org/) (optional): Collection of tools and libraries 
+for Windows
 
 ## Installation  
 
-__Step 1__: Clone repository to your home directory
+__Step__ _:one:_ : Clone repository to your home directory
 
 __Windows__: open terminal and run the following command
 
@@ -32,9 +33,18 @@ rd /q /s vimfiles
 git clone https://github.com/HungPham3112/vim-as-IDE.git vimfiles
 ```
 
-__Step 2__: Set Nerd Fonts  
+__Step__ _:two:_ : Set Nerd Fonts  
 
-In normal mode:
+- In normal mode:
+
+```sh
+:PlugInstall
+```
+- Restart vim
+
+__Step__ _:three:_ : Set Nerd Fonts  
+
+- In normal mode:
 
 ```bat
 :set guifont=*
@@ -47,6 +57,7 @@ And choose Nerd-Font you've already installed.
 ```
 
 To know current font.
+
 
 ## Plugins  
 
@@ -67,8 +78,9 @@ To know current font.
 | Beautiful statusline | lightline |  <https://github.com/itchyny/lightline.vim> |
 and more ...
 
-## :star: Support Me 
+## :star: Support Me :star:   
 
 - Open issue and ask if you have any trouble. I will do my best to help you.
+- Tell me if you have any idea to make this repository better.
 - Add pull request.  
-- <3 __Give me a star if you like my config__ <3
+- :heart: __Give me a star if you like my config__ :heart:
