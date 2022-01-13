@@ -1,3 +1,14 @@
+"TODO: 2022 Make this vimrc to an IDE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                               $$\    $$\ $$$$$$\ $$$$$$$\  $$$$$$$$\                            "
+"                               $$ |   $$ |\_$$  _|$$  __$$\ $$  _____|                           "
+"                               $$ |   $$ |  $$ |  $$ |  $$ |$$ |                                 "
+"                               \$$\  $$  |  $$ |  $$ |  $$ |$$$$$\                               "
+"                                \$$\$$  /   $$ |  $$ |  $$ |$$  __|                              "
+"                                 \$$$  /    $$ |  $$ |  $$ |$$ |                                 "
+"                                  \$  /   $$$$$$\ $$$$$$$  |$$$$$$$$\                            "
+"                                   \_/    \______|\_______/ \________|                           "
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/vimfiles/plugged')
 
 " make sure you use single quotes
@@ -32,6 +43,7 @@ Plug 'https://github.com/easymotion/vim-easymotion.git'
 Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
+Plug 'haya14busa/vim-asterisk'
 
 "fuzzy file findfing fun
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -47,10 +59,15 @@ Plug 'https://github.com/tomasr/molokai.git', {'as':'molokai'}
 Plug 'https://github.com/rakr/vim-one.git', {'as':'one'}
 Plug 'https://github.com/altercation/vim-colors-solarized.git', {'as':'solarized'}
 Plug 'https://github.com/sainnhe/edge.git', {'as': 'edge'}
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 "Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'mattn/emmet-vim'
+
+"Language server protocol
+"Plug 'prabirshrestha/vim-lsp'
+"Plug 'mattn/vim-lsp-settings'
 
 "Vim-brackets
 Plug 'https://github.com/tpope/vim-surround.git'
@@ -64,7 +81,7 @@ Plug 'https://github.com/itchyny/vim-gitbranch.git'
 
 "Icon for vim
 Plug 'https://github.com/ryanoasis/vim-devicons.git'
-"Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }  
 
 "Git
 Plug 'https://github.com/tpope/vim-fugitive.git'
@@ -73,12 +90,26 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 "Plug 'camspiers/animate.vim'
 "Plug 'camspiers/lens.vim'
 
+"Opening screen
+"Plug 'glepnir/dashboard-nvim'
+"Plug 'liuchengxu/vim-clap', { 'do': has('win32') ? 'cargo build --release' : 'make' }
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 "Jupyter Notebook
 "TODO: Test
 Plug 'https://github.com/jupyter-vim/jupyter-vim.git'
 
 "Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+
+"ASCII Art
+"TODO: Testing
+Plug 'https://github.com/willchao612/vim-diagon.git' 
+
+"Display mapping
+Plug 'https://github.com/liuchengxu/vim-which-key.git'
+
+"Smoothie scroll
+Plug 'psliwka/vim-smoothie'
 
 " Initialize plugin system
 call plug#end()
@@ -94,6 +125,7 @@ set timeout timeoutlen=1000 ttimeoutlen=100
 set linespace=8
 set textwidth=80
 set belloff=all "Disable all sound effect"
+set formatoptions-=cro
 "set scrollbind
 "set scrolloff
 "set shell=C:/Users/hungpham/AppData/Local/Microsoft/WindowsApps/wt.exe
@@ -125,10 +157,10 @@ set noshowmode "turn off status line"
 set hidden
 set scrolloff=8 "scroll with 5 line at the end of page"
 
-"Searching
+"Search highlight
 set incsearch
-set cursorline
-set cursorcolumn
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
 augroup vimrc-incsearch-highlight
     autocmd!
     autocmd CmdlineEnter /,\? :set hlsearch
@@ -150,10 +182,10 @@ set wildoptions=tagfile
 set wildignorecase
 set viewoptions="folds,cursor,curdir"
 augroup dynamic_smartcase
-autocmd!
-set ignorecase "ignore case in search patterns
-autocmd CmdLineEnter : set nosmartcase
-autocmd CmdLineLeave : set smartcase
+    autocmd!
+    set ignorecase "ignore case in search patterns
+    autocmd CmdLineEnter : set nosmartcase
+    autocmd CmdLineLeave : set smartcase
 augroup END
 "set completeopt+=menu,preview
 "Open Help in vertical
@@ -212,20 +244,17 @@ endfunction
 " Use autocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
+
 "Appearance
 "Vim in terminal
-if !has('gui_win32') && has('termguicolors')
+if !has('gui_running') && has('termguicolors')
     let g:theme = 'dracula'
     set termguicolors
-    let g:webdevicons_enable = 0
-    set guifont=Consolas:h12:cANSI:qDRAFT
-    let g:dracula_italic = 0
     let g:lightline = {
-    \ 'colorscheme': 'edge' ,
-\ }
-
-colorscheme edge
-else 
+    \ 'colorscheme': 'gruvbox' ,
+    \ }
+    colorscheme gruvbox
+else
     " set guifont=* "Choose font
     " set guifont?  "Currently font
     set guifont=Cousine_NF:h12:cANSI:qDRAFT
@@ -263,18 +292,22 @@ let g:webdevicons_conceal_nerdtree_brackets = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup exe_code
     au!
-    au FileType c nnoremap <buffer> <silent> <Enter> :!clang % -o %<.exe && %<.exe <CR>
-    au FileType cpp nnoremap <buffer> <silent> <Enter> :!clang++ % -o %<.exe && %<.exe <CR>
-    au Filetype python nnoremap <buffer> <silent> <Enter> :exec '!python' shellescape(@%, 1)<Cr>
-    au Filetype rust nnoremap <buffer> <silent> <Enter> :!cargo run <Cr>
-    au Filetype html nnoremap <buffer> <silent> <Enter> :!start %<Cr>
+    au FileType c nnoremap <buffer> <silent> <Enter> :!clang % -o %<.exe && %<.exe <CR><CR>
+    au FileType cpp nnoremap <buffer> <silent> <Enter> :!clang++ % -o %<.exe && %<.exe <CR><CR>
+    au Filetype python nnoremap <buffer> <silent> <Enter> :exec '!python' shellescape(@%, 1)<Cr><CR>
+    au Filetype rust nnoremap <buffer> <silent> <Enter> :!cargo run <Cr><CR>
+    au Filetype html nnoremap <buffer> <silent> <Enter> :!start %<Cr><CR>
+    au Filetype markdown nnoremap <buffer> <silent> <Enter> :MarkdownPreview<Cr><CR>
 augroup END
 
 "Keybindings
 nnoremap <leader>x :x<Cr>
 nnoremap <leader>w :up<Cr>
 nnoremap <leader>a ggVG<Cr>
-tnoremap <Esc> <C-\><C-n>
+"tnoremap <Esc> <C-\><C-n>
+
+"User-defined command:
+command! VideInstall PlugInstall | set guifont=*
 
 "Navigate block of code 
 xnoremap J :m '>+1<CR>gv=gv
@@ -318,7 +351,8 @@ nnoremap Y "*y$
 nnoremap y "*y
 vnoremap y "*y
 
-"Dump output
+"Dump output help you debug and see error easier.
+"Example: Dump verbose imap <Tab>
 function! Dump(cmd)
     vnew
     setlocal buftype=nowrite bufhidden=delete noswapfile
@@ -339,8 +373,6 @@ nnoremap <leader>j <C-W>j
 nnoremap <leader>k <C-W>k
 nnoremap <leader>l <C-W>l
 nnoremap <leader>h <C-W>h
-
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Coc-nvim                               "
@@ -368,8 +400,8 @@ inoremap <silent><expr> <TAB>
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
     \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-let g:coc_snippet_next = '<TAB>'
-let g:coc_snippet_prev = '<S-TAB>'
+let g:coc_snippet_next = '<M-l>'
+let g:coc_snippet_prev = '<M-h>'
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
     nnoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
@@ -400,13 +432,15 @@ let g:coc_global_extensions = ['coc-json',
             \'coc-emmet', 
             \'coc-pyright', 
             \'coc-clangd', 
+            \'coc-omnisharp', 
+            \'coc-tsserver', 
             \'coc-markdownlint',]
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Easymotion-Incsearch                   "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
+"TODO: In progress
 function! s:config_easyfuzzymotion(...) abort
     return extend(copy({
     \   'converters': [incsearch#config#fuzzy#converter()],
@@ -421,28 +455,31 @@ let g:EasyMotion_do_mapping = 0
 let g:EasyMotion_use_smartsign_us = 1 " US layout
 let g:EasyMotion_smartcase = 1
 nmap s <Plug>(easymotion-overwin-f)
-
 vmap s <Plug>(easymotion-s)
 vmap j <Plug>(easymotion-j)
 vmap k <Plug>(easymotion-k)
+omap f <Plug>(easymotion-s)
+omap t <Plug>(easymotion-t)
 omap j <Plug>(easymotion-j)
 omap k <Plug>(easymotion-k)
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Fuzzy-finder                           "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <C-f> :Files<CR>
-
+"TODO: in progress
+"nmap <C-f> :Files<CR>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: indentLine                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:indentLine_setColors = 1
 let g:indentLine_char = '│'
+let g:indentLine_fileTypeExclude = ['dashboard']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: AutoPairs                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:AutoPairsFlyMode = 1
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Floaterm                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -457,6 +494,12 @@ let g:floaterm_autoinsert=1
 let g:floaterm_width=0.8
 let g:floaterm_height=0.8
 let g:floaterm_autoclose=1
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             Plugin: Vim-which_key                          "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"TODO: In progress
+autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
 "let g:which_key_map.t = {
 "      \ 'name' : '+terminal' ,
 "      \ ';' : [':FloatermNew --wintype=popup --height=6'        , 'terminal'],
@@ -511,6 +554,7 @@ let g:tagbar_ctags_bin = 'C:\Users\hungpham\Downloads\Programs\C_tag\ctags.exe'
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Tagbar                                 "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"TODO: In progress
 nnoremap <silent> <F7> :TagbarToggle<CR>
 let g:tagbar_width = 43 
 let g:tagbar_visibility_symbols = {
@@ -526,16 +570,20 @@ let g:tagbar_map_showproto = ''
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "TODO: are on the way
 "let g:lens#disabled_filetypes = ['NERDTree', 'FZF', 'Help']
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Lens.vim                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"TODO: In progress
 let g:user_emmet_mode = 'n'
 let g:user_emmet_leader_key = "," 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Markdown-preview                       "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"TODO: In progress
 let g:mkdp_auto_close = 0
 let g:mkdp_command_for_global = 1
 " options for markdown render
@@ -584,4 +632,49 @@ let g:mkdp_page_title = '「${name}」'
 " recognized filetypes
 " these filetypes will have MarkdownPreview... commands
 let g:mkdp_filetypes = ['markdown']
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             Plugin: Dash-board                             "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"TODO: In progress
+nmap <Leader>ss :<C-u>SessionSave<CR>
+nmap <Leader>sl :<C-u>SessionLoad<CR>
+nmap <Leader>cn :<C-u>DashboardNewFile<CR>
+nnoremap <silent> <Leader>fh :<C-u>Clap history<CR>
+nnoremap <silent> <Leader>ff :<C-u>Clap files ++finder=rg --ignore --hidden --files<cr>
+nnoremap <silent> <Leader>tc :<C-u>Clap colors<CR>
+nnoremap <silent> <Leader>fa :<C-u>Clap grep2<CR>
+nnoremap <silent> <Leader>fb :<C-u>Clap marks<CR>
 
+let g:dashboard_custom_shortcut={
+  \ 'last_session' : 'SPC s l',
+  \ 'find_history' : 'SPC f h',
+  \ 'find_file' : 'SPC f f',
+  \ 'new_file' : 'SPC c n',
+  \ 'change_colorscheme' : 'SPC t c',
+  \ 'find_word' : 'SPC f a',
+  \ 'book_marks' : 'SPC f b',
+  \ }
+let g:dashboard_custom_header =<< trim END
+$$\    $$\ $$$$$$\ $$$$$$$\  $$$$$$$$\ 
+$$ |   $$ |\_$$  _|$$  __$$\ $$  _____|
+$$ |   $$ |  $$ |  $$ |  $$ |$$ |      
+\$$\  $$  |  $$ |  $$ |  $$ |$$$$$\    
+ \$$\$$  /   $$ |  $$ |  $$ |$$  __|   
+  \$$$  /    $$ |  $$ |  $$ |$$ |      
+   \$  /   $$$$$$\ $$$$$$$  |$$$$$$$$\ 
+    \_/    \______|\_______/ \________|
+END
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             Plugin: Hexokinase                             "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"TODO: In progress
+autocmd VimEnter * HexokinaseTurnOn
+let g:Hexokinase_optInPatterns = [
+\     'full_hex',
+\     'triple_hex',
+\     'rgb',
+\     'rgba',
+\     'hsl',
+\     'hsla',
+\ ]
