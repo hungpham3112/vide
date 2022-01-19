@@ -11,6 +11,7 @@
     "python.formatting.provider": "black",
     "python.formatting.blackPath": "C:/Users/hungpham/AppData/Local/Programs/Python/Python310/Scripts/black.exe",
     "python.linting.pylintArgs": ["--generate-members"],
+    "python.linting.flake8Enabled": true,
     "rust-analyzer.inlayHints.typeHints": true,
     "rust-analyzer.inlayHints.refreshOnInsertMode": true,
     "snippets.priority": 99

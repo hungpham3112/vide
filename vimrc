@@ -17,6 +17,7 @@ call plug#begin('~/vimfiles/plugged')
 " any valid git url is allowed
 " plug 'https://github.com/junegunn/vim-github-dashboard.git'
 
+
 " multiple plug commands can be written in a single line using | separators
 Plug 'honza/vim-snippets'
 
@@ -24,6 +25,7 @@ Plug 'honza/vim-snippets'
 Plug 'https://github.com/preservim/nerdtree.git'
 Plug 'https://github.com/preservim/tagbar.git'
 Plug 'https://github.com/preservim/nerdcommenter.git'
+Plug 'https://github.com/PhilRunninger/nerdtree-visual-selection.git'
 "plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
 " using a tagged release; wildcard allowed (requires git 1.9.2 or above)
@@ -94,6 +96,7 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 "Plug 'glepnir/dashboard-nvim'
 "Plug 'liuchengxu/vim-clap', { 'do': has('win32') ? 'cargo build --release' : 'make' }
 Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+
 "Jupyter Notebook
 "TODO: Test
 Plug 'https://github.com/jupyter-vim/jupyter-vim.git'
@@ -103,29 +106,32 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': 
 
 "ASCII Art
 "TODO: Testing
-Plug 'https://github.com/willchao612/vim-diagon.git' 
+"Plug 'https://github.com/willchao612/vim-diagon.git' 
 
 "Display mapping
 Plug 'https://github.com/liuchengxu/vim-which-key.git'
 
 "Smoothie scroll
+"TODO: in progress
 Plug 'psliwka/vim-smoothie'
 
-" Initialize plugin system
+Plug 'mhinz/vim-startify'
+
+"Initialize plugin system
 call plug#end()
 
 "General settings
 syntax enable
 set nocompatible
 set noswapfile
-set background=dark
+"set background=dark
 set termguicolors
 set updatetime=300  "Make autocomplete faster"
 set timeout timeoutlen=1000 ttimeoutlen=100
 set linespace=8
-set textwidth=80
+set textwidth=120
 set belloff=all "Disable all sound effect"
-set formatoptions-=cro
+autocmd FileType * set fo-=o
 "set scrollbind
 "set scrolloff
 "set shell=C:/Users/hungpham/AppData/Local/Microsoft/WindowsApps/wt.exe
@@ -292,6 +298,7 @@ let g:webdevicons_conceal_nerdtree_brackets = 1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 augroup exe_code
     au!
+    nmap <Enter> <nop>
     au FileType c nnoremap <buffer> <silent> <Enter> :!clang % -o %<.exe && %<.exe <CR><CR>
     au FileType cpp nnoremap <buffer> <silent> <Enter> :!clang++ % -o %<.exe && %<.exe <CR><CR>
     au Filetype python nnoremap <buffer> <silent> <Enter> :exec '!python' shellescape(@%, 1)<Cr><CR>
@@ -323,8 +330,8 @@ vnoremap <Enter> :w !
 "IMPORTANT!!!
 vnoremap u <nul> 
 
-nnoremap ; :
 "Command mode more ergonomic
+nnoremap ; :
 vnoremap ; :
 
 "Resize
@@ -344,9 +351,9 @@ nnoremap <leader>3 3gt
 nnoremap <leader>4 4gt
 nnoremap <leader>5 5gt
 
-"Copy file to clipboard
+"Copy paste with clipboard
 set clipboard="unnameplus"
-nnoremap yy "*yy
+nnoremap <C-p> "*p
 nnoremap Y "*y$
 nnoremap y "*y
 vnoremap y "*y
@@ -632,6 +639,7 @@ let g:mkdp_page_title = '「${name}」'
 " recognized filetypes
 " these filetypes will have MarkdownPreview... commands
 let g:mkdp_filetypes = ['markdown']
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Dash-board                             "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -670,6 +678,9 @@ END
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "TODO: In progress
 autocmd VimEnter * HexokinaseTurnOn
+let g:Hexokinase_highlighters = [
+\   'foregroundfull',
+\ ]
 let g:Hexokinase_optInPatterns = [
 \     'full_hex',
 \     'triple_hex',
@@ -677,4 +688,5 @@ let g:Hexokinase_optInPatterns = [
 \     'rgba',
 \     'hsl',
 \     'hsla',
+\     'colour_names',
 \ ]

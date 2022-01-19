@@ -8,17 +8,24 @@ VIDE is abbreviation of vim as IDE
 
 ## Requirements
 
-- Nerd-Fonts: Choose the font you like in [Nerd-Fonts](https://www.nerdfonts.com/)
+- Vim version >= 8.0 (run `:version` or `vim --version` to checkout your vim version):
 
-- Vim version >= 8.0 : Download from source  
-  - UNIX: [https://www.vim.org/download.php](https://www.vim.org/download.php)
-  - MS-Windows: [https://github.com/vim/vim-win32-installer/releases](https://github.com/vim/vim-win32-installer/releases)
+    Download from source  
+  - [UNIX](https://www.vim.org/download.php)
+  - [MS-Windows](https://github.com/vim/vim-win32-installer/releases):
+    Find the latest Signed-Files and download (_recommend_)
 
-    Find the latest Signed-Files and download (_recommented_)
-  - [LLVM](https://github.com/llvm/llvm-project/releases/tag/llvmorg-13.0.0) (optional):
+- [Nerd-Fonts](https://www.nerdfonts.com/): Choose the font you want for GUI vim
+
+- [Nodejs](https://nodejs.org/en/) >= 12.12.
+
+- [Python](https://www.python.org/) >= 3.6.
+
+- [LLVM](https://github.com/llvm/llvm-project/releases/tag/llvmorg-13.0.0) (optional):
   If you work with C-family , `clangd`, `clang-formatter`,.. are really
   helpful.  
-- [MSYS2](https://www.msys2.org/) (optional): Collection of tools and libraries 
+
+- [MSYS2](https://www.msys2.org/) (optional): Collection of tools and libraries
 for Windows
 
 ## Installation  
@@ -27,37 +34,33 @@ __Step__ _:one:_ : Clone repository to your home directory
 
 __Windows__: open terminal and run the following command
 
-```bat
+```shell
 cd %userprofile%
 rd /q /s vimfiles
 git clone https://github.com/HungPham3112/vim-as-IDE.git vimfiles
 ```
 
-__Step__ _:two:_ : Set Nerd Fonts  
+__Step__ _:two:_ : Install plugin and set Nerd Font.  
 
-- In normal mode:
+- In Normal mode: (Press `Esc` and see in statusline):
 
-```sh
-:PlugInstall
-```
-- Restart vim
-
-__Step__ _:three:_ : Set Nerd Fonts  
-
-- In normal mode:
-
-```bat
-:set guifont=*
+```shell
+:VideInstall
 ```
 
-And choose Nerd-Font you've already installed.
+Choose Font when popup appear.
 
-```bat
+- In Normal mode:
+
+```shell
 :set guifont?
 ```
 
-To know current font.
+ To know current font.
 
+- Press `<Space>ev` to open \_vimrc
+
+- Restart vim
 
 ## Plugins  
 
