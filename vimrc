@@ -376,10 +376,10 @@ nnoremap <S-h> :bpre<CR>
 nnoremap <S-l> :bnext<CR>
 
 "Split navigation
-nnoremap <leader>j <C-W>j
-nnoremap <leader>k <C-W>k
-nnoremap <leader>l <C-W>l
-nnoremap <leader>h <C-W>h
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-l> <C-W>l
+nnoremap <C-h> <C-W>h
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Coc-nvim                               "
@@ -407,8 +407,8 @@ inoremap <silent><expr> <TAB>
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
     \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-let g:coc_snippet_next = '<M-l>'
-let g:coc_snippet_prev = '<M-h>'
+let g:coc_snippet_next = '<leader>l'
+let g:coc_snippet_prev = '<leader>h'
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
     nnoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
