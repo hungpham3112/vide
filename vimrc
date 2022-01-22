@@ -677,10 +677,14 @@ END
 "                             Plugin: Hexokinase                             "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "TODO: In progress
-autocmd VimEnter * HexokinaseTurnOn
+if exists('Hexokinase')
+    autocmd VimEnter * HexokinaseTurnOn
+endif
+
 let g:Hexokinase_highlighters = [
 \   'foregroundfull',
 \ ]
+
 let g:Hexokinase_optInPatterns = [
 \     'full_hex',
 \     'triple_hex',
