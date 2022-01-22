@@ -61,6 +61,7 @@ Plug 'https://github.com/tomasr/molokai.git', {'as':'molokai'}
 Plug 'https://github.com/rakr/vim-one.git', {'as':'one'}
 Plug 'https://github.com/altercation/vim-colors-solarized.git', {'as':'solarized'}
 Plug 'https://github.com/sainnhe/edge.git', {'as': 'edge'}
+Plug 'https://github.com/sainnhe/everforest.git', {'as': 'everforest'}
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 "Autocomplete
@@ -78,8 +79,10 @@ Plug 'https://github.com/tpope/vim-surround.git'
 Plug 'jiangmiao/auto-pairs'
 
 "Statusline 
-Plug 'itchyny/lightline.vim'
+"Plug 'itchyny/lightline.vim'
 Plug 'https://github.com/itchyny/vim-gitbranch.git'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 "Icon for vim
 Plug 'https://github.com/ryanoasis/vim-devicons.git'
@@ -124,16 +127,14 @@ call plug#end()
 syntax enable
 set nocompatible
 set noswapfile
-"set background=dark
 set termguicolors
 set updatetime=300  "Make autocomplete faster"
 set timeout timeoutlen=1000 ttimeoutlen=100
 set linespace=8
 set textwidth=120
 set belloff=all "Disable all sound effect"
+set t_Co=256
 autocmd FileType * set fo-=o
-"set scrollbind
-"set scrolloff
 "set shell=C:/Users/hungpham/AppData/Local/Microsoft/WindowsApps/wt.exe
 
 augroup vim_title
@@ -214,41 +215,40 @@ filetype plugin indent on
 let g:edge_style = 'neon'
 let g:edge_enable_italic = 0
 let g:edge_disable_italic_comment = 1
-let g:edge_lightline_disable_bold = 1
+"let g:edge_lightline_disable_bold = 1
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Lightline                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Colorscheme configuration lightline
-set laststatus=2
 
-let g:lightline = {
-\ 'colorscheme': 'edge',
-\ 'active': {
-\   'left': [ [ 'mode', 'paste' ],
-\             [ 'cocstatus', 'readonly' ], 
-\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-\ },
-\ 'component': {
-\   'filename': '%F',
-\ },
-\ 'component_function': {
-\   'cocstatus': 'coc#status',
-\   'filetype': 'MyFiletype',
-\   'fileformat': 'MyFileformat',
-\   'gitbranch': 'gitbranch#name'
-\ },
-\ }
-function! MyFiletype()
-    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
-endfunction
+"let g:lightline = {
+"\ 'colorscheme': 'edge',
+"\ 'active': {
+"\   'left': [ [ 'mode', 'paste' ],
+"\             [ 'cocstatus', 'readonly' ], 
+"\             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+"\ },
+"\ 'component': {
+"\   'filename': '%F',
+"\ },
+"\ 'component_function': {
+"\   'cocstatus': 'coc#status',
+"\   'filetype': 'MyFiletype',
+"\   'fileformat': 'MyFileformat',
+"\   'gitbranch': 'gitbranch#name'
+"\ },
+"\ }
+"function! MyFiletype()
+    "return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+"endfunction
 
-function! MyFileformat()
-    return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-endfunction
+"function! MyFileformat()
+    "return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+"endfunction
 
-" Use autocmd to force lightline update.
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+ "Use autocmd to force lightline update.
+"autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 
 "Appearance
@@ -256,9 +256,9 @@ autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 if !has('gui_running') && has('termguicolors')
     let g:theme = 'dracula'
     set termguicolors
-    let g:lightline = {
-    \ 'colorscheme': 'gruvbox' ,
-    \ }
+    "let g:lightline = {
+    "\ 'colorscheme': 'gruvbox' ,
+    "\ }
     colorscheme gruvbox
 else
     " set guifont=* "Choose font
@@ -311,6 +311,7 @@ augroup END
 nnoremap <leader>x :x<Cr>
 nnoremap <leader>w :up<Cr>
 nnoremap <leader>a ggVG<Cr>
+nmap <Space> <nop>
 "tnoremap <Esc> <C-\><C-n>
 
 "User-defined command:
@@ -371,7 +372,6 @@ command! -nargs=* -complete=command Dump call Dump(<q-args>)
 nnoremap <leader>d :Dump 
 
 "Buffers navigation
-"TODO:need to map <M-j> and <M-K> for snippets
 nnoremap <S-h> :bpre<CR>
 nnoremap <S-l> :bnext<CR>
 
@@ -407,8 +407,8 @@ inoremap <silent><expr> <TAB>
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
     \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-let g:coc_snippet_next = '<leader>l'
-let g:coc_snippet_prev = '<leader>h'
+let g:coc_snippet_next = '<C-l>'
+let g:coc_snippet_prev = '<C-h>'
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
     nnoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
@@ -694,3 +694,41 @@ let g:Hexokinase_optInPatterns = [
 \     'hsla',
 \     'colour_names',
 \ ]
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"                             Plugin: Vim-airline                            "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:airline_detect_modified=1
+let g:airline_theme='edge'
+let g:airline_powerline_fonts = 1
+call airline#parts#define_accent('mode', 'none')
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+"Unicode symbols
+let g:airline_symbols.colnr = ' ㏇:'
+let g:airline_symbols.crypt = '🔒'
+let g:airline_symbols.linenr = ' ☰ '
+let g:airline_symbols.paste = 'ρ'
+
+"Powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.maxlinenr = ' ☰ '
+let g:airline_symbols.dirty=' ⚡'
+
+"Enable/disable nerdtree's statusline integration >
+let g:airline#extensions#nerdtree_statusline = 1
+
+"air-line with coc-nvim
+let g:airline#extensions#coc#enabled = 1
+let airline#extensions#coc#error_symbol = 'Error:'
+let airline#extensions#coc#warning_symbol = 'Warning:'
+let airline#extensions#coc#stl_format_err = '%E{[%e(#%fe)]}'
+let airline#extensions#coc#stl_format_warn = '%W{[%w(#%fw)]}'
+let g:airline#extensions#coc#show_coc_status = 1
