@@ -11,27 +11,15 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 call plug#begin('~/vimfiles/plugged')
 
-" make sure you use single quotes
-" shorthand notation; fetches https://github.com/junegunn/vim-easy-align
-" Plug 'junegunn/vim-easy-align'
-" any valid git url is allowed
-" Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" multiple plug commands can be written in a single line using | separators
+"Snippet
 Plug 'honza/vim-snippets'
 
-" on-demand loading
+"Tree explorer
 Plug 'https://github.com/preservim/nerdtree.git'
 Plug 'https://github.com/preservim/tagbar.git'
 Plug 'https://github.com/preservim/nerdcommenter.git'
 Plug 'https://github.com/PhilRunninger/nerdtree-visual-selection.git'
-"plug 'tpope/vim-fireplace', { 'for': 'clojure' }
 
-" using a tagged release; wildcard allowed (requires git 1.9.2 or above)
-" plug 'fatih/vim-go', { 'tag': '*' }
-
-" plugin optionds
-" plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
 "IndentLine
 Plug 'https://github.com/Yggdroot/indentLine.git'
 
@@ -50,9 +38,6 @@ Plug 'haya14busa/vim-asterisk'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" Unmanaged plugin (manually installed and updated)
-Plug '~/my-prototype-plugin'
-
 "Theme for vim
 Plug 'dracula/vim',{'as':'dracula'}
 Plug 'https://github.com/morhetz/gruvbox.git', {'as':'gruvbox'}
@@ -65,11 +50,8 @@ Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 "Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"TODO: emmet is testing
 Plug 'mattn/emmet-vim'
-
-"Language server protocol
-"Plug 'prabirshrestha/vim-lsp'
-"Plug 'mattn/vim-lsp-settings'
 
 "Vim-brackets
 Plug 'https://github.com/tpope/vim-surround.git'
@@ -79,7 +61,7 @@ Plug 'jiangmiao/auto-pairs'
 
 "Statusline
 Plug 'itchyny/lightline.vim'
-"Plug 'https://github.com/itchyny/vim-gitbranch.git'
+Plug 'https://github.com/itchyny/vim-gitbranch.git'
 
 "Icon for vim
 Plug 'https://github.com/ryanoasis/vim-devicons.git'
@@ -92,18 +74,15 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 Plug 'https://github.com/kovetskiy/vim-autoresize.git'
 
 "Opening screen
-"Plug 'glepnir/dashboard-nvim'
-"Plug 'liuchengxu/vim-clap', { 'do': has('win32') ? 'cargo build --release' : 'make' }
-Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
+"TODO: testing
+"Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 
 "Jupyter Notebook
-"TODO: Test
-Plug 'https://github.com/jupyter-vim/jupyter-vim.git'
+"TODO: testing
+"Plug 'https://github.com/jupyter-vim/jupyter-vim.git'
 
 "Markdown preview
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
-
-"ASCII Art
 
 "Display mapping
 Plug 'https://github.com/liuchengxu/vim-which-key.git'
@@ -113,14 +92,15 @@ Plug 'dstein64/vim-startuptime'
 
 "Smoothie scroll
 "TODO: in progress
-Plug 'psliwka/vim-smoothie'
+"Plug 'psliwka/vim-smoothie'
 
+"Startup screen
 Plug 'mhinz/vim-startify'
 
-"Initialize plugin system
 call plug#end()
 
 "General settings
+set shell=c:\\Windows\\System32\\cmd.exe
 set noswapfile
 set termguicolors
 set updatetime=300  "Make autocomplete faster"
@@ -132,7 +112,6 @@ set t_Co=256
 set history=200
 set laststatus=2
 autocmd FileType * set fo-=o
-"set shell=C:/Users/hungpham/AppData/Local/Microsoft/WindowsApps/wt.exe
 
 augroup vim_title
     au!
@@ -142,20 +121,14 @@ augroup END
 " set list listchars=tab:»·,trail:·,nbsp:·
 
 "Workspace
-"set autochdir
 autocmd BufEnter * silent! lcd %:p:h
 
 "Auto save file
 set autowriteall
 set autoread
-
-"Open file in reasonable location
-set splitbelow
-set splitright
+set splitbelow splitright "Open file in reasonable location
 set encoding=utf-8
-
-"Delete using backspace
-set backspace=indent,eol,start
+set backspace=indent,eol,start "Delete using backspace
 set autoindent
 set noshowmode "turn off status line"
 set hidden
@@ -163,12 +136,13 @@ set scrolloff=8 "scroll with 5 line at the end of page"
 
 "Search highlight
 augroup smart_cursorcolumn
-    autocmd!
+    au!
     au WinLeave * set nocursorline nocursorcolumn
     au WinEnter * set cursorline cursorcolumn
 augroup END
+
 augroup dynamic_highlight
-    autocmd!
+    au!
     set incsearch
     autocmd CmdlineEnter /,\? :set hlsearch
     autocmd CmdlineLeave /,\? :set nohlsearch
@@ -184,39 +158,31 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 "Commandline completions
 set wildmenu
-"set wildmode=longest:list,full
 set wildoptions=tagfile
 set wildignorecase
 set viewoptions="folds,cursor,curdir"
 augroup dynamic_smartcase
-    autocmd!
+    au!
     set ignorecase "ignore case in search patterns
     autocmd CmdLineEnter : set nosmartcase
     autocmd CmdLineLeave : set smartcase
 augroup END
-"set completeopt+=menu,preview
+
 "Open Help in vertical
 autocmd BufWinEnter * if &buftype == 'help' | wincmd L | endif
 
 "Status line settings
 set guioptions=
 set shortmess=cT
-set cmdheight=2 "1 is the best but 2 can disable "Press Enter""
-
-" remap <leader>
-let mapleader = " "
-
-"open maximum size of gvim
-au guienter * simalt ~x
-
+set cmdheight=2  "1 is the best but 2 can disable 'Press Enter'"
+let mapleader = " "  "Map leader to Space for convenience
+au guienter * simalt ~x   "open maximum size of gvim
 filetype plugin indent on
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Lightline                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"Colorscheme configuration lightline
-
 let g:lightline = {
     \ 'colorscheme': 'edge',
     \ 'active': {
@@ -256,7 +222,21 @@ let g:edge_lightline_disable_bold = 1
 if !has('gui_running') && has('termguicolors')
     set termguicolors
     let g:lightline = {
-    \ 'colorscheme': 'everforest' ,
+        \ 'colorscheme': 'everforest',
+        \ 'active': {
+        \   'left': [ [ 'mode', 'paste' ],
+        \             [ 'cocstatus', 'readonly' ],
+        \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+        \ },
+        \ 'component': {
+        \   'filename': '%F',
+        \ },
+        \ 'component_function': {
+        \   'cocstatus': 'coc#status',
+        \   'filetype': 'MyFiletype',
+        \   'fileformat': 'MyFileformat',
+        \   'gitbranch': 'gitbranch#name'
+        \ },
     \ }
     let g:lightline.separator = { 'left': '', 'right': '' }
     let g:lightline.subseparator = { 'left': '', 'right': '' }
@@ -269,6 +249,7 @@ elseif has('gui_running')
     set guifont=Cousine_NF:h12:cANSI:qDRAFT
     colorscheme edge
 endif
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: NERDTree                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -311,7 +292,7 @@ nnoremap <leader>x :x<Cr>
 nnoremap <leader>w :up<Cr>
 nnoremap <C-a> ggVG<Cr>
 nmap <Space> <nop>
-"tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>
 
 "User-defined command:
 command! VideInstall PlugInstall | set guifont=*
@@ -592,20 +573,6 @@ let g:user_emmet_leader_key = ","
 "TODO: In progress
 let g:mkdp_auto_close = 0
 let g:mkdp_command_for_global = 1
-" options for markdown render
-" mkit: markdown-it options for render
-" katex: katex options for math
-" uml: markdown-it-plantuml options
-" maid: mermaid options
-" disable_sync_scroll: if disable sync scroll, default 0
-" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
-"   middle: mean the cursor position alway show at the middle of the preview page
-"   top: mean the vim top viewport alway show at the top of the preview page
-"   relative: mean the cursor position alway show at the relative positon of the preview page
-" hide_yaml_meta: if hide yaml metadata, default is 1
-" sequence_diagrams: js-sequence-diagrams options
-" content_editable: if enable content editable for preview page, default: v:false
-" disable_filename: if disable filename header for preview page, default: 0
 let g:mkdp_preview_options = {
     \ 'mkit': {},
     \ 'katex': {},
@@ -619,58 +586,11 @@ let g:mkdp_preview_options = {
     \ 'content_editable': v:false,
     \ 'disable_filename': 0
     \ }
-
-" use a custom markdown style must be absolute path
-" like '/Users/username/markdown.css' or expand('~/markdown.css')
 let g:mkdp_markdown_css = ''
-
-" use a custom highlight style must absolute path
-" like '/Users/username/highlight.css' or expand('~/highlight.css')
 let g:mkdp_highlight_css = ''
-
-" use a custom port to start server or random for empty
 let g:mkdp_port = ''
-
-" preview page title
-" ${name} will be replace with the file name
 let g:mkdp_page_title = '「${name}」'
-
-" recognized filetypes
-" these filetypes will have MarkdownPreview... commands
 let g:mkdp_filetypes = ['markdown']
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                             Plugin: Dash-board                            "
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"TODO: In progress
-"nmap <Leader>ss :<C-u>SessionSave<CR>
-"nmap <Leader>sl :<C-u>SessionLoad<CR>
-"nmap <Leader>cn :<C-u>DashboardNewFile<CR>
-"nnoremap <silent> <Leader>fh :<C-u>Clap history<CR>
-"nnoremap <silent> <Leader>ff :<C-u>Clap files ++finder=rg --ignore --hidden --files<cr>
-"nnoremap <silent> <Leader>tc :<C-u>Clap colors<CR>
-"nnoremap <silent> <Leader>fa :<C-u>Clap grep2<CR>
-"nnoremap <silent> <Leader>fb :<C-u>Clap marks<CR>
-
-"let g:dashboard_custom_shortcut={
-  "\ 'last_session' : 'SPC s l',
-  "\ 'find_history' : 'SPC f h',
-  "\ 'find_file' : 'SPC f f',
-  "\ 'new_file' : 'SPC c n',
-  "\ 'change_colorscheme' : 'SPC t c',
-  "\ 'find_word' : 'SPC f a',
-  "\ 'book_marks' : 'SPC f b',
-  "\ }
-"let g:dashboard_custom_header =<< trim END
-"$$\    $$\ $$$$$$\ $$$$$$$\  $$$$$$$$\
-"$$ |   $$ |\_$$  _|$$  __$$\ $$  _____|
-"$$ |   $$ |  $$ |  $$ |  $$ |$$ |
-"\$$\  $$  |  $$ |  $$ |  $$ |$$$$$\
- "\$$\$$  /   $$ |  $$ |  $$ |$$  __|
-  "\$$$  /    $$ |  $$ |  $$ |$$ |
-   "\$  /   $$$$$$\ $$$$$$$  |$$$$$$$$\
-    "\_/    \______|\_______/ \________|
-"END
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Hexokinase                             "
