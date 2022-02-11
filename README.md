@@ -1,4 +1,4 @@
-# VIDE :mortar_board: 
+# VIDE :mortar_board:
 
 ## _The config for lazy people who want to learn Vim faster_
 
@@ -11,63 +11,17 @@ to do a project of my own to help newbies learn Vim, especially on the Windows p
 Currently, this project supports Windows. In the future, I will keep learning and
 make it compatible with MacOS and Linux distro.
 
-## Requirements
-
-- Vim version >= 8.0 (run `:version` or `vim --version` to checkout your Vim version):
-
-    Download from source  
-  - [UNIX](https://www.vim.org/download.php)
-  - [MS-Windows](https://github.com/vim/vim-win32-installer/releases):
-    Find the latest Signed-Files and download (_recommend_)
-
-- [Nerd-Fonts](https://www.nerdfonts.com/): Choose the font you want for GUI vim
-
-- [Nodejs](https://nodejs.org/en/) >= 12.12.
-
-- [Python](https://www.python.org/) >= 3.6.
-
-- [LLVM](https://github.com/llvm/llvm-project/releases/tag/llvmorg-13.0.0) (optional):
-  If you work with C-family , `clangd`, `clang-formatter`,.. are really
-  helpful.  
-
-- [MSYS2](https://www.msys2.org/) (optional): Collection of tools and libraries
-for Windows
-
 ## Quick start
-
-__Step__ _:one:_ : Clone repository to your home directory and run install.bat
 
 __Windows__: open Powershell and run the following command
 
 ```powershell
 cd $env:userprofile
-rd /q /s vimfiles
-git clone https://github.com/HungPham3112/vim-as-IDE.git vimfiles
-cd vimfiles
-install.bat
+rd .\vimfiles -Recurse -Force
+git clone -branch nightly https://github.com/HungPham3112/vim-as-IDE.git vimfiles
+cd .\vimfiles
+.\install.ps1
 ```
-
-__Step__ _:two:_ : Install plugin and set Nerd Font.  
-
-- In Normal mode: (Press `Esc` and see in statusline):
-
-```powershell
-:VideInstall
-```
-
-Choose Font when popup appear.
-
-- In Normal mode:
-
-```powershell
-:set guifont?
-```
-
- To know current font.
-
-- Press `<Space>ev` to open \_vimrc
-
-- Restart vim
 
 ## Plugins  
 
@@ -88,7 +42,7 @@ Choose Font when popup appear.
 | Beautiful statusline | lightline |  <https://github.com/itchyny/lightline.vim> |
 and more ...
 
-## :star: Support Me :star:   
+## :star: Support Me :star:
 
 - Open issue and ask if you have any trouble. I will do my best to help you.
 - Tell me if you have any idea to make this repository better.
