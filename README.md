@@ -16,10 +16,10 @@ make it compatible with MacOS and Linux distro.
 __Windows__: open Powershell and run the following command
 
 ```powershell
-cd $env:userprofile
-rd .\vimfiles -Recurse -Force
-git clone -branch nightly https://github.com/HungPham3112/vim-as-IDE.git vimfiles
-cd .\vimfiles
+cd $env:USERPROFILE
+rd .\vimfiles\ -Recurse -Force
+git clone --branch nightly https://github.com/HungPham3112/vim-as-IDE.git vimfiles
+cd .\vimfiles\
 .\install.ps1
 ```
 
