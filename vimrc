@@ -1,4 +1,3 @@
-"TODO: 2022 Make this vimrc to an IDE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                               $$\    $$\ $$$$$$\ $$$$$$$\  $$$$$$$$\                            "
 "                               $$ |   $$ |\_$$  _|$$  __$$\ $$  _____|                           "
@@ -100,7 +99,16 @@ Plug 'mhinz/vim-startify'
 call plug#end()
 
 source ~/vimfiles/autoload/general_settings.vim
+source ~/vimfiles/colors/colorscheme_settings.vim
 source ~/vimfiles/plugin/lightline_settings.vim
+source ~/vimfiles/plugin/autopair_settings.vim
+source ~/vimfiles/plugin/coc-nvim_settings.vim
+source ~/vimfiles/plugin/easymotion_settings.vim
+source ~/vimfiles/plugin/fzf_settings.vim
+source ~/vimfiles/plugin/keybinding_settings.vim
+source ~/vimfiles/plugin/nerdtree_settings.vim
+source ~/vimfiles/plugin/lightline_settings.vim
+source ~/vimfiles/plugin/runcode_settings.vim
 
 "Appearance
 "Vim in terminal
@@ -135,99 +143,6 @@ elseif has('gui_running')
     colorscheme edge
 endif
 
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                             Plugin: AutoPairs                              "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:AutoPairsFlyMode = 1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                             Plugin: Floaterm                               "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:floaterm_keymap_toggle = '<F1>'
-let g:floaterm_keymap_next   = '<F2>'
-let g:floaterm_keymap_prev   = '<F3>'
-let g:floaterm_keymap_new    = '<F4>'
-
-" Floaterm
-let g:floaterm_gitcommit='floaterm'
-let g:floaterm_autoinsert=1
-let g:floaterm_width=0.8
-let g:floaterm_height=0.8
-let g:floaterm_autoclose=1
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                             Plugin: Vim-which_key                          "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"TODO: In progress
-autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
-"let g:which_key_map.t = {
-"      \ 'name' : '+terminal' ,
-"      \ ';' : [':FloatermNew --wintype=popup --height=6'        , 'terminal'],
-"      \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
-"      \ 'g' : [':FloatermNew lazygit'                           , 'git'],
-"      \ 'd' : [':FloatermNew lazydocker'                        , 'docker'],
-"      \ 'n' : [':FloatermNew node'                              , 'node'],
-"      \ 'N' : [':FloatermNew nnn'                               , 'nnn'],
-"      \ 'p' : [':FloatermNew python'                            , 'python'],
-"      \ 'r' : [':FloatermNew ranger'                            , 'ranger'],
-"      \ 't' : [':FloatermToggle'                                , 'toggle'],
-"      \ 'y' : [':FloatermNew ytop'                              , 'ytop'],
-"      \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
-"      \ }
-
-
-" Tagbar
-"TODO:In progress
-"let g:tagbar_ctags_bin = 'C:\Users\hungpham\Downloads\Programs\C_tag\ctags.exe'
-"if !exists(':Tagbar') || rust#tags#IsUCtags()
-"    finish
-"endif
-"
-"" vint: -ProhibitAbbreviationOption
-"let s:save_cpo = &cpo
-"set cpo&vim
-"" vint: +ProhibitAbbreviationOption
-"
-"if !exists('g:tagbar_type_rust')
-"    let g:tagbar_type_rust = {
-"                \ 'ctagstype' : 'rust',
-"                \ 'kinds' : [
-"                \'T:types',
-"                \'f:functions',
-"                \'g:enumerations',
-"                \'s:structures',
-"                \'m:modules',
-"                \'c:constants',
-"                \'t:traits',
-"                \'i:trait implementations',
-"                \ ]
-"                \ }
-"endif
-"
-"" In case you've updated/customized your ~/.ctags and prefer to use it.
-"if !get(g:, 'rust_use_custom_ctags_defs', 0)
-"    let g:tagbar_type_rust.deffile = expand('<sfile>:p:h:h:h') . '/ctags/rust.ctags'
-"endif
-"
-"" vint: -ProhibitAbbreviationOption
-"let &cpo = s:save_cpo
-"unlet s:save_cp
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                             Plugin: Tagbar                                 "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"TODO: In progress
-nnoremap <silent> <F7> :TagbarToggle<CR>
-let g:tagbar_width = 43
-let g:tagbar_visibility_symbols = {
-    \ 'public'    : 'O',
-    \ 'protected' : '!',
-    \ 'private'   : 'X'
-    \ }
-let g:tagbar_singleclick = 1
-let g:tagbar_wrap = 1
-let g:tagbar_map_showproto = ''
-
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Autoresize                             "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -241,30 +156,6 @@ let g:autoresize_disabled_filetypes = ['nerdtree',]
 let g:user_emmet_mode = 'n'
 let g:user_emmet_leader_key = ","
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                             Plugin: Markdown-preview                       "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"TODO: In progress
-let g:mkdp_auto_close = 0
-let g:mkdp_command_for_global = 1
-let g:mkdp_preview_options = {
-    \ 'mkit': {},
-    \ 'katex': {},
-    \ 'uml': {},
-    \ 'maid': {},
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'sequence_diagrams': {},
-    \ 'flowchart_diagrams': {},
-    \ 'content_editable': v:false,
-    \ 'disable_filename': 0
-    \ }
-let g:mkdp_markdown_css = ''
-let g:mkdp_highlight_css = ''
-let g:mkdp_port = ''
-let g:mkdp_page_title = '「${name}」'
-let g:mkdp_filetypes = ['markdown']
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Hexokinase                             "
