@@ -2,7 +2,7 @@
 nmap <Space> <nop>
 nnoremap <leader>x :x<Cr>
 nnoremap <leader>w :up<Cr>
-nnoremap <leader>d :bd<Cr>
+nnoremap <leader>d :up<Cr>:bp<bar>sp<bar>bn<bar>bd<CR>
 nnoremap <C-a> ggVG<Cr>
 tnoremap <Esc> <C-\><C-n>
 

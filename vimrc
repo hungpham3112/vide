@@ -26,5 +26,6 @@ source ~/vimfiles/plugin/markdown-preview_settings.vim
 source ~/vimfiles/plugin/nerdtree_settings.vim
 source ~/vimfiles/plugin/runcode_settings.vim
 source ~/vimfiles/plugin/tagbars_settings.vim
+source ~/vimfiles/plugin/vide_command.vim
 source ~/vimfiles/plugin/vim-which-key_settings.vim
  

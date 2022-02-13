@@ -5,4 +5,8 @@ let g:lightline.separator = { 'left': '', 'right': '' }
 let g:lightline.subseparator = { 'left': '|', 'right': '|' }
 let g:lightline.tabline_separator = g:lightline.separator
 let g:lightline.tabline_subseparator = g:lightline.subseparator
-colorscheme edge
+try
+    colorscheme edge
+catch 
+    colorscheme default
+endtry

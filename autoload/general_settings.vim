@@ -79,4 +79,8 @@ let mapleader = " "  "Map leader to Space for convenience
 
 "Colorscheme
 set termguicolors
-colorscheme everforest
+try
+    colorscheme everforest
+catch 
+    colorscheme default
+endtry
