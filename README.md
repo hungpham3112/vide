@@ -2,16 +2,26 @@
 
 ## _The config for lazy people who want to learn Vim faster_
 
+## Table of contents
+
+- [Introduction](#introduction)
+- [Quickstart](#quickstart)
+- [Plugins](#plugins)
+- [Mappings](#mappings)
+- [Support me](#support-me)
+- [License](#license)
+
 ## Introduction
 
-When I first started learning Vim i had a lot of difficulty and spent a lot of
-time searching the net and referencing previous Vim installations. So I decided
-to do a project of my own to help newbies learn Vim, especially on the Windows platform.
+When I first started learning Vim, I had a lot of difficulty and spent a lot of
+time searching the internet and referencing other people's configurations. So I
+decided to create a project of my own to help those who are new to Vim,
+especially on the `Windows` platform.
 
-Currently, this project supports Windows. In the future, I will keep learning and
-make it compatible with MacOS and Linux distro.
+Currently, this project supports `Windows`. In the future, I will continue to
+learn and make it compatible with `MacOS` and `Linux` distro.
 
-## Quick start
+## Quick-start
 
 __Windows__: open Powershell and run the following command
 
@@ -20,7 +30,7 @@ cd $env:USERPROFILE
 rd .\vimfiles\ -Recurse -Force
 git clone --branch nightly https://github.com/HungPham3112/vim-as-IDE.git vimfiles
 cd .\vimfiles\
-.\install.ps1
+.\bin\install.ps1
 ```
 
 ## Plugins  
@@ -48,3 +58,6 @@ and more ...
 - Tell me if you have any idea to make this repository better.
 - Add pull request.  
 - :heart: __Give me a star if you like my config__ :heart:
+
+## License
+TODO: In progress
