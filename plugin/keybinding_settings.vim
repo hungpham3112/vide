@@ -1,8 +1,9 @@
 "Keybindings
+nmap <Space> <nop>
 nnoremap <leader>x :x<Cr>
 nnoremap <leader>w :up<Cr>
+nnoremap <leader>d :bd<Cr>
 nnoremap <C-a> ggVG<Cr>
-nmap <Space> <nop>
 tnoremap <Esc> <C-\><C-n>
 
 "Navigate block of code
@@ -55,19 +56,3 @@ nnoremap <leader>j <C-W>j
 nnoremap <leader>k <C-W>k
 nnoremap <leader>l <C-W>l
 nnoremap <leader>h <C-W>h
-
-"User-defined command:
-command! VideInstall PlugInstall | set guifont=*
-
-"Dump output help you debug and see error easier.
-"Example: Dump verbose imap <Tab>
-function! Dump(cmd)
-    vnew
-    setlocal buftype=nowrite bufhidden=delete noswapfile
-    let result = trim(execute(a:cmd))
-    put! =result
-    1
-endfunction
-command! -nargs=* -complete=command Dump call Dump(<q-args>)
-nnoremap <leader>d :Dump 
-

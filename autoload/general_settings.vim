@@ -10,6 +10,7 @@ set belloff=all "Disable all sound effect"
 set t_Co=256
 set history=200
 set laststatus=2
+set showtabline=2
 filetype plugin indent on
 autocmd FileType * set fo-=o
 
@@ -75,3 +76,7 @@ set guioptions=
 set shortmess=cT
 set cmdheight=2  "1 is the best but 2 can disable 'Press Enter'"
 let mapleader = " "  "Map leader to Space for convenience
+
+"Colorscheme
+set termguicolors
+colorscheme everforest
