@@ -3,6 +3,7 @@
     "snippets.priority": 99,
     "vimlsp.trace.server": "verbose",
     "vimlsp.debug": true,
+    "coc.preferences.extensionUpdateCheck": "weekly",
     "coc.preferences.formatOnType": true,
     "coc.preferences.formatOnTypeFiletypes": ["c", "rust"],
     "coc.preferences.formatOnSaveFiletypes": ["python", "c", "rust"],

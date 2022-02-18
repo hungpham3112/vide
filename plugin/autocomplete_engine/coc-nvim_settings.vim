@@ -55,10 +55,5 @@ endif
 let g:coc_global_extensions = ['coc-json',
             \'coc-vimlsp',
             \'coc-snippets',
-            \'coc-rust-analyzer',
-            \'coc-emmet',
-            \'coc-pyright',
-            \'coc-clangd',
-            \'coc-omnisharp',
-            \'coc-tsserver',
+            \'coc-powershell',
             \'coc-markdownlint',]
