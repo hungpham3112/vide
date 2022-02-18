@@ -7,7 +7,6 @@
 - [Introduction](#introduction)
 - [Quickstart](#quickstart)
 - [Plugins](#plugins)
-- [Mappings](#mappings)
 - [Support me](#support-me)
 - [License](#license)
 
@@ -27,9 +26,8 @@ __Windows__: open Powershell and run the following command
 
 ```powershell
 cd $env:USERPROFILE
-rd .\vimfiles\ -Recurse -Force
+rd .\vimfiles\ -Recurse -Force 2>$null
 git clone --branch nightly https://github.com/HungPham3112/vim-as-IDE.git vimfiles
-cd .\vimfiles\
 . ~\vimfiles\bin\install.bat
 ```
 

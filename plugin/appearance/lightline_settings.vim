@@ -2,7 +2,7 @@
 "                             Plugin: Lightline                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
-    \ 'colorscheme': 'one',
+    \ 'colorscheme': 'everforest',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'cocstatus', 'readonly' ],
@@ -37,10 +37,6 @@ endfunction
 
 "Use autocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-let g:lightline.separator = { 'left': '', 'right': '' }
-let g:lightline.subseparator = { 'left': '', 'right': '' }
-let g:lightline.tabline_separator = g:lightline.separator
-let g:lightline.tabline_subseparator = g:lightline.subseparator
 "let g:lightline#bufferline#show_number = 2
 "let g:lightline#bufferline#composed_number_map = {
 "\ 1:  '1', 2:  '2', 3:  '3', 4:  '4', 5:  '5',
@@ -53,6 +49,11 @@ if has("gui_running")
     let g:lightline.colorscheme = 'edge'
     let g:lightline.separator = { 'left': '', 'right': '' }
     let g:lightline.subseparator = { 'left': '|', 'right': '|' }
+    let g:lightline.tabline_separator = g:lightline.separator
+    let g:lightline.tabline_subseparator = g:lightline.subseparator
+elseif has('termguicolors')
+    let g:lightline.separator = { 'left': '', 'right': '' }
+    let g:lightline.subseparator = { 'left': '', 'right': '' }
     let g:lightline.tabline_separator = g:lightline.separator
     let g:lightline.tabline_subseparator = g:lightline.subseparator
 endif
