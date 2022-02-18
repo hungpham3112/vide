@@ -15,6 +15,9 @@
     "python.linting.flake8Enabled": true,
     "rust-analyzer.inlayHints.typeHints": true,
     "rust-analyzer.inlayHints.refreshOnInsertMode": true,
-    "powershell.integratedConsole.showOnStartup": false
+    "sumneko-lua.inlayHints.refreshOnInsertMode": true,
+    "Lua.completion.callSnippet": "Replace",
+    "powershell.integratedConsole.showOnStartup": false,
+    "Lua.telemetry.enable": true
 }
 

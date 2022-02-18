@@ -2,7 +2,7 @@
 "                             Plugin: Lightline                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
-    \ 'colorscheme': 'everforest',
+    \ 'colorscheme': 'one',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'cocstatus', 'readonly' ],
@@ -49,3 +49,10 @@ let g:lightline.tabline_subseparator = g:lightline.subseparator
 "\ 16: '16', 17: '17', 18: '18', 19: '19', 20: '20'}
 let g:lightline#bufferline#unnamed = 'Unnamed'
 let g:lightline#bufferline#enable_devicons = 1
+if has("gui_running")
+    let g:lightline.colorscheme = 'edge'
+    let g:lightline.separator = { 'left': '', 'right': '' }
+    let g:lightline.subseparator = { 'left': '|', 'right': '|' }
+    let g:lightline.tabline_separator = g:lightline.separator
+    let g:lightline.tabline_subseparator = g:lightline.subseparator
+endif

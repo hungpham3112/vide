@@ -30,7 +30,7 @@ cd $env:USERPROFILE
 rd .\vimfiles\ -Recurse -Force
 git clone --branch nightly https://github.com/HungPham3112/vim-as-IDE.git vimfiles
 cd .\vimfiles\
-.\bin\install.ps1
+. ~\vimfiles\bin\install.bat
 ```
 
 ## Plugins  

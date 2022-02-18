@@ -22,6 +22,7 @@ Plug 'haya14busa/incsearch.vim'
 Plug 'haya14busa/incsearch-easymotion.vim'
 Plug 'haya14busa/incsearch-fuzzy.vim'
 Plug 'haya14busa/vim-asterisk'
+Plug 'https://github.com/tpope/vim-repeat'
 
 "fuzzy file findfing fun
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -35,7 +36,6 @@ Plug 'https://github.com/rakr/vim-one.git', {'as':'one'}
 Plug 'https://github.com/altercation/vim-colors-solarized.git', {'as':'solarized'}
 Plug 'https://github.com/sainnhe/edge.git', {'as': 'edge'}
 Plug 'https://github.com/sainnhe/everforest.git', {'as': 'everforest'}
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
 
 "Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -85,6 +85,9 @@ Plug 'dstein64/vim-startuptime'
 "Plug 'psliwka/vim-smoothie'
 
 "Startup screen
-Plug 'mhinz/vim-startify'
+Plug 'mhinz/vim-startify', {'branch': 'center'}
+
+"Multiple cursor
+Plug 'https://github.com/mg979/vim-visual-multi.git'
 
 call plug#end()

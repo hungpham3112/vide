@@ -1,5 +1,4 @@
 Set-PSDebug -Off
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 iwr -useb get.scoop.sh | iex
 scoop install git
 git config --system --unset credential.helper

@@ -1,5 +1,6 @@
 "General settings
 set shell=c:\\Windows\\System32\\cmd.exe
+set nocompatible
 set noswapfile
 set termguicolors
 set updatetime=300  "Make autocomplete faster"
@@ -11,9 +12,10 @@ set t_Co=256
 set history=200
 set laststatus=2
 set showtabline=2
+set guifont=Cousine_NF:h11:cANSI:qDRAFT
 filetype plugin indent on
+au guienter * simalt ~x   "open maximum size of gvim
 autocmd FileType * set fo-=o
-
 augroup vim_title
     au!
     auto BufEnter * let &titlestring = hostname() . "/" . expand("%:p")
@@ -79,8 +81,16 @@ let mapleader = " "  "Map leader to Space for convenience
 
 "Colorscheme
 set termguicolors
-try
-    colorscheme everforest
-catch 
-    colorscheme default
-endtry
+if has('termguicolors')
+    try
+        colorscheme everforest
+    catch 
+        colorscheme default
+    endtry
+elseif has('gui_running')
+    try
+        colorscheme edge
+    catch 
+        colorscheme default
+    endtry
+endif

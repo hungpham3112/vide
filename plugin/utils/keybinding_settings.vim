@@ -2,9 +2,8 @@
 nmap <Space> <nop>
 nnoremap <leader>x :x<Cr>
 nnoremap <leader>w :up<Cr>
-nnoremap <leader>d :up<Cr>:bp<bar>sp<bar>bn<bar>bd<CR>
+nnoremap <leader>d :up<Cr>:bd<CR>
 nnoremap <C-a> ggVG<Cr>
-tnoremap <Esc> <C-\><C-n>
 
 "Navigate block of code
 xnoremap J :m '>+1<CR>gv=gv
@@ -56,3 +55,15 @@ nnoremap <leader>j <C-W>j
 nnoremap <leader>k <C-W>k
 nnoremap <leader>l <C-W>l
 nnoremap <leader>h <C-W>h
+
+"Searching
+nmap s <Plug>(easymotion-overwin-f)
+nmap f <Plug>(easymotion-s)
+nmap t <Plug>(easymotion-t)
+vmap s <Plug>(easymotion-s)
+vmap j <Plug>(easymotion-j)
+vmap k <Plug>(easymotion-k)
+omap f <Plug>(easymotion-s)
+omap t <Plug>(easymotion-t)
+omap j <Plug>(easymotion-j)
+omap k <Plug>(easymotion-k)
