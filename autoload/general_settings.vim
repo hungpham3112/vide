@@ -85,12 +85,12 @@ if has('termguicolors')
     try
         colorscheme everforest
     catch 
-        colorscheme default
+        colorscheme evening
     endtry
 elseif has('gui_running')
     try
         colorscheme edge
     catch 
-        colorscheme default
+        colorscheme evening
     endtry
 endif
