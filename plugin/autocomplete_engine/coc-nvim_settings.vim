@@ -48,7 +48,10 @@ function! s:show_documentation()
     endif
 endfunction
 
-autocmd CursorHold * silent call CocActionAsync('highlight')
+if exists('g:did_coc_loaded') 
+    autocmd CursorHold * silent call CocActionAsync('highlight')
+endif
+
 let g:coc_global_extensions = ['coc-json',
             \'coc-vimlsp',
             \'coc-snippets',
