@@ -7,18 +7,18 @@
     "coc.preferences.formatOnType": true,
     "coc.preferences.formatOnTypeFiletypes": ["c", "rust"],
     "coc.preferences.formatOnSaveFiletypes": ["python", "c", "rust"],
-    "rust-analyzer.cargo.unsetTest": [
-        "derivative"
-    ],
     "python.formatting.provider": "black",
     "python.formatting.blackPath": "C:/Users/hungpham/scoop/apps/python/current/Scripts/black.exe",
     "python.linting.pylintArgs": ["--generate-members"],
     "python.linting.flake8Enabled": true,
+    "rust-analyzer.cargo.unsetTest": [
+        "derivative"
+    ],
     "rust-analyzer.inlayHints.typeHints": true,
     "rust-analyzer.inlayHints.refreshOnInsertMode": true,
     "sumneko-lua.inlayHints.refreshOnInsertMode": true,
     "Lua.completion.callSnippet": "Replace",
-    "powershell.integratedConsole.showOnStartup": false,
-    "Lua.telemetry.enable": true
+    "Lua.telemetry.enable": true,
+    "powershell.integratedConsole.showOnStartup": false
 }
 

@@ -37,6 +37,9 @@ Plug 'https://github.com/altercation/vim-colors-solarized.git', {'as':'solarized
 Plug 'https://github.com/sainnhe/edge.git', {'as': 'edge'}
 Plug 'https://github.com/sainnhe/everforest.git', {'as': 'everforest'}
 
+"Syntax highlighting
+Plug 'sheerun/vim-polyglot'
+
 "Autocomplete
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 "TODO: emmet is testing
@@ -55,7 +58,7 @@ Plug 'mengelbrecht/lightline-bufferline'
 
 "Icon for vim
 Plug 'https://github.com/ryanoasis/vim-devicons.git'
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+"Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 "Git
 Plug 'https://github.com/tpope/vim-fugitive.git'
