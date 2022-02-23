@@ -30,4 +30,5 @@ source ~/vimfiles/plugin/utils/markdown-preview_settings.vim
 source ~/vimfiles/plugin/utils/runcode_settings.vim
 source ~/vimfiles/plugin/utils/vide_command.vim
 source ~/vimfiles/plugin/utils/vim-which-key_settings.vim
+source ~/vimfiles/user_config.vim
 

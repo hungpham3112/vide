@@ -57,13 +57,13 @@ nnoremap <leader>l <C-W>l
 nnoremap <leader>h <C-W>h
 
 "Searching
-nmap s <Plug>(easymotion-overwin-f)
-nmap f <Plug>(easymotion-s)
-nmap t <Plug>(easymotion-t)
+nmap s <Plug>(easymotion-s)
 vmap s <Plug>(easymotion-s)
-vmap j <Plug>(easymotion-j)
-vmap k <Plug>(easymotion-k)
+nmap f <Plug>(easymotion-s)
 omap f <Plug>(easymotion-s)
+nmap t <Plug>(easymotion-t)
 omap t <Plug>(easymotion-t)
+vmap j <Plug>(easymotion-j)
 omap j <Plug>(easymotion-j)
+vmap k <Plug>(easymotion-k)
 omap k <Plug>(easymotion-k)

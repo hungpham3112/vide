@@ -1,5 +1,4 @@
 "General settings
-set shell=c:\\Windows\\System32\\cmd.exe
 set nocompatible
 set noswapfile
 set termguicolors
@@ -13,28 +12,21 @@ set history=200
 set laststatus=2
 set showtabline=2
 set guifont=Cousine_NF:h11:cANSI:qDRAFT
-filetype plugin indent on
-au guienter * simalt ~x   "open maximum size of gvim
+au guienter * simalt ~x                                     "open maximum size of gvim
 autocmd FileType * set fo-=o
-augroup vim_title
-    au!
-    auto BufEnter * let &titlestring = hostname() . "/" . expand("%:p")
-    set title titlestring=%<%F%=%l/%L-%P titlelen=70
-augroup END
-
-"Workspace
-autocmd BufEnter * silent! lcd %:p:h
+let &titlestring="VIDE"  "
+autocmd BufEnter * silent! lcd %:p:h                        "workspace changing
 
 "Auto save file
 set autowriteall
 set autoread
-set splitbelow splitright "Open file in reasonable location
+set splitbelow splitright                                   "Open file in reasonable location
 set encoding=utf-8
-set backspace=indent,eol,start "Delete using backspace
+set backspace=indent,eol,start                              "Delete using backspace
 set autoindent
-set noshowmode "turn off status line"
+set noshowmode                                              "turn off default status line
 set hidden
-set scrolloff=8 "scroll with 5 line at the end of page"
+set scrolloff=8                                             "scroll with 5 line at the end of page"
 
 "Search highlight
 augroup smart_cursorcolumn

@@ -8,7 +8,7 @@
     "coc.preferences.formatOnTypeFiletypes": ["c", "rust"],
     "coc.preferences.formatOnSaveFiletypes": ["python", "c", "rust"],
     "python.formatting.provider": "black",
-    "python.formatting.blackPath": "C:/Users/hungpham/scoop/apps/python/current/Scripts/black.exe",
+    "python.formatting.blackPath": "%userprofile%/scoop/apps/python/current/Scripts/black.exe",
     "python.linting.pylintArgs": ["--generate-members"],
     "python.linting.flake8Enabled": true,
     "rust-analyzer.cargo.unsetTest": [
@@ -19,6 +19,8 @@
     "sumneko-lua.inlayHints.refreshOnInsertMode": true,
     "Lua.completion.callSnippet": "Replace",
     "Lua.telemetry.enable": true,
-    "powershell.integratedConsole.showOnStartup": false
+    "powershell.integratedConsole.focusConsoleOnExecute": false,
+    "powershell.integratedConsole.showOnStartup": false,
+    "powershell.enableProfileLoading": false
 }
 

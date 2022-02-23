@@ -1,4 +1,18 @@
-call plug#begin('~/vimfiles/plugged')
+"set shell=c:\\Windows\\System32\\cmd.exe
+
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '/vimfiles'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+ silent execute "!shell -ExecutionPolicy Bypass Invoke-WebRequest
+ \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -OutFile $env:path\vimfiles\autoload\plug.vim"
+ autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+"Installation starts here
+if has('win32')
+    call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/vimfiles/plugged')
+else
+    call plug#begin(has('nvim') ? stdpath('data') . '/plugged' : '~/.vim/plugged')
+endif
 
 "Snippet
 Plug 'honza/vim-snippets'
