@@ -1,11 +1,15 @@
-"set shell=c:\\Windows\\System32\\cmd.exe
-
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '/vimfiles'
-if empty(glob(data_dir . '/autoload/plug.vim'))
- silent execute "!shell -ExecutionPolicy Bypass Invoke-WebRequest
- \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim -OutFile $env:path\vimfiles\autoload\plug.vim"
- autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+" Install vim-plug if not found
+if empty(glob('~/vimfiles/autoload/plug.vim'))
+  silent execute '!C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
+    \ -ExecutionPolicy Bypass Invoke-WebRequest
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    \ -OutFile $env:userprofile\vimfiles\autoload\plug.vim'
 endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | q | source $MYVIMRC
+  \| endif
 
 "Installation starts here
 if has('win32')

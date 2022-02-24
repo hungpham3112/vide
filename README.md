@@ -22,14 +22,11 @@ learn and make it compatible with `MacOS` and `Linux` distro.
 
 ## Quick-start
 
-__Windows__: open Powershell and run the following command
+__One-line installer__:
 
-```powershell
-cd $env:USERPROFILE
-rd .\vimfiles\ -Recurse -Force 2>$null
-git clone --branch nightly https://github.com/HungPham3112/vim-as-IDE.git vimfiles
-. ~\vimfiles\bin\install.bat
-```
+Windows:
+
+``````Invoke-WebRequest https://raw.githubusercontent.com/hungpham3112/vide/nightly/bin/install.ps1 -UseBasicParsing | Invoke-Expression``````
 
 ## Plugins  
 
@@ -50,7 +47,7 @@ git clone --branch nightly https://github.com/HungPham3112/vim-as-IDE.git vimfil
 | Beautiful statusline | lightline |  <https://github.com/itchyny/lightline.vim> |
 and more ...
 
-## :star: Support Me :star:
+## :star: Support Me 
 
 - Open issue and ask if you have any trouble. I will do my best to help you.
 - Tell me if you have any idea to make this repository better.

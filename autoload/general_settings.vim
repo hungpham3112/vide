@@ -14,7 +14,7 @@ set showtabline=2
 set guifont=Cousine_NF:h11:cANSI:qDRAFT
 au guienter * simalt ~x                                     "open maximum size of gvim
 autocmd FileType * set fo-=o
-let &titlestring="VIDE"  "
+let &titlestring="VIDE"                                     "Change title vim
 autocmd BufEnter * silent! lcd %:p:h                        "workspace changing
 
 "Auto save file
@@ -63,7 +63,7 @@ augroup dynamic_smartcase
 augroup END
 
 "Open Help in vertical
-autocmd BufWinEnter * if &buftype == 'help' | wincmd L | endif
+autocmd BufWinEnter * if &buftype == 'help' | wincmd L | execute 'vertical resize '. g:autoresize_width | endif
 
 "Status line settings
 set guioptions=
