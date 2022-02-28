@@ -17,6 +17,10 @@ autocmd FileType * set fo-=o
 let &titlestring="VIDE"                                     "Change title vim
 autocmd BufEnter * silent! lcd %:p:h                        "workspace changing
 
+"python for vim
+set pythonthreedll=~/scoop/apps/python/current/python310.dll
+set pythonthreehome=~/scoop/apps/python/current/
+
 "Auto save file
 set autowriteall
 set autoread
@@ -76,13 +80,13 @@ set termguicolors
 if has('termguicolors')
     try
         colorscheme everforest
-    catch 
+    catch
         colorscheme evening
     endtry
 elseif has('gui_running')
     try
         colorscheme edge
-    catch 
+    catch
         colorscheme evening
     endtry
 endif

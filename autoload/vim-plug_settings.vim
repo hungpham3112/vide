@@ -10,6 +10,53 @@ endif
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | q | source $MYVIMRC
   \| endif
+function! s:plug_doc()
+  let name = matchstr(getline('.'), '^- \zs\S\+\ze:')
+  if has_key(g:plugs, name)
+    for doc in split(globpath(g:plugs[name].dir, 'doc/*.txt'), '\n')
+      execute 'tabe' doc
+    endfor
+  endif
+endfunction
+
+function! s:plug_help_sink(line)
+  let dir = g:plugs[a:line].dir
+  for pat in ['doc/*.txt', 'README.md']
+    let match = get(split(globpath(dir, pat), "\n"), 0, '')
+    if len(match)
+      execute 'tabedit' match
+      return
+    endif
+  endfor
+  tabnew
+  execute 'Explore' dir
+endfunction
+
+command! PlugHelp call fzf#run(fzf#wrap({
+  \ 'source': sort(keys(g:plugs)),
+  \ 'sink':   function('s:plug_help_sink')}))
+
+function! s:scroll_preview(down)
+  silent! wincmd P
+  if &previewwindow
+    execute 'normal!' a:down ? "\<c-e>" : "\<c-y>"
+    wincmd p
+  endif
+endfunction
+
+function! s:setup_extra_keys()
+  nnoremap <silent> <buffer> J :call <sid>scroll_preview(1)<cr>
+  nnoremap <silent> <buffer> K :call <sid>scroll_preview(0)<cr>
+  nnoremap <silent> <buffer> <c-n> :call search('^  \X*\zs\x')<cr>
+  nnoremap <silent> <buffer> <c-p> :call search('^  \X*\zs\x', 'b')<cr>
+  nmap <silent> <buffer> <c-j> <c-n>o
+  nmap <silent> <buffer> <c-k> <c-p>o
+endfunction
+
+augroup PlugDiffExtra
+  autocmd!
+  autocmd FileType vim-plug call s:setup_extra_keys()
+augroup END
 
 "Installation starts here
 if has('win32')
@@ -19,7 +66,7 @@ else
 endif
 
 "Snippet
-Plug 'honza/vim-snippets'
+Plug 'https://github.com/honza/vim-snippets.git'
 
 "Tree explorer
 Plug 'https://github.com/preservim/nerdtree.git'
@@ -32,19 +79,19 @@ Plug 'https://github.com/Yggdroot/indentLine.git'
 
 "Float terminal
 Plug 'https://github.com/voldikss/vim-floaterm.git'
-Plug 'voldikss/fzf-floaterm'
+Plug 'https://github.com/voldikss/fzf-floaterm.git'
 
 "Powerful Movement
 Plug 'https://github.com/easymotion/vim-easymotion.git'
-Plug 'haya14busa/incsearch.vim'
-Plug 'haya14busa/incsearch-easymotion.vim'
-Plug 'haya14busa/incsearch-fuzzy.vim'
-Plug 'haya14busa/vim-asterisk'
+Plug 'https://github.com/haya14busa/incsearch.vim.git'
+Plug 'https://github.com/haya14busa/incsearch-easymotion.vim.git'
+Plug 'https://github.com/haya14busa/incsearch-fuzzy.vim.git'
+Plug 'https://github.com/haya14busa/vim-asterisk.git'
 Plug 'https://github.com/tpope/vim-repeat'
 
 "fuzzy file findfing fun
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+Plug 'https://github.com/junegunn/fzf.git', { 'do': { -> fzf#install() } }
+Plug 'https://github.com/junegunn/fzf.vim.git'
 
 "Theme for vim
 Plug 'dracula/vim',{'as':'dracula'}
@@ -56,23 +103,24 @@ Plug 'https://github.com/sainnhe/edge.git', {'as': 'edge'}
 Plug 'https://github.com/sainnhe/everforest.git', {'as': 'everforest'}
 
 "Syntax highlighting
-Plug 'sheerun/vim-polyglot'
+Plug 'https://github.com/sheerun/vim-polyglot.git'
 
 "Autocomplete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'https://github.com/neoclide/coc.nvim.git', {'branch': 'release'}
+
 "TODO: emmet is testing
-Plug 'mattn/emmet-vim'
+Plug 'https://github.com/mattn/emmet-vim.git'
 
 "Vim-brackets
 Plug 'https://github.com/tpope/vim-surround.git'
 
 "Auto pairs
-Plug 'jiangmiao/auto-pairs'
+Plug 'https://github.com/jiangmiao/auto-pairs.git'
 
 "Statusline and bufferline
-Plug 'itchyny/lightline.vim'
+Plug 'https://github.com/itchyny/lightline.vim.git'
 Plug 'https://github.com/itchyny/vim-gitbranch.git'
-Plug 'mengelbrecht/lightline-bufferline'
+Plug 'https://github.com/mengelbrecht/lightline-bufferline.git'
 
 "Icon for vim
 Plug 'https://github.com/ryanoasis/vim-devicons.git'
@@ -90,25 +138,29 @@ Plug 'https://github.com/kovetskiy/vim-autoresize.git'
 
 "Jupyter Notebook
 "TODO: testing
-"Plug 'https://github.com/jupyter-vim/jupyter-vim.git'
+Plug 'https://github.com/jupyter-vim/jupyter-vim.git'
 
 "Markdown preview
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
+Plug 'https://github.com/iamcco/markdown-preview.nvim.git', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 "Display mapping
 Plug 'https://github.com/liuchengxu/vim-which-key.git'
 
-"Benchmark 
-Plug 'dstein64/vim-startuptime'
+"Benchmark
+Plug 'https://github.com/dstein64/vim-startuptime.git'
 
 "Smoothie scroll
 "TODO: in progress
-"Plug 'psliwka/vim-smoothie'
+Plug 'psliwka/vim-smoothie'
 
 "Startup screen
-Plug 'mhinz/vim-startify', {'branch': 'center'}
+Plug 'https://github.com/mhinz/vim-startify.git', {'branch': 'center'}
+
 
 "Multiple cursor
 Plug 'https://github.com/mg979/vim-visual-multi.git'
+
+"Moving block of code
+Plug 'https://github.com/matze/vim-move.git'
 
 call plug#end()

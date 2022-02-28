@@ -1,6 +1,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Hexokinase                             "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 "TODO: In progress
 if exists('Hexokinase')
     autocmd BufEnter * HexokinaseTurnOn

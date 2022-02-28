@@ -1,15 +1,9 @@
 "Keybindings
 nmap <Space> <nop>
 nnoremap <leader>x :x<Cr>
-nnoremap <leader>w :up<Cr>
+nnoremap <leader>w :w<Cr>
 nnoremap <leader>d :up<Cr>:bd<CR>
 nnoremap <C-a> ggVG<Cr>
-
-"Navigate block of code
-xnoremap J :m '>+1<CR>gv=gv
-xnoremap K :m '<-2<CR>gv=gv
-xnoremap H <gv
-xnoremap L >gv
 
 "run block of code in visual mode
 vnoremap <Enter> :w !
@@ -30,7 +24,7 @@ nnoremap <Right> :vert resize -2 <CR>
 
 "Vimrc config
 nnoremap <leader>ev :edit $MYVIMRC<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>sv :source % <bar> source $MYVIMRC<CR>
 
 "Nagvigation buffers
 nnoremap <leader>1 1gt
@@ -41,7 +35,7 @@ nnoremap <leader>5 5gt
 
 "Copy paste with clipboard
 set clipboard="unnameplus"
-noremap <C-p> "*p
+nnoremap <C-p> "*p
 nnoremap Y "*y$
 nnoremap y "*y
 xnoremap y "*y
@@ -51,10 +45,10 @@ nnoremap <S-h> :bpre<CR>
 nnoremap <S-l> :bnext<CR>
 
 "Split navigation
-nnoremap <leader>j <C-W>j
-nnoremap <leader>k <C-W>k
-nnoremap <leader>l <C-W>l
-nnoremap <leader>h <C-W>h
+nnoremap <C-j> <C-W><C-j>
+nnoremap <C-k> <C-W><C-k>
+nnoremap <C-l> <C-W><C-l>
+nnoremap <C-h> <C-W><C-h>
 
 "Searching
 nmap s <Plug>(easymotion-s)
