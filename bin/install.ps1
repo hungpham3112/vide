@@ -1,6 +1,7 @@
 Set-PSDebug -Off
 
 iwr -useb get.scoop.sh | iex
+git clone https://github.com/hungpham3112/vide.git vimfiles
 scoop install git
 git config --global --unset credential.helper
 scoop update
