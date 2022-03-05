@@ -24,7 +24,7 @@ nnoremap <Right> :vert resize -2 <CR>
 
 "Vimrc config
 nnoremap <leader>ev :edit $MYVIMRC<CR>
-nnoremap <leader>sv :source % <bar> source $MYVIMRC<CR>
+autocmd FileType vim nnoremap <leader>sv :source % <bar> source $MYVIMRC<CR>
 
 "Nagvigation buffers
 nnoremap <leader>1 1gt

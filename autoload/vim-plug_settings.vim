@@ -101,8 +101,10 @@ Plug 'https://github.com/rakr/vim-one.git', {'as':'one'}
 Plug 'https://github.com/altercation/vim-colors-solarized.git', {'as':'solarized'}
 Plug 'https://github.com/sainnhe/edge.git', {'as': 'edge'}
 Plug 'https://github.com/sainnhe/everforest.git', {'as': 'everforest'}
+Plug 'https://github.com/bluz71/vim-nightfly-guicolors.git', {'as': 'nightfly'}
 
 "Syntax highlighting
+let g:polyglot_disabled = ['ftdetect', 'sensible']
 Plug 'https://github.com/sheerun/vim-polyglot.git'
 
 "Autocomplete
@@ -124,7 +126,6 @@ Plug 'https://github.com/mengelbrecht/lightline-bufferline.git'
 
 "Icon for vim
 Plug 'https://github.com/ryanoasis/vim-devicons.git'
-"Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 
 "Git
 Plug 'https://github.com/tpope/vim-fugitive.git'
@@ -132,19 +133,15 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 "Animation and resize
 Plug 'https://github.com/kovetskiy/vim-autoresize.git'
 
-"Opening screen
-"TODO: testing
-"Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
-
 "Jupyter Notebook
 "TODO: testing
-Plug 'https://github.com/jupyter-vim/jupyter-vim.git'
+Plug 'https://github.com/sillybun/vim-repl.git'
 
 "Markdown preview
 Plug 'https://github.com/iamcco/markdown-preview.nvim.git', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 "Display mapping
-Plug 'https://github.com/liuchengxu/vim-which-key.git'
+"Plug 'https://github.com/liuchengxu/vim-which-key.git'
 
 "Benchmark
 Plug 'https://github.com/dstein64/vim-startuptime.git'
@@ -155,7 +152,6 @@ Plug 'psliwka/vim-smoothie'
 
 "Startup screen
 Plug 'https://github.com/mhinz/vim-startify.git', {'branch': 'center'}
-
 
 "Multiple cursor
 Plug 'https://github.com/mg979/vim-visual-multi.git'

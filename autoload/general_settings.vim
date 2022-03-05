@@ -21,6 +21,9 @@ autocmd BufEnter * silent! lcd %:p:h                        "workspace changing
 set pythonthreedll=~/scoop/apps/python/current/python310.dll
 set pythonthreehome=~/scoop/apps/python/current/
 
+"lua for vim
+set luadll=~/scoop/apps/lua/current/lua54.dll
+
 "Auto save file
 set autowriteall
 set autoread

@@ -26,6 +26,10 @@
     // powershell
     "powershell.integratedConsole.focusConsoleOnExecute": false,
     "powershell.integratedConsole.showOnStartup": false,
-    "powershell.enableProfileLoading": false
+    "powershell.enableProfileLoading": false,
+    "powershell.developer.editorServicesLogLevel": "Error",
+    "powershell.debugging.createTemporaryIntegratedConsole": false,
+    //julia
+    "julia.executablePath": "~/scoop/apps/julia/current/bin/julia.exe"
 }
 
