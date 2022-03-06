@@ -5,7 +5,7 @@
 ## Table of contents
 
 - [Introduction](#introduction)
-- [Quickstart](#quickstart)
+- [Quickstart](#quick-start)
 - [Plugins](#plugins)
 - [Support me](#support-me)
 - [License](#license)
@@ -29,7 +29,7 @@ Windows:
 Invoke-WebRequest https://raw.githubusercontent.com/hungpham3112/vide/nightly/bin/install.ps1 -UseBasicParsing | Invoke-Expression
 ```
 
-## Plugins  
+## Plugins
 
 | Purpose | Plugin | Repo |
 | ------ | ------ | ------ |
@@ -52,7 +52,7 @@ and more ...
 
 - Open issue and ask if you have any trouble. I will do my best to help you.
 - Tell me if you have any idea to make this repository better.
-- Add pull request.  
+- Add pull request.
 - :heart: __Give me a star if you like my config__ :heart:
 
 ## License

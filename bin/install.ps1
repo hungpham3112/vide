@@ -5,6 +5,7 @@ $COC_PATH = "$env:LOCALAPPDATA/coc"
 
 Write-Host "Welcome to VIDE!"
 Write-Host "Checking requirements..."
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 if (Get-Command scoop -ErrorAction SilentlyContinue) {
     Write-Host "Scoop is already installed ✅"
 } else {
