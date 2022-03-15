@@ -1,19 +1,19 @@
 "General settings
-set nocompatible
-set noswapfile
-set termguicolors
-set updatetime=300  "Make autocomplete faster"
-set timeout timeoutlen=1000 ttimeoutlen=100
-set linespace=8
-set textwidth=120
-set belloff=all "Disable all sound effect"
-set t_Co=256
-set history=200
-set laststatus=2
-set showtabline=2
-set guifont=Cousine_NF:h11:cANSI:qDRAFT
-au guienter * simalt ~x                                     "open maximum size of gvim
-autocmd FileType * set fo-=o
+set nocompatible                                            "No compatible with vi (Never remove this line)
+set noswapfile                                              "Don't generate swapfile
+set termguicolors                                           "Colors for terminal
+set updatetime=300                                          "Make autocomplete faster
+set timeout timeoutlen=500 ttimeoutlen=100                  "Time response keystroke
+set linespace=8                                             "Gap between line (easier to see text) (only for GUI)
+set textwidth=120                                           "Maximum width of text in buffer
+set belloff=all                                             "Disable all sound effect
+set t_Co=256                                                "Number of colors
+set history=200                                             "Show 200 recently history
+set laststatus=2                                            "Always show status line
+set showtabline=2                                           "Always show tabline
+set guifont=Cousine_NF:h11:cANSI:qDRAFT                     "Default font for VIDE
+au guienter * simalt ~x                                     "open maximum size of GUI
+autocmd FileType * set formatoptions-=o                     "Don't auto-comment newline when hit o or O
 let &titlestring="VIDE"                                     "Change title vim
 autocmd BufEnter * silent! lcd %:p:h                        "workspace changing
 
@@ -25,15 +25,15 @@ set pythonthreehome=~/scoop/apps/python/current/
 set luadll=~/scoop/apps/lua/current/lua54.dll
 
 "Auto save file
-set autowriteall
-set autoread
+set autowriteall                                            "Autowrite if file has been modified
+set autoread                                                "Read file if it has been changed outside
 set splitbelow splitright                                   "Open file in reasonable location
-set encoding=utf-8
+set encoding=utf-8                                          "Can use multiple languages
 set backspace=indent,eol,start                              "Delete using backspace
-set autoindent
-set noshowmode                                              "turn off default status line
-set hidden
-set scrolloff=8                                             "scroll with 5 line at the end of page"
+set autoindent                                              "Auto indent
+set noshowmode                                              "Turn off default status line
+set hidden                                                  "Turn off E37 when change file
+set scrolloff=8                                             "scroll with 5 line at the end of page
 
 "Search highlight
 augroup smart_cursorcolumn
