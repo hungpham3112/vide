@@ -1,12 +1,9 @@
 "Keybindings
-nmap <Space> <nop>
-nnoremap <leader>x :x<Cr>
-nnoremap <leader>w :w<Cr>
-nnoremap <leader>d :up<Cr>:bd<CR>
+nmap <Space> <nul>
+nnoremap <silent> <leader>x :x<Cr>
+nnoremap <silent> <leader>w :w<Cr>
+nnoremap <silent> <leader>d :up<Cr>:bd<CR>
 nnoremap <C-a> ggVG<Cr>
-
-"run block of code in visual mode
-vnoremap <Enter> :w !
 
 "Negate u in visual mode
 "IMPORTANT!!!
@@ -36,6 +33,8 @@ nnoremap <leader>5 5gt
 "Copy paste with clipboard
 set clipboard="unnameplus"
 nnoremap <C-p> "*p
+xnoremap <C-p> "*p
+cnoremap <C-v> <MiddleMouse>
 nnoremap Y "*y$
 nnoremap y "*y
 xnoremap y "*y

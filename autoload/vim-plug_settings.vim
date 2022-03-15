@@ -135,7 +135,7 @@ Plug 'https://github.com/kovetskiy/vim-autoresize.git'
 
 "Jupyter Notebook
 "TODO: testing
-Plug 'https://github.com/sillybun/vim-repl.git'
+"Plug 'https://github.com/sillybun/vim-repl.git'
 
 "Markdown preview
 Plug 'https://github.com/iamcco/markdown-preview.nvim.git', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
@@ -145,10 +145,6 @@ Plug 'https://github.com/iamcco/markdown-preview.nvim.git', { 'do': { -> mkdp#ut
 
 "Benchmark
 Plug 'https://github.com/dstein64/vim-startuptime.git'
-
-"Smoothie scroll
-"TODO: in progress
-Plug 'psliwka/vim-smoothie'
 
 "Startup screen
 Plug 'https://github.com/mhinz/vim-startify.git', {'branch': 'center'}

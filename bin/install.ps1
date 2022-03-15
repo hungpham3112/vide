@@ -11,7 +11,6 @@ $FinalMessage = @"
 $greenCheck = @{
   Object = [Char]8730
   ForegroundColor = 'Green'
-  NoNewLine = $true
   }
 
 function InstallScoop {
@@ -21,10 +20,17 @@ function InstallScoop {
     } else {
         try {
             Write-Host "Installing scoop..."
-            iwr -useb get.scoop.sh | iex
+            if (([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole(`
+            [Security.Principal.WindowsBuiltInRole] "Administrator")) {
+                iwr -useb get.scoop.sh -outfile 'install.ps1'
+                .\install.ps1 -RunAsAdmin | Out-Null
+                del .\install.ps1 2>nul
+            } else {
+                iwr -useb get.scoop.sh | iex
+            }
         }
         catch {
-            Write-Host "An error occurred while installing scoop. Re-installing..."
+            Write-Host "An error occurred while installing scoop. Please run installer again..."
             rd $env:USERPROFILE/scoop -Recurse -Force >$null 2>$null
         }
     }
@@ -34,17 +40,18 @@ function InstallGit {
     if (Get-Command git -ErrorAction SilentlyContinue) {
         Write-Host "Git is already installed " -ForegroundColor Green -NoNewline
         Write-Host @greenCheck
+        git config --system --unset credential.helper >$null 2>$null
     } else {
         scoop install git >$null
         git config --system --unset credential.helper >$null 2>$null
-        Write-Host "Install git successfully " -ForegroundColor Green -NoNewline
-        Write-Host @greenCheck
     }
 }
 
 function CloneRepo {
     if (![System.IO.Directory]::Exists($VIMFILES_PATH)) {
         git clone https://github.com/hungpham3112/vide.git $vimfiles_path
+    } else {
+        rd .\vimfiles\ -Recurse -Force
     }
 }
 
@@ -54,31 +61,25 @@ function InstallNodejs {
         Write-Host @greenCheck
     } else {
         scoop install nodejs >$null
-        Write-Host "Install nodejs successfully " -ForegroundColor Green -NoNewline
-        Write-Host @greenCheck
     }
 }
 
 function InstallPython {
-    if (Get-Command python -ErrorAction SilentlyContinue) {
+    if (Test-Path -Path "~/scoop/apps/python/current/python.exe" -PathType Leaf) {
         Write-Host "Python is already installed " -ForegroundColor Green -NoNewline
         Write-Host @greenCheck
     } else {
         scoop install python >$null
-        Write-Host "Install python successfully " -ForegroundColor Green -NoNewline
-        Write-Host @greenCheck
     }
 }
 
 function InstallVim {
     if (Get-Command vim -ErrorAction SilentlyContinue) {
-        Write-Host "Python is already installed " -ForegroundColor Green -NoNewline
+        Write-Host "Vim is already installed " -ForegroundColor Green -NoNewline
         Write-Host @greenCheck
     } else {
-        scoop bucket add versions
-        scoop install vim-nightly >$null
-        Write-Host "Install vim-nightly successfully " -ForegroundColor Green -NoNewline
-        Write-Host @greenCheck
+        scoop bucket add versions 2>$null
+        scoop install vim-nightly 2>$null
     }
 }
 
@@ -87,10 +88,8 @@ function UpdateScoop {
 }
 
 function InstallNerdFonts {
-    scoop bucket add nerd-fonts
+    scoop bucket add nerd-fonts 2>$null
     scoop install cousine-NF-Mono 2>$null
-    Write-Host "Install nerd-fonts successfully " -ForegroundColor Green -NoNewline
-    Write-Host @greenCheck
 }
 
 function CreateCocPath {
@@ -99,19 +98,21 @@ function CreateCocPath {
     }
 }
 
-function main {
-    Write-Host "Welcome to VIDE" -ForegroundColor Green -NoNewline
-    Write-Host "Checking requirements.." -ForegroundColor Green -NoNewline
+function Main {
+    Write-Host "Welcome to VIDE" -ForegroundColor Green
+    Write-Host "Checking requirements..." -ForegroundColor Green
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
     InstallScoop
-    UpdateScoop
     InstallGit
     CloneRepo
     InstallNerdFonts
     InstallNodejs
     InstallPython
     InstallVim
+    UpdateScoop
     CreateCocPath
-    start ~\scoop\shims\gvim.exe
-    Write-Output $FinalMessage -ForegroundColor Green
+    start $env:userprofile\scoop\shims\gvim.exe
+    Write-Host $FinalMessage -ForegroundColor Green
 }
+
+Main
