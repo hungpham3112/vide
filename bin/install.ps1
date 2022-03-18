@@ -52,6 +52,7 @@ function CloneRepo {
         git clone https://github.com/hungpham3112/vide.git $vimfiles_path
     } else {
         rd .\vimfiles\ -Recurse -Force
+        git clone https://github.com/hungpham3112/vide.git $vimfiles_path
     }
 }
 
