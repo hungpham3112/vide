@@ -108,7 +108,7 @@ Plug 'https://github.com/jiangmiao/auto-pairs.git'
 "Statusline and bufferline
 Plug 'https://github.com/itchyny/lightline.vim.git'
 Plug 'https://github.com/itchyny/vim-gitbranch.git'
-Plug 'https://github.com/mengelbrecht/lightline-bufferline.git', {'branch': 'feature/custom-filter-function'}
+Plug 'https://github.com/mengelbrecht/lightline-bufferline.git'
 
 "Icon for vim
 Plug 'https://github.com/ryanoasis/vim-devicons.git'
