@@ -57,3 +57,9 @@ elseif has('termguicolors')
     let g:lightline.tabline_separator = g:lightline.separator
     let g:lightline.tabline_subseparator = g:lightline.subseparator
 endif
+
+function LightlineBufferlineFilter(buffer)
+   return getbufvar(a:buffer, '&buftype') !=# 'terminal'
+ endfunction
+
+let g:lightline#bufferline#buffer_filter = "LightlineBufferlineFilter"
