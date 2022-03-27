@@ -1,4 +1,4 @@
-" Install vim-plug if not found
+"Install vim-plug if not found
 if empty(glob('~/vimfiles/autoload/plug.vim'))
   silent execute '!C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
     \ -ExecutionPolicy Bypass Invoke-WebRequest
@@ -6,7 +6,7 @@ if empty(glob('~/vimfiles/autoload/plug.vim'))
     \ -OutFile $env:userprofile\vimfiles\autoload\plug.vim'
 endif
 
-" Run PlugInstall if there are missing plugins
+"Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | q | source $MYVIMRC
   \| endif
@@ -43,20 +43,6 @@ function! s:scroll_preview(down)
     wincmd p
   endif
 endfunction
-
-function! s:setup_extra_keys()
-  nnoremap <silent> <buffer> J :call <sid>scroll_preview(1)<cr>
-  nnoremap <silent> <buffer> K :call <sid>scroll_preview(0)<cr>
-  nnoremap <silent> <buffer> <c-n> :call search('^  \X*\zs\x')<cr>
-  nnoremap <silent> <buffer> <c-p> :call search('^  \X*\zs\x', 'b')<cr>
-  nmap <silent> <buffer> <c-j> <c-n>o
-  nmap <silent> <buffer> <c-k> <c-p>o
-endfunction
-
-augroup PlugDiffExtra
-  autocmd!
-  autocmd FileType vim-plug call s:setup_extra_keys()
-augroup END
 
 "Installation starts here
 if has('win32')
@@ -122,7 +108,7 @@ Plug 'https://github.com/jiangmiao/auto-pairs.git'
 "Statusline and bufferline
 Plug 'https://github.com/itchyny/lightline.vim.git'
 Plug 'https://github.com/itchyny/vim-gitbranch.git'
-Plug 'https://github.com/mengelbrecht/lightline-bufferline.git'
+Plug 'https://github.com/mengelbrecht/lightline-bufferline.git', {'branch': 'feature/custom-filter-function'}
 
 "Icon for vim
 Plug 'https://github.com/ryanoasis/vim-devicons.git'
@@ -133,15 +119,11 @@ Plug 'https://github.com/tpope/vim-fugitive.git'
 "Animation and resize
 Plug 'https://github.com/kovetskiy/vim-autoresize.git'
 
-"Jupyter Notebook
-"TODO: testing
-"Plug 'https://github.com/sillybun/vim-repl.git'
-
 "Markdown preview
 Plug 'https://github.com/iamcco/markdown-preview.nvim.git', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 "Display mapping
-"Plug 'https://github.com/liuchengxu/vim-which-key.git'
+Plug 'https://github.com/liuchengxu/vim-which-key.git'
 
 "Benchmark
 Plug 'https://github.com/dstein64/vim-startuptime.git'
@@ -154,5 +136,11 @@ Plug 'https://github.com/mg979/vim-visual-multi.git'
 
 "Moving block of code
 Plug 'https://github.com/matze/vim-move.git'
+
+"REPL for vim
+Plug 'https://github.com/jpalardy/vim-slime.git'
+
+"Vim-open-url
+Plug 'https://github.com/dhruvasagar/vim-open-url.git'
 
 call plug#end()

@@ -1,34 +1,14 @@
 "Keybindings
 nmap <Space> <nul>
-nnoremap <silent> <leader>x :x<Cr>
-nnoremap <silent> <leader>w :w<Cr>
-nnoremap <silent> <leader>d :up<Cr>:bd<CR>
 nnoremap <C-a> ggVG<Cr>
-
-"Negate u in visual mode
-"IMPORTANT!!!
-vnoremap u <nul>
-
-"Command mode more ergonomic
-nnoremap ; :
-vnoremap ; :
+au TerminalOpen * tnoremap <Esc> <c-\><c-n>
+au FileType fzf tunmap <Esc>
 
 "Resize
 nnoremap <Up> :resize +1<CR>
 nnoremap <Down> :resize -1<CR>
 nnoremap <Left> :vert resize +2 <CR>
 nnoremap <Right> :vert resize -2 <CR>
-
-"Vimrc config
-nnoremap <leader>ev :edit $MYVIMRC<CR>
-autocmd FileType vim nnoremap <leader>sv :source % <bar> source $MYVIMRC<CR>
-
-"Nagvigation buffers
-nnoremap <leader>1 1gt
-nnoremap <leader>2 2gt
-nnoremap <leader>3 3gt
-nnoremap <leader>4 4gt
-nnoremap <leader>5 5gt
 
 "Copy paste with clipboard
 set clipboard="unnameplus"
@@ -43,7 +23,7 @@ xnoremap y "*y
 nnoremap <S-h> :bpre<CR>
 nnoremap <S-l> :bnext<CR>
 
-"Split navigation
+"Windows navigation
 nnoremap <C-j> <C-W><C-j>
 nnoremap <C-k> <C-W><C-k>
 nnoremap <C-l> <C-W><C-l>
