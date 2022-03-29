@@ -63,7 +63,7 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 "Commandline completions
 set wildmenu
-set wildoptions=tagfile
+set wildoptions=pum,fuzzy
 set wildignorecase
 set viewoptions="folds,cursor,curdir"
 
