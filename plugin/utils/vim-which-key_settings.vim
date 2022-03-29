@@ -5,27 +5,27 @@ call which_key#register('<Space>', "g:which_key_map")
 nnoremap <silent> <leader> :silent WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :silent <c-u> :silent WhichKeyVisual '<Space>'<CR>
 
-" Create map to add keys to
+"Create map to add keys to
 let g:which_key_map =  {}
 
-" Define a separator
+"Define a separator
 let g:which_key_sep = '→'
 
-" Not a fan of floating windows for this
+"Not a fan of floating windows for this
 let g:which_key_use_floating_win = 0
 
-" Change the colors if you want
+"Change the colors if you want
 highlight default link WhichKey          Function
 highlight default link WhichKeySeperator DiffAdded
 highlight default link WhichKeyGroup     Keyword
 highlight default link WhichKeyDesc      Identifier
 
-" Hide status line
+"Hide status line
 autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler laststatus=2
 
-" Single mappings
+"Single mappings
 let g:which_key_map['/'] = [ 'incsearch#go(<SID>config_easyfuzzymotion())', 'Fuzzy incsearch' ]
 let g:which_key_map[';'] = [ ':silent Startify'                           , 'Start Screen' ]
 let g:which_key_map['c'] = [ '<Plug>NERDCommenterToggle'                  , 'Comment' ]
@@ -36,7 +36,7 @@ let g:which_key_map['g'] = [ ':Rg'                                        , 'Sea
 let g:which_key_map['w'] = [ ':w'                                         , 'Write' ]
 let g:which_key_map['x'] = [ ':x'                                         , 'Quit' ]
 
-" s is for search
+"s is for search
 let g:which_key_map.s = {
       \ 'name' : '+Searching' ,
       \ '/' : [':History/'     , 'History'],
@@ -76,4 +76,6 @@ let g:which_key_map.p = {
       \ }
 
 "Register which key map
-call which_key#register('<Space>', "g:which_key_map")
+if isdirectory($HOME . "/vimfiles/plugged/vim-which-key") || isdirectory($HOME . "/.vim/plugged/vim-which-key")
+    call which_key#register('<Space>', "g:which_key_map")
+endif
