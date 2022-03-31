@@ -40,7 +40,7 @@ set wildignorecase                                          "Ignore case-sensiti
 set wildmenu                                                "Command-line completion is an enhanced mode
 set wildoptions=pum,fuzzy,tagfile                           "Popupmenu and fuzzy finder for wildmenu
 autocmd BufEnter * silent! lcd %:p:h                        "Workspace changing
-autocmd FileType * set formatoptions-=r formatoptions+=j    "Turn off auto comment in when hit <Enter>,
+autocmd FileType * set formatoptions-=o formatoptions+=j    "Turn off auto comment in when hit <Enter>,
 autocmd GUIEnter * simalt ~x                                "GUI fullscreen by default
 
 "Dynamic cursor column for current window.
