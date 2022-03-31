@@ -1,90 +1,78 @@
 "General settings
-set nocompatible                                            "No compatible with vi (Never remove this line)
-set noswapfile                                              "Don't generate swapfile
-set termguicolors                                           "Colors for terminal
-set updatetime=300                                          "Make autocomplete faster
-set relativenumber                                          "Relative number
-set signcolumn=number                                       "display signs in the 'number' column
-set timeout timeoutlen=500 ttimeoutlen=100                  "Time response keystroke
-set linespace=8                                             "Gap between line (easier to see text) (only for GUI)
-set textwidth=120                                           "Maximum width of text in buffer
-set belloff=all                                             "Disable all sound effect
-set t_Co=256                                                "Number of colors
-set history=200                                             "Show 200 recently history
-set laststatus=2                                            "Always show status line
-set showtabline=2                                           "Always show tabline
-set guifont=Cousine_NF:h11:cANSI:qDRAFT                     "Default font for VIDE
-au guienter * simalt ~x                                     "open maximum size of GUI
-autocmd FileType * set formatoptions-=o                     "Don't auto-comment newline when hit o or O
 let &titlestring="VIDE"                                     "Change title vim
-autocmd BufEnter * silent! lcd %:p:h                        "workspace changing
-
-"Auto save file
-set autowriteall                                            "Autowrite if file has been modified
-set autoread                                                "Read file if it has been changed outside
-set splitbelow splitright                                   "Open file in reasonable location
-set encoding=utf-8                                          "String-encoding
-set backspace=indent,eol,start                              "Delete using backspace
-set autoindent                                              "Auto indent
-set noshowmode                                              "Turn off default status line
-set hidden                                                  "Turn off E37 when change file
-set scrolloff=8                                             "scroll with 8 line at the end of page
-
-"Status line settings
-set guioptions=                                             "Turn off GUi-options
-set shortmess=cT                                            "Avoid hit-enter prompts
-set cmdheight=2                                             "1 is the best but 2 can disable 'Press Enter'
 let mapleader = " "                                         "Map leader to Space for convenience
+set autoindent                                              "Auto indent
+set autoread                                                "Read file if it has been changed outside
+set autowriteall                                            "Autowrite if file has been modified
+set background=dark                                         "Dark background
+set backspace=indent,eol,start                              "Delete using backspace
+set belloff=all                                             "Disable all sound effect
+set cmdheight=2                                             "1 is the best but 2 can disable 'Press Enter'
+set encoding=utf-8                                          "String-encoding
+set guifont=Cousine_NF:h11:cANSI:qDRAFT                     "Default font for VIDE
+set guioptions=                                             "Turn off GUi-options
+set hidden                                                  "Turn off E37 when change file
+set history=10000                                           "Show maximum recently history
+set ignorecase                                              "Ignore case-sensitive in search patterns
+set incsearch                                               "Highlight pattern when search
+set laststatus=2                                            "Always show status line
+set linespace=8                                             "Gap between line (easier to see text) (only for GUI)
+set nocompatible                                            "No compatible with vi (Never remove this line)
+set noshowmode                                              "Turn off default status line
+set nostartofline                                           "Don't move the cursor to the beginning of line
+set noswapfile                                              "Don't generate swapfile
+set nrformats-=octal                                        "Remove consideration starting with 0 as octal
+set relativenumber                                          "Show the line number relative to the current line
+set scrolloff=8                                             "scroll with 8 line at the end of page
+set shortmess=cT                                            "Avoid hit-enter prompts
+set showtabline=2                                           "Always show tabline
+set sidescroll=1                                            "The minimal number of columns to scroll horizontally
+set signcolumn=number                                       "Display signs in the 'number' column
+set splitbelow splitright                                   "Open file in reasonable location
+set t_Co=256                                                "Number of colors
+set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab "Default tab = 4 spaces
+set termguicolors                                           "Colors for terminal
+set textwidth=120                                           "Maximum width of text in buffer
+set timeout timeoutlen=500 ttimeoutlen=50                   "Time response keystroke
+set updatetime=300                                          "Make autocomplete faster
+set viewoptions="folds,cursor,curdir"                       "Change behavior :mkview
+set wildignorecase                                          "Ignore case-sensitive command-mode
+set wildmenu                                                "Command-line completion is an enhanced mode
+set wildoptions=pum,fuzzy,tagfile                           "Popupmenu and fuzzy finder for wildmenu
+autocmd BufEnter * silent! lcd %:p:h                        "Workspace changing
+autocmd FileType * set formatoptions-=r formatoptions+=j    "Turn off auto comment in when hit <Enter>,
+autocmd GUIEnter * simalt ~x                                "GUI fullscreen by default
 
-"Dynamic searching and highlighting
+"Dynamic cursor column for current window.
 augroup smart_cursorcolumn
     au!
     au WinLeave * set nocursorline nocursorcolumn
     au WinEnter * set cursorline cursorcolumn
 augroup END
 
+"Dynamic highlight searching pattern
 augroup dynamic_highlight
     au!
-    set incsearch
     autocmd CmdlineEnter /,\? :set hlsearch
     autocmd CmdlineLeave /,\? :set nohlsearch
 augroup END
 
+"Dynamic case-sensitive in command-mode
 augroup dynamic_smartcase
     au!
-    set ignorecase "ignore case in search patterns
     autocmd CmdLineEnter : set nosmartcase
     autocmd CmdLineLeave : set smartcase
 augroup END
 
-
-"Indent settings
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-
-"Commandline completions
-set wildmenu
-set wildoptions=pum,fuzzy
-set wildignorecase
-set viewoptions="folds,cursor,curdir"
-
-"Open Help in vertical
+"Open help file in vertical
 autocmd BufWinEnter * if &buftype == 'help' | wincmd L | execute 'vertical resize '. g:autoresize_width | endif
 
-"Colorscheme
-set termguicolors
-if has('termguicolors')
-    try
-        colorscheme everforest
-    catch
-        colorscheme evening
-    endtry
-elseif has('gui_running')
-    try
-        colorscheme edge
-    catch
-        colorscheme evening
-    endtry
-endif
+"Default colorscheme for VIDE
+try
+    colorscheme edge
+catch
+    colorscheme evening
+endtry
 
 "Python for vim
 set pythonthreedll=~/scoop/apps/python/current/python310.dll
