@@ -1,8 +1,12 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Lightline                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:lightline#bufferline#unnamed = 'Unnamed'
+let g:lightline#bufferline#enable_devicons = 1
+let g:lightline#bufferline#buffer_filter = "LightlineBufferlineFilter"
 let g:lightline = {
-    \ 'colorscheme': 'everforest',
+    \ 'colorscheme': 'edge',
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'cocstatus', 'readonly' ],
@@ -35,18 +39,13 @@ function! MyFileformat()
     return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
 
+function LightlineBufferlineFilter(buffer)
+   return getbufvar(a:buffer, '&buftype') !=# 'terminal'
+endfunction
+
 "Use autocmd to force lightline update.
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
-"let g:lightline#bufferline#show_number = 2
-"let g:lightline#bufferline#composed_number_map = {
-"\ 1:  '1', 2:  '2', 3:  '3', 4:  '4', 5:  '5',
-"\ 6:  '6', 7:  '7', 8:  '8', 9:  '9', 10: '10',
-"\ 11: '11', 12: '12', 13: '13', 14: '14', 15: '15',
-"\ 16: '16', 17: '17', 18: '18', 19: '19', 20: '20'}
-let g:lightline#bufferline#unnamed = 'Unnamed'
-let g:lightline#bufferline#enable_devicons = 1
 if has("gui_running")
-    let g:lightline.colorscheme = 'edge'
     let g:lightline.separator = { 'left': '', 'right': '' }
     let g:lightline.subseparator = { 'left': '|', 'right': '|' }
     let g:lightline.tabline_separator = g:lightline.separator
@@ -57,9 +56,3 @@ elseif has('termguicolors')
     let g:lightline.tabline_separator = g:lightline.separator
     let g:lightline.tabline_subseparator = g:lightline.subseparator
 endif
-
-function LightlineBufferlineFilter(buffer)
-   return getbufvar(a:buffer, '&buftype') !=# 'terminal'
- endfunction
-
-let g:lightline#bufferline#buffer_filter = "LightlineBufferlineFilter"

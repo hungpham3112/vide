@@ -55,10 +55,11 @@ endif
 Plug 'https://github.com/honza/vim-snippets.git'
 
 "Tree explorer
+Plug 'https://github.com/hungpham3112/nerdtree-visual-selection.git', { 'for': ['nerdtree'] }
+Plug 'https://github.com/preservim/nerdcommenter.git'
 Plug 'https://github.com/preservim/nerdtree.git'
 Plug 'https://github.com/preservim/tagbar.git'
-Plug 'https://github.com/preservim/nerdcommenter.git'
-Plug 'https://github.com/PhilRunninger/nerdtree-visual-selection.git'
+Plug 'https://github.com/unkiwii/vim-nerdtree-sync.git'
 
 "IndentLine
 Plug 'https://github.com/Yggdroot/indentLine.git'
@@ -80,14 +81,8 @@ Plug 'https://github.com/junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'https://github.com/junegunn/fzf.vim.git'
 
 "Theme for vim
-Plug 'dracula/vim',{'as':'dracula'}
-Plug 'https://github.com/morhetz/gruvbox.git', {'as':'gruvbox'}
-Plug 'https://github.com/tomasr/molokai.git', {'as':'molokai'}
 Plug 'https://github.com/rakr/vim-one.git', {'as':'one'}
-Plug 'https://github.com/altercation/vim-colors-solarized.git', {'as':'solarized'}
 Plug 'https://github.com/sainnhe/edge.git', {'as': 'edge'}
-Plug 'https://github.com/sainnhe/everforest.git', {'as': 'everforest'}
-Plug 'https://github.com/bluz71/vim-nightfly-guicolors.git', {'as': 'nightfly'}
 
 "Syntax highlighting
 let g:polyglot_disabled = ['ftdetect', 'sensible']
@@ -142,5 +137,8 @@ Plug 'https://github.com/jpalardy/vim-slime.git'
 
 "Vim-open-url
 Plug 'https://github.com/dhruvasagar/vim-open-url.git'
+
+"Resizing the screen using arrow keys
+Plug 'https://github.com/simeji/winresizer.git'
 
 call plug#end()

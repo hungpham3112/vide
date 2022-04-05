@@ -1,5 +1,5 @@
 "General settings
-let &titlestring="VIDE"                                     "Change title vim
+let &titlestring = "VIDE"                                   "Change title vim
 let mapleader = " "                                         "Map leader to Space for convenience
 set autoindent                                              "Auto indent
 set autoread                                                "Read file if it has been changed outside
@@ -11,6 +11,7 @@ set cmdheight=2                                             "1 is the best but 2
 set encoding=utf-8                                          "String-encoding
 set guifont=Cousine_NF:h11:cANSI:qDRAFT                     "Default font for VIDE
 set guioptions=                                             "Turn off GUi-options
+set hlsearch                                                "Highlight patterns
 set hidden                                                  "Turn off E37 when change file
 set history=10000                                           "Show maximum recently history
 set ignorecase                                              "Ignore case-sensitive in search patterns
@@ -33,9 +34,9 @@ set t_Co=256                                                "Number of colors
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab "Default tab = 4 spaces
 set termguicolors                                           "Colors for terminal
 set textwidth=120                                           "Maximum width of text in buffer
-set timeout timeoutlen=500 ttimeoutlen=50                   "Time response keystroke
+set timeout timeoutlen=200 ttimeoutlen=50                   "Time response keystroke
 set updatetime=300                                          "Make autocomplete faster
-set viewoptions="folds,cursor,curdir"                       "Change behavior :mkview
+set viewoptions-="options"                                  "Change behavior :mkview
 set wildignorecase                                          "Ignore case-sensitive command-mode
 set wildmenu                                                "Command-line completion is an enhanced mode
 set wildoptions=pum,fuzzy,tagfile                           "Popupmenu and fuzzy finder for wildmenu
@@ -50,13 +51,6 @@ augroup smart_cursorcolumn
     au WinEnter * set cursorline cursorcolumn
 augroup END
 
-"Dynamic highlight searching pattern
-augroup dynamic_highlight
-    au!
-    autocmd CmdlineEnter /,\? :set hlsearch
-    autocmd CmdlineLeave /,\? :set nohlsearch
-augroup END
-
 "Dynamic case-sensitive in command-mode
 augroup dynamic_smartcase
     au!
@@ -65,7 +59,7 @@ augroup dynamic_smartcase
 augroup END
 
 "Open help file in vertical
-autocmd BufWinEnter * if &buftype == 'help' | wincmd L | execute 'vertical resize '. g:autoresize_width | endif
+autocmd BufWinEnter * if &buftype == 'help' | wincmd L | execute "vertical resize " . g:autoresize_width | endif
 
 "Default colorscheme for VIDE
 try

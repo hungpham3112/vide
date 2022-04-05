@@ -12,6 +12,7 @@ function! Dump(cmd)
 endfunction
 command! -nargs=* -complete=command Dump call Dump(<q-args>)
 
+"Remove redundant space
 function ShowSpaces(...)
   let @/='\v(\s+$)|( +\ze\t)'
   let oldhlsearch=&hlsearch

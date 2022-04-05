@@ -1,6 +1,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: indentLine                             "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:indentLine_setColors = 1
 let g:indentLine_char = '│'
-let g:indentLine_fileTypeExclude = ['dashboard', 'startify']
+let g:indentLine_fileTypeExclude = ['startify', 'text', 'help']
+let g:indentLine_bufTypeExclude = ['help', 'terminal']
+let g:indentLine_faster = 1
