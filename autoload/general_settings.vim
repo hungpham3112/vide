@@ -47,8 +47,8 @@ autocmd GUIEnter * simalt ~x                                "GUI fullscreen by d
 "Dynamic cursor column for current window.
 augroup smart_cursorcolumn
     au!
-    au WinLeave * set nocursorline nocursorcolumn
-    au WinEnter * set cursorline cursorcolumn
+    au BufLeave * set nocursorline nocursorcolumn
+    au BufEnter * set cursorline cursorcolumn
 augroup END
 
 "Dynamic case-sensitive in command-mode
