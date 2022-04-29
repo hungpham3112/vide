@@ -2,29 +2,32 @@
 "                             Plugin: Coc-nvim                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "Completion settings
-"use <tab> for trigger completion and navigate to the next complete item
-inoremap <silent><expr> <S-Tab>
-    \ pumvisible() ? "\<C-p>" :
-    \ <sid>check_back_space() ? "\<S-tab>" :
-    \ coc#refresh()
+"Use <tab> for trigger completion and navigate to the next complete item
+inoremap <silent><expr> <Tab>
+  \ pumvisible() ? "\<C-n>" :
+  \ coc#expandableOrJumpable() ?
+  \ "\<C-r>=coc#snippet#next()\<Cr>":
+  \ <SID>check_back_space() ? "\<Tab>" :
+  \ coc#refresh()
 
-inoremap <silent><expr> <tab>
-    \ pumvisible() ? "\<C-n>" :
-    \ <sid>check_back_space() ? "\<tab>" :
-    \ coc#refresh()
+inoremap <silent><expr> <S-Tab>
+  \ pumvisible() ? "\<C-p>" :
+  \ coc#expandableOrJumpable() ?
+  \ "\<C-r>=coc#snippet#prev()\<Cr>":
+  \ <SID>check_back_space() ? "\<Tab>" :
+  \ coc#refresh()
 
 function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 "Select the first completion item and confirm the completion when no item has been selected:
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-    \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm()
+     \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
-let g:coc_snippet_next = '<C-l>'
-let g:coc_snippet_prev = '<C-h>'
-
+let g:coc_snippet_next = '<Tab>'
+let g:coc_snippet_prev = '<S-Tab>'
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-d> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
@@ -47,7 +50,7 @@ function! s:show_documentation()
     endif
 endfunction
 
-if exists('g:did_coc_loaded') 
+if exists('g:did_coc_loaded')
     autocmd CursorHold * silent call CocActionAsync('highlight')
 endif
 

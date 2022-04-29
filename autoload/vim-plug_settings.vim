@@ -10,6 +10,7 @@ endif
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | q | source $MYVIMRC
   \| endif
+
 function! s:plug_doc()
   let name = matchstr(getline('.'), '^- \zs\S\+\ze:')
   if has_key(g:plugs, name)
@@ -91,14 +92,11 @@ Plug 'https://github.com/sheerun/vim-polyglot.git'
 "Autocomplete
 Plug 'https://github.com/neoclide/coc.nvim.git', {'branch': 'release'}
 
-"TODO: emmet is testing
-Plug 'https://github.com/mattn/emmet-vim.git'
-
 "Vim-brackets
 Plug 'https://github.com/tpope/vim-surround.git'
 
 "Auto pairs
-Plug 'https://github.com/jiangmiao/auto-pairs.git'
+Plug 'https://github.com/LunarWatcher/auto-pairs', {'branch': 'develop'}
 
 "Statusline and bufferline
 Plug 'https://github.com/itchyny/lightline.vim.git'

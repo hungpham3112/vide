@@ -12,4 +12,3 @@ xmap <S-k> <Plug>MoveBlockUp
 xmap <S-h> <Plug>MoveBlockLeft
 xmap <S-j> <Plug>MoveBlockDown
 xmap <S-l> <Plug>MoveBlockRight
-

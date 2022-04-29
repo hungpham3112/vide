@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Fzf-floaterm                           "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-autocmd FileType floaterm * set shell="~/scoop/shims/pwsh.exe"
+"TODO: Experimental
 let g:fzf_floaterm_newentries = {
   \ '+root' : {
     \ 'title': 'Root Shell',
