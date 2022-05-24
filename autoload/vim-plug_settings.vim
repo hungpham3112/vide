@@ -94,6 +94,8 @@ Plug 'https://github.com/neoclide/coc.nvim.git', {'branch': 'release'}
 
 "Vim-brackets
 Plug 'https://github.com/tpope/vim-surround.git'
+Plug 'https://github.com/luochen1990/rainbow.git'
+
 
 "Auto pairs
 Plug 'https://github.com/LunarWatcher/auto-pairs', {'branch': 'develop'}
@@ -138,5 +140,7 @@ Plug 'https://github.com/dhruvasagar/vim-open-url.git'
 
 "Resizing the screen using arrow keys
 Plug 'https://github.com/simeji/winresizer.git'
+
+
 
 call plug#end()
