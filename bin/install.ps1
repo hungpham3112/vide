@@ -49,10 +49,10 @@ function InstallGit {
 
 function CloneRepo {
     if (![System.IO.Directory]::Exists($VIMFILES_PATH)) {
-        git clone https://github.com/hungpham3112/vide.git $vimfiles_path
+        git clone git@github.com:hungpham3112/vide.git $vimfiles_path
     } else {
         rd $VIMFILES_PATH -Recurse -Force
-        git clone https://github.com/hungpham3112/vide.git $vimfiles_path
+        git clone git@github.com:hungpham3112/vide.git $vimfiles_path
     }
 }
 
