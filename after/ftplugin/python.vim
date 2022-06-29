@@ -1,0 +1,2 @@
+setlocal formatoptions+=crqlj
+
