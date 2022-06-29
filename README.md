@@ -24,9 +24,10 @@ learn and make it compatible with `MacOS` and `Linux` distro.
 
 __One-line installer__:
 
-Windows:
+Windows Powershell:
+
 ```powershell
-Invoke-WebRequest https://raw.githubusercontent.com/hungpham3112/vide/nightly/bin/install.ps1 -UseBasicParsing | Invoke-Expression
+Invoke-WebRequest https://raw.githubusercontent.com/hungpham3112/vide/main/bin/install.ps1 -UseBasicParsing | Invoke-Expression
 ```
 
 ## Plugins
