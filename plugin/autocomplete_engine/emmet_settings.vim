@@ -1,6 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Emmet                                  "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"TODO: In progress
-let g:user_emmet_mode = 'n'
-let g:user_emmet_leader_key = ","
+vim9script
+g:user_emmet_mode = 'n'
+g:user_emmet_leader_key = ","

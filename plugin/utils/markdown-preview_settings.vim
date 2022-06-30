@@ -1,10 +1,10 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Markdown-preview                       "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"TODO: In progress
-let g:mkdp_auto_close = 0
-let g:mkdp_command_for_global = 1
-let g:mkdp_preview_options = {
+vim9script
+g:mkdp_auto_close = 0
+g:mkdp_command_for_global = 1
+g:mkdp_preview_options = {
     \ 'mkit': {},
     \ 'katex': {},
     \ 'uml': {},
@@ -17,8 +17,8 @@ let g:mkdp_preview_options = {
     \ 'content_editable': v:false,
     \ 'disable_filename': 0
     \ }
-let g:mkdp_markdown_css = ''
-let g:mkdp_highlight_css = ''
-let g:mkdp_port = ''
-let g:mkdp_page_title = '「${name}」'
-let g:mkdp_filetypes = ['markdown']
+g:mkdp_markdown_css = ''
+g:mkdp_highlight_css = ''
+g:mkdp_port = ''
+g:mkdp_page_title = '「${name}」'
+g:mkdp_filetypes = ['markdown']

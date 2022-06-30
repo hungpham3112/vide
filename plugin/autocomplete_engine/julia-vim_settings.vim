@@ -1,5 +1,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Julia-vim                              "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:latex_to_unicode_auto = 1
-let g:latex_to_unicode_file_types = ['julia', 'python']
+vim9script
+g:latex_to_unicode_auto = 1
+g:latex_to_unicode_file_types = ['julia', 'python']
