@@ -6,8 +6,8 @@
     //coc
     "coc.preferences.extensionUpdateCheck": "weekly",
     "coc.preferences.formatOnType": true,
-    "coc.preferences.formatOnTypeFiletypes": ["c", "rust"],
-    "coc.preferences.formatOnSaveFiletypes": ["python", "c", "rust"],
+    "coc.preferences.formatOnTypeFiletypes": ["c", "rust", "julia"],
+    "coc.preferences.formatOnSaveFiletypes": ["python", "c", "rust", "cpp", "julia", "lua"],
     //python
     "python.pythonPath": "~/scoop/apps/python/current/python.exe",
     "python.formatting.provider": "black",
