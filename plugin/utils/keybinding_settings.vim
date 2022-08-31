@@ -1,15 +1,15 @@
 vim9script
 # Keybindings
 nnoremap <C-a> ggVG<Cr>
-# if !has('nvim')
-#     augroup terminal_settings
-#         autocmd!
-#             au TerminalOpen * tnoremap <Esc> <c-\><c-n>
+if !has('nvim')
+    augroup terminal_settings
+        autocmd!
+            au TerminalOpen * tnoremap <Esc> <c-\><c-n>
 #             au TermEnter set norelativenumber nonumber
 #             au TermLeave set relativenumber number
-#     augroup END
-#     au FileType fzf tunmap <Esc>
-# endif
+    augroup END
+    au FileType fzf tunmap <Esc>
+endif
 
 # Copy paste with clipboard
 set clipboard^=unnamedplus

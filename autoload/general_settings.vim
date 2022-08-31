@@ -81,4 +81,3 @@ elseif !has('nvim') && has('win32')
     # Lua for vim
     set luadll=~/scoop/apps/lua/current/lua54.dll
 endif
-

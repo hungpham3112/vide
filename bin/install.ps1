@@ -24,7 +24,7 @@ function InstallScoop {
             [Security.Principal.WindowsBuiltInRole] "Administrator")) {
                 iwr -useb get.scoop.sh -outfile 'install.ps1'
                 .\install.ps1 -RunAsAdmin | Out-Null
-                del .\install.ps1 2>nul
+                del .\install.ps1 2>$null
             } else {
                 iwr -useb get.scoop.sh | iex
             }

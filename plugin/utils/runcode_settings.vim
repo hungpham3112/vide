@@ -13,7 +13,7 @@ augroup exe_code
         au Filetype markdown nnoremap <buffer> <silent> <Enter> :MarkdownPreview<Cr>
         au Filetype python nnoremap <buffer> <silent> <Enter> :w <bar> vert term ++shell python %<Cr>
         au Filetype rust nnoremap <buffer> <silent> <Enter> :w <bar> vert term ++shell cargo run<Cr>
-        au Filetype vim nnoremap <buffer> <silent> <Enter> :w <bar> source %<Cr>
+        au Filetype vim nnoremap <buffer> <silent> <Enter> :w <bar> source <Cr>
     elseif has('gui_running')
         au FileType c nnoremap <buffer> <silent> <Enter> :w <bar> !clang -Wall -std=c11 % -o %<.exe && %<.exe<CR><CR>
         au FileType cpp nnoremap <buffer> <silent> <Enter> :w <bar> !clang++ -Wall -std=c++17 % -o %<.exe && %<.exe<CR><CR>
@@ -23,6 +23,6 @@ augroup exe_code
         au Filetype markdown nnoremap <buffer> <silent> <Enter> :w <bar> MarkdownPreview<Cr><CR>
         au Filetype python nnoremap <buffer> <silent> <Enter> :w <bar> exec '!python' shellescape(@%, 1)<Cr><CR>
         au Filetype rust nnoremap <buffer> <silent> <Enter> :w <bar> !cargo run<Cr><CR>
-        au Filetype vim nnoremap <buffer> <silent> <Enter> :w <bar> source %<Cr>
+        au Filetype vim nnoremap <buffer> <silent> <Enter> :w <bar> source <Cr>
     endif
 augroup END

@@ -140,4 +140,9 @@ Plug 'https://github.com/dhruvasagar/vim-open-url.git'
 "Resizing the screen using arrow keys
 Plug 'https://github.com/simeji/winresizer.git'
 
+"Julia support for vim
+" Plug 'https://github.com/JuliaEditorSupport/julia-vim.git'
+
+"Python virtualenv 
+Plug 'https://github.com/jmcantrell/vim-virtualenv.git'
 call plug#end()
