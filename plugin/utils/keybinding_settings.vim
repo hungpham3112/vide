@@ -13,8 +13,8 @@ endif
 
 # Copy paste with clipboard
 set clipboard^=unnamedplus
-nnoremap <C-p> "+p
-xnoremap <C-p> "+p
+nnoremap <C-p> "*p
+xnoremap <C-p> "*p
 cnoremap <C-v> <MiddleMouse>
 tnoremap <C-v> <C-w>
 nnoremap Y "+y$

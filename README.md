@@ -1,4 +1,4 @@
-# VIDE :mortar_board:
+# :mortar_board: VIDE 
 
 ## _The config for lazy people who want to learn Vim faster_
 
@@ -7,7 +7,7 @@
 - [Introduction](#introduction)
 - [Quickstart](#quick-start)
 - [Plugins](#plugins)
-- [Support me](#support-me)
+- [Contributing](#contributing)
 - [License](#license)
 
 ## Introduction
@@ -24,10 +24,16 @@ learn and make it compatible with `MacOS` and `Linux` distro.
 
 __One-line installer__:
 
-Windows Powershell:
+### Windows
 
 ```powershell
 Invoke-WebRequest https://raw.githubusercontent.com/hungpham3112/vide/main/bin/install.ps1 -UseBasicParsing | Invoke-Expression
+```
+
+### Linux (Ubuntu-Based)
+
+```sh
+bash <(curl -s https://github.com/hungpham3112/vide/bin/install.sh)
 ```
 
 ## Plugins
@@ -49,7 +55,7 @@ Invoke-WebRequest https://raw.githubusercontent.com/hungpham3112/vide/main/bin/i
 | Beautiful statusline | lightline |  <https://github.com/itchyny/lightline.vim> |
 and more ...
 
-## :star: Support Me
+## :star: Contributing
 
 - Open issue and ask if you have any trouble. I will do my best to help you.
 - Tell me if you have any idea to make this repository better.
@@ -57,4 +63,7 @@ and more ...
 - :heart: __Give me a star if you like my config__ :heart:
 
 ## License
-TODO: In progress
+
+The MIT License (MIT)
+
+Copyright(c) by hungpham3112
