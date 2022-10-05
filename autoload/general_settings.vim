@@ -10,7 +10,6 @@ set backspace=indent,eol,start                              # Delete using backs
 set belloff=all                                             # Disable all sound effect
 set cmdheight=2                                             # 1 is the best but 2 can disable 'Press Enter'
 set encoding=utf-8                                          # String-encoding
-set guifont=Cousine_NF:h11:cANSI:qDRAFT                     # Default font for VIDE
 set guioptions=                                             # Turn off GUi-options
 set hlsearch                                                # Highlight patterns
 set hidden                                                  # Turn off E37 when change file
@@ -43,7 +42,6 @@ set wildignorecase                                          # Ignore case-sensit
 set wildmenu                                                # Command-line completion is an enhanced mode
 autocmd BufEnter * silent! lcd %:p:h                        # Workspace changing
 autocmd FileType * set formatoptions-=o formatoptions+=j    # Turn off auto comment in when hit <Enter>,
-autocmd GUIEnter * simalt ~x                                # GUI fullscreen by default
 
 # Dynamic cursor column for current window.
 augroup smart_cursorcolumn
@@ -80,4 +78,11 @@ elseif !has('nvim') && has('win32')
 
     # Lua for vim
     set luadll=~/scoop/apps/lua/current/lua54.dll
+endif
+
+if has("win32") && has("gui_running")
+  set guifont=Cousine_NF:h11
+  autocmd GUIEnter * simalt ~x                              # GUI fullscreen by default
+else
+  set guifont=Cousine\ Nerd\ Font\ Mono\ 11
 endif
