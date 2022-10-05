@@ -33,7 +33,7 @@ Invoke-WebRequest https://raw.githubusercontent.com/hungpham3112/vide/main/bin/i
 ### Linux (Ubuntu-Based)
 
 ```sh
-bash <(curl -s https://github.com/hungpham3112/vide/bin/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/hungpham3112/vide/main/bin/install.sh)
 ```
 
 ## Plugins
