@@ -13,13 +13,13 @@ endif
 
 # Copy paste with clipboard
 set clipboard^=unnamedplus
-nnoremap <C-p> "*p
-xnoremap <C-p> "*p
+nnoremap <C-p> "+p
+xnoremap <C-p> "+p
 cnoremap <C-v> <MiddleMouse>
-tnoremap <C-v> <C-w>"*
-nnoremap Y "*y$
-nnoremap y "*y
-xnoremap y "*y
+tnoremap <C-v> <C-w>
+nnoremap Y "+y$
+nnoremap y "+y
+xnoremap y "+y
 
 # Buffers navigation
 nnoremap <S-h> :bpre<CR>
