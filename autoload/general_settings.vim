@@ -11,9 +11,9 @@ set belloff=all                                             # Disable all sound 
 set cmdheight=2                                             # 1 is the best but 2 can disable 'Press Enter'
 set encoding=utf-8                                          # String-encoding
 set guioptions=                                             # Turn off GUi-options
-set hlsearch                                                # Highlight patterns
 set hidden                                                  # Turn off E37 when change file
 set history=10000                                           # Show maximum recently history
+set hlsearch                                                # Highlight patterns
 set ignorecase                                              # Ignore case-sensitive in search patterns
 set incsearch                                               # Highlight pattern when search
 set laststatus=2                                            # Always show status line
@@ -81,7 +81,7 @@ elseif !has('nvim') && has('win32')
 endif
 
 if has("win32") && has("gui_running")
-  set guifont=Cousine_NF:h11
+  set guifont=Cousine_NFM:h11
   autocmd GUIEnter * simalt ~x                              # GUI fullscreen by default
 else
   set guifont=Cousine\ Nerd\ Font\ Mono\ 11

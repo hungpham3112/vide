@@ -1,7 +1,7 @@
 "Install vim-plug if not found
-if empty(glob('~/.vim/autoload/plug.vim'))
+if has('unix') && empty(glob('~/.vim/autoload/plug.vim'))
   silent execute '!curl -fLo ~/.vim/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-elseif has('win32') && empty(glob('~/vimfiles/autoload/plug.vim'))
+elseif has('win32') && empty(glob('$HOME\\vimfiles\\autoload\\plug.vim'))
   silent execute '!C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe
     \ -ExecutionPolicy Bypass Invoke-WebRequest
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
