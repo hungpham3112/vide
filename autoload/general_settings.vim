@@ -84,5 +84,5 @@ if has("win32") && has("gui_running")
   set guifont=Cousine_NFM:h11
   autocmd GUIEnter * simalt ~x                              # GUI fullscreen by default
 else
-  set guifont=Cousine\ Nerd\ Font\ Mono\ 11
+  set guifont=Cousine\ Nerd\ Font\ Mono\ 13
 endif

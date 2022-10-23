@@ -71,6 +71,7 @@ function InstallPython {
         Write-Host @greenCheck
     } else {
         scoop install python >$null
+        python -m pip install pynvim
     }
 }
 
