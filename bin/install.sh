@@ -53,9 +53,10 @@ function install_nerd_font () {
     download_url="https://github.com/ryanoasis/nerd-fonts/releases/download/v2.2.2/${zip_file}"
     fonts_dir="${HOME}/.local/share/fonts"
     echo -e "Downloading $download_url"
-    wget "$download_url"
-    unzip -o "$zip_file" -d "$fonts_dir"
+    sudo wget "$download_url"
+    sudo unzip -o "$zip_file" -d "$fonts_dir"
     rm "$zip_file"
+    sudo fc-cache -fv
     echo -e "${GREEN}INSTALL NERD-FONT DONE ${CHECK_DONE}${NC}"
 }
 
