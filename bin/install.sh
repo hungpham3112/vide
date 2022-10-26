@@ -55,7 +55,7 @@ function install_nerd_font () {
     echo -e "Downloading $download_url"
     sudo wget "$download_url"
     sudo unzip -o "$zip_file" -d "$fonts_dir"
-    rm "$zip_file"
+    rm -rf "$zip_file"
     sudo fc-cache -fv
     echo -e "${GREEN}INSTALL NERD-FONT DONE ${CHECK_DONE}${NC}"
 }
