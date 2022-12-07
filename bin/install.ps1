@@ -91,7 +91,8 @@ function UpdateScoop {
 
 function InstallNerdFonts {
     scoop bucket add nerd-fonts 2>$null
-    scoop install cousine-NF-Mono 2>$null
+    scoop install sudo
+    sudo scoop install -g cousine-NF-Mono 2>$null
 }
 
 function CreateCocPath {
