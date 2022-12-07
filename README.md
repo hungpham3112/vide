@@ -39,16 +39,16 @@ bash <(curl -s https://raw.githubusercontent.com/hungpham3112/vide/main/bin/inst
 | Purpose | Plugin | Repo |
 | ------ | ------ | ------ |
 | Plugin manager | vim-plug | <https://github.com/junegunn/vim-plug.git> |
-| Completion and many more | coc-nvim | <https://github.com/neoclide/coc.nvim.git> |
+| Intellisense | coc-nvim | <https://github.com/neoclide/coc.nvim.git> |
 | Navigation | vim-easymotion | <https://github.com/easymotion/vim-easymotion> |
-| Provide snippets | vim-snippets | <https://github.com/honza/vim-snippets> |
-| File system explorer | nerd-tree |  <https://github.com/preservim/nerdtree.git> |
-| Comment functions | nerd-commenter | <https://github.com/preservim/nerdcommenter.git> |
-| Theme | theme  | <https://github.com/sainnhe/edge.git>|
+| Snippets | vim-snippets | <https://github.com/honza/vim-snippets> |
+| File explorer | nerd-tree |  <https://github.com/preservim/nerdtree.git> |
+| Commenter | nerd-commenter | <https://github.com/preservim/nerdcommenter.git> |
+| Theme | edge  | <https://github.com/sainnhe/edge.git>|
 | Vertical line like VScode| indentLine  | <https://github.com/Yggdroot/indentLine.git> |
 | Floating terminal | floaterm  | <https://github.com/voldikss/vim-floaterm.git> |
 | Powerful way to edit<br>brackets, parentheses, quotes | vim-surround  |  <https://github.com/tpope/vim-surround.git>|
-| Insert or delete<br>brackets, parentheses, quotes | auto-pairs  |  <https://github.com/jiangmiao/auto-pairs> |
+| Insert or delete<br>brackets, parentheses, quotes | auto-pairs  |  <https://github.com/LunarWatcher/auto-pairs.git> |
 | Beautiful statusline | lightline |  <https://github.com/itchyny/lightline.vim> |
 and more ...
 
