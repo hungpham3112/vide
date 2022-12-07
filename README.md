@@ -61,8 +61,16 @@ and more ...
 
 ### :wrench: Uninstall VIDE
 
+#### Windows (Powershell 5.1+)
+
 ```powershell
 Invoke-WebRequest https://raw.githubusercontent.com/hungpham3112/vide/main/bin/uninstall.ps1 -UseBasicParsing | Invoke-Expression
+```
+
+#### Linux (Ubuntu-Based)
+
+```sh
+bash <(curl -s https://raw.githubusercontent.com/hungpham3112/vide/main/bin/install.sh)
 ```
 
 ## License
