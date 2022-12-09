@@ -8,15 +8,10 @@ $FinalMessage = @"
 ------------------------------------------------------------
 "@
 
-$greenCheck = @{
-  Object = [Char]8730
-  ForegroundColor = 'Green'
-  }
-
 function InstallScoop {
     if (Get-Command scoop -ErrorAction SilentlyContinue) {
-        Write-Host "Scoop is already installed " -ForegroundColor Green -NoNewline
-        Write-Host @greenCheck
+        Write-Host "[Success] " -ForegroundColor Green -NoNewline
+        Write-Host "Scoop is already installed "
     } else {
         try {
             Write-Host "Installing scoop..."
@@ -30,6 +25,7 @@ function InstallScoop {
             }
         }
         catch {
+            Write-Host "[Fail] " -ForegroundColor Red -NoNewline
             Write-Host "An error occurred while installing scoop. Please run installer again..."
             rd $env:USERPROFILE/scoop -Recurse -Force >$null 2>$null
         }
@@ -38,8 +34,8 @@ function InstallScoop {
 
 function InstallGit {
     if (Get-Command git -ErrorAction SilentlyContinue) {
-        Write-Host "Git is already installed " -ForegroundColor Green -NoNewline
-        Write-Host @greenCheck
+        Write-Host "[Success] " -ForegroundColor Green -NoNewline
+        Write-Host "Git is already installed "
         git config --system --unset credential.helper >$null 2>$null
     } else {
         scoop install git >$null
@@ -58,8 +54,8 @@ function CloneRepo {
 
 function InstallNodejs {
     if (Get-Command node -ErrorAction SilentlyContinue) {
-        Write-Host "Nodejs is already installed " -ForegroundColor Green -NoNewline
-        Write-Host @greenCheck
+        Write-Host "[Success] " -ForegroundColor Green -NoNewline
+        Write-Host "Nodejs is already installed "
     } else {
         scoop install nodejs >$null
     }
@@ -67,8 +63,8 @@ function InstallNodejs {
 
 function InstallPython {
     if (Test-Path -Path "~/scoop/apps/python/current/python.exe" -PathType Leaf) {
-        Write-Host "Python is already installed " -ForegroundColor Green -NoNewline
-        Write-Host @greenCheck
+        Write-Host "[Success] " -ForegroundColor Green -NoNewline
+        Write-Host "Python is already installed "
     } else {
         scoop install python >$null
         python -m pip install pynvim
@@ -77,8 +73,8 @@ function InstallPython {
 
 function InstallVim {
     if (Get-Command vim -ErrorAction SilentlyContinue) {
-        Write-Host "Vim is already installed " -ForegroundColor Green -NoNewline
-        Write-Host @greenCheck
+        Write-Host "[Success] " -ForegroundColor Green -NoNewline
+        Write-Host "Vim is already installed "
     } else {
         scoop bucket add versions 2>$null
         scoop install vim-nightly 2>$null
@@ -98,12 +94,15 @@ function InstallNerdFonts {
 function CreateCocPath {
     if (![System.IO.Directory]::Exists($COC_PATH)) {
         md $COC_PATH -Force >$null 2>$null
+    } else {
+        Write-Host "[Fail] " -ForegroundColor Red -NoNewline
+        Write-Host "Can't create directory for coc.nvim"
     }
 }
 
 function Main {
     Write-Host "Welcome to VIDE" -ForegroundColor Green
-    Write-Host "Checking requirements..." -ForegroundColor Green
+    Write-Host "Checking dependencies..." -ForegroundColor Green
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
     InstallScoop
     InstallGit
