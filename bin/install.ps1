@@ -11,7 +11,7 @@ $FinalMessage = @"
 function InstallScoop {
     if (Get-Command scoop -ErrorAction SilentlyContinue) {
         Write-Host "[Success] " -ForegroundColor Green -NoNewline
-        Write-Host "Scoop is already installed "
+        Write-Host "Scoop is already installed."
     } else {
         try {
             Write-Host "Installing scoop..."
@@ -35,7 +35,7 @@ function InstallScoop {
 function InstallGit {
     if (Get-Command git -ErrorAction SilentlyContinue) {
         Write-Host "[Success] " -ForegroundColor Green -NoNewline
-        Write-Host "Git is already installed "
+        Write-Host "Git is already installed."
         git config --system --unset credential.helper >$null 2>$null
     } else {
         scoop install git >$null
@@ -55,7 +55,7 @@ function CloneRepo {
 function InstallNodejs {
     if (Get-Command node -ErrorAction SilentlyContinue) {
         Write-Host "[Success] " -ForegroundColor Green -NoNewline
-        Write-Host "Nodejs is already installed "
+        Write-Host "Nodejs is already installed."
     } else {
         scoop install nodejs >$null
     }
@@ -64,7 +64,7 @@ function InstallNodejs {
 function InstallPython {
     if (Test-Path -Path "~/scoop/apps/python/current/python.exe" -PathType Leaf) {
         Write-Host "[Success] " -ForegroundColor Green -NoNewline
-        Write-Host "Python is already installed "
+        Write-Host "Python is already installed."
     } else {
         scoop install python >$null
         python -m pip install pynvim
@@ -74,7 +74,7 @@ function InstallPython {
 function InstallVim {
     if (Get-Command vim -ErrorAction SilentlyContinue) {
         Write-Host "[Success] " -ForegroundColor Green -NoNewline
-        Write-Host "Vim is already installed "
+        Write-Host "Vim is already installed."
     } else {
         scoop bucket add versions 2>$null
         scoop install vim-nightly 2>$null
@@ -94,9 +94,11 @@ function InstallNerdFonts {
 function CreateCocPath {
     if (![System.IO.Directory]::Exists($COC_PATH)) {
         md $COC_PATH -Force >$null 2>$null
+        Write-Host "[Success] " -ForegroundColor Green -NoNewline
+        Write-Host "Create directory for coc.nvim successfully."
     } else {
         Write-Host "[Fail] " -ForegroundColor Red -NoNewline
-        Write-Host "Can't create directory for coc.nvim"
+        Write-Host "Unable to create directory for coc.nvim because it already exists"
     }
 }
 
