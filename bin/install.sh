@@ -11,7 +11,7 @@ function update_system () {
     echo -e "${GREEN}SUCCESSFULLY UPDATE SYSTEM ${CHECK_DONE}${NC}"
 }
 
-function print_logo () {
+function print_logo() {
     cat << 'EOF'
 
            $$\    $$\ $$$$$$\ $$$$$$$\  $$$$$$$$\
@@ -26,27 +26,27 @@ function print_logo () {
 EOF
 }
 
-function install_python3 () {
+function install_python3() {
     echo -e "${GREEN}INSTALLING PYTHON3...${NC}"
     sudo apt install python3 -y
     echo -e "${GREEN}INSTALL PYTHON3 DONE ${CHECK_DONE}${NC}"
 }
 
-function install_vim () {
+function install_vim() {
     echo -e "${GREEN}INSTALLING VIM...${NC}"
     sudo add-apt-repository -P jonathonf/vim -y
     sudo apt install vim vim-gtk3 -y
     echo -e "${GREEN}INSTALL VIM DONE ${CHECK_DONE}${NC}"
 }
 
-function install_nodejs () {
+function install_nodejs() {
     echo -e "${GREEN}INSTALLING NODEJS...${NC}"
     curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
     sudo apt-get install nodejs -y
     echo -e "${GREEN}INSTALL NODEJS DONE ${CHECK_DONE}${NC}"
 }
 
-function install_nerd_font () {
+function install_nerd_font() {
     echo -e "${GREEN}INSTALLING NERD-FONT...${NC}"
     font="Cousine"
     zip_file="${font}.zip"
@@ -60,7 +60,7 @@ function install_nerd_font () {
     echo -e "${GREEN}INSTALL NERD-FONT DONE ${CHECK_DONE}${NC}"
 }
 
-function clone_repo () {
+function clone_repo() {
     echo -e "${GREEN}CLONING REPO...${NC}"
     DIRECTORY="$HOME/.vim"
     if [ ! -d "$DIRECTORY" ]; then
@@ -82,7 +82,7 @@ function successful_message() {
     echo -e "${GREEN}------------------------------------------------------------${NC}"
 }
 
-function main () {
+function main() {
     print_logo
     update_system
     install_nodejs

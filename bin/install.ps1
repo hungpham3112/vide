@@ -2,11 +2,32 @@ Set-PSDebug -Off
 
 $VIMFILES_PATH = "$env:userprofile/vimfiles/"
 $COC_PATH = "$env:LOCALAPPDATA/coc"
-$FinalMessage = @"
+
+function PrintLogo {
+    $Logo = @'
+
+           $$\    $$\ $$$$$$\ $$$$$$$\  $$$$$$$$\
+           $$ |   $$ |\_$$  _|$$  __$$\ $$  _____|
+           $$ |   $$ |  $$ |  $$ |  $$ |$$ |
+           \$$\  $$  |  $$ |  $$ |  $$ |$$$$$\
+            \$$\$$  /   $$ |  $$ |  $$ |$$  __|
+             \$$$  /    $$ |  $$ |  $$ |$$ |
+              \$  /   $$$$$$\ $$$$$$$  |$$$$$$$$\
+               \_/    \______|\_______/ \________|
+
+'@
+    Write-Host $Logo -ForegroundColor Green
+}
+
+function PrintSuccessfulMessage {
+    $SuccessfulMessage = @"
 ------------------------------------------------------------
 -----INSTALLATION DONE!!! RESTART TERMINAL AND ENJOY <3-----
 ------------------------------------------------------------
 "@
+
+    Write-Host $SuccessfulMessage -ForegroundColor Green
+}
 
 function InstallScoop {
     if (Get-Command scoop -ErrorAction SilentlyContinue) {
@@ -103,7 +124,7 @@ function CreateCocPath {
 }
 
 function Main {
-    Write-Host "Welcome to VIDE" -ForegroundColor Green
+    PrintLogo
     Write-Host "Checking dependencies..." -ForegroundColor Green
     Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
     InstallScoop
@@ -116,7 +137,7 @@ function Main {
     UpdateScoop
     CreateCocPath
     start $env:userprofile\scoop\shims\gvim.exe
-    Write-Host $FinalMessage -ForegroundColor Green
+    PrintSuccessfulMessage
 }
 
 Main
