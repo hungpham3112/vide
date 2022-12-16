@@ -117,9 +117,12 @@ function CreateCocPath {
         md $COC_PATH -Force >$null 2>$null
         Write-Host "[Success] " -ForegroundColor Green -NoNewline
         Write-Host "Create directory for coc.nvim successfully."
+    } elseif ([System.IO.Directory]::Exists($COC_PATH)) {
+        Write-Host "[Success] " -ForegroundColor Green -NoNewline
+        Write-Host "The coc.nvim directory already exists"
     } else {
         Write-Host "[Fail] " -ForegroundColor Red -NoNewline
-        Write-Host "Unable to create directory for coc.nvim because it already exists"
+        Write-Host "Unable to create directory for coc.nvim."
     }
 }
 
