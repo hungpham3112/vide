@@ -9,6 +9,7 @@ set background=dark                                         # Dark background
 set backspace=indent,eol,start                              # Delete using backspace
 set belloff=all                                             # Disable all sound effect
 set cmdheight=2                                             # 1 is the best but 2 can disable 'Press Enter'
+set confirm                                                 # Choose options (Y/N)
 set encoding=utf-8                                          # String-encoding
 set guioptions=                                             # Turn off GUi-options
 set hidden                                                  # Turn off E37 when change file
@@ -68,13 +69,13 @@ catch
 endtry
 
 if has('nvim') && has('win32')
-    g:python3_host_prog = '~/scoop/apps/python/current/python.exe'
+    g:python3_host_prog = '~/scoop/apps/miniconda3/current/'
 elseif !has('nvim') && has('win32')
     set wildoptions=pum,fuzzy,tagfile                       # Popupmenu and fuzzy finder for wildmenu
 
     # Python for vim
-    set pythonthreedll=~/scoop/apps/python/current/python310.dll
-    set pythonthreehome=~/scoop/apps/python/current/
+    set pythonthreedll=~/scoop/apps/miniconda3/current/python3.dll
+    set pythonthreehome=~/scoop/apps/miniconda3/current/
 
     # Lua for vim
     set luadll=~/scoop/apps/lua/current/lua54.dll
