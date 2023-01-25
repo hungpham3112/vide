@@ -22,8 +22,8 @@ nnoremap y "+y
 xnoremap y "+y
 
 # Buffers navigation
-nnoremap <S-h> :bpre<CR>
-nnoremap <S-l> :bnext<CR>
+nnoremap <S-Tab> :bpre<CR>
+nnoremap <Tab> :bnext<CR>
 
 # Windows navigation
 nnoremap <C-j> <C-W><C-j>
@@ -32,7 +32,7 @@ nnoremap <C-l> <C-W><C-l>
 nnoremap <C-h> <C-W><C-h>
 
 # Searching
-nmap s <Plug>(easymotion-overwin-f)
+nmap s <Plug>(easymotion-bd-f)
 omap f <Plug>(easymotion-bd-f)
 xmap f <Plug>(easymotion-bd-f)
 omap t <Plug>(easymotion-bd-t)

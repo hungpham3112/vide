@@ -42,7 +42,7 @@ g:which_key_map['e'] = [ ':call NerdTreeToggleFind()', '(E)xplorer' ]
 g:which_key_map['f'] = [ ':Files ~', 'Search (F)iles' ]
 g:which_key_map['g'] = [ ':Rg', 'Search Text' ]
 g:which_key_map['w'] = [ ':w', '(W)rite' ]
-g:which_key_map['q'] = [ ':xa', '(Q)uit' ]
+g:which_key_map['q'] = [ ':qa', '(Q)uit' ]
 
 # Searching
 g:which_key_map.s = {
