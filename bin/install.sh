@@ -41,7 +41,7 @@ function install_vim() {
 
 function install_nodejs() {
     echo -e "${GREEN}INSTALLING NODEJS...${NC}"
-    curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
+    sudo curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
     sudo apt-get install nodejs -y
     echo -e "${GREEN}INSTALL NODEJS DONE ${CHECK_DONE}${NC}"
 }
@@ -55,7 +55,7 @@ function install_nerd_font() {
     echo -e "Downloading $download_url"
     sudo wget "$download_url"
     sudo unzip -o "$zip_file" -d "$fonts_dir"
-    rm -rf "$zip_file"
+    sudo rm -rf "$zip_file"
     sudo fc-cache -fv
     echo -e "${GREEN}INSTALL NERD-FONT DONE ${CHECK_DONE}${NC}"
 }
