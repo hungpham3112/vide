@@ -1,5 +1,5 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"                             Plugin: Easymotion-Incsearch                   "
+"                          Plugin: Easymotion-Incsearch                      "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! Config_easyfuzzymotion(...) abort
     return extend(copy({
