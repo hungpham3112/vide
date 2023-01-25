@@ -9,10 +9,9 @@
     "coc.preferences.formatOnTypeFiletypes": ["c", "rust", "julia"],
     "coc.preferences.formatOnSaveFiletypes": ["python", "c", "rust", "cpp", "julia", "lua"],
     //python
-    "python.pythonPath": "~/scoop/apps/python/current/python.exe",
+    "python.pythonPath": "~/scoop/apps/miniconda3/current/python.exe",
     "python.formatting.provider": "black",
-    "python.formatting.blackPath": "~/scoop/apps/python/current/Scripts/black.exe",
-    "python.linting.flake8Enabled": true,
+    "python.formatting.blackPath": "~/scoop/apps/miniconda3/current/Scripts/black.exe",
     //rust
     "rust-analyzer.cargo.unsetTest": [
         "derivative"
