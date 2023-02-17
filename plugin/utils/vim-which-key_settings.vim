@@ -37,7 +37,7 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
 g:which_key_map['/'] = [ ':call incsearch#call(Config_easyfuzzymotion())', 'Fuzzy incsearch' ]
 g:which_key_map[';'] = [ ':silent Startify', 'Startify' ]
 g:which_key_map['c'] = [ '<Plug>NERDCommenterToggle', '(C)omment' ]
-g:which_key_map['d'] = [ ':silent exec ":up | bd"', '(D)elete Buffer' ]
+g:which_key_map['d'] = [ ':silent | :up | if last_buffer_nr() == 1 | quit | else | bdelete | endif"', '(D)elete Buffer' ]
 g:which_key_map['e'] = [ ':call NerdTreeToggleFind()', '(E)xplorer' ]
 g:which_key_map['f'] = [ ':Files ~', 'Search (F)iles' ]
 g:which_key_map['g'] = [ ':Rg', 'Search Text' ]
