@@ -1,6 +1,7 @@
 {
     "suggest.noselect": false,
     "snippets.priority": 99,
+    "snippets.ultisnips.pythonPrompt": false,
     "vimlsp.trace.server": "verbose",
     "vimlsp.debug": true,
     //coc
@@ -9,9 +10,7 @@
     "coc.preferences.formatOnTypeFiletypes": ["c", "rust", "julia"],
     "coc.preferences.formatOnSaveFiletypes": ["python", "c", "rust", "cpp", "julia", "lua"],
     //python
-    "python.pythonPath": "~/scoop/apps/miniconda3/current/python.exe",
     "python.formatting.provider": "black",
-    "python.formatting.blackPath": "~/scoop/apps/miniconda3/current/Scripts/black.exe",
     //rust
     "rust-analyzer.cargo.unsetTest": [
         "derivative"
@@ -28,8 +27,5 @@
     "powershell.enableProfileLoading": false,
     "powershell.developer.editorServicesLogLevel": "Error",
     "powershell.debugging.createTemporaryIntegratedConsole": false,
-    //julia
-    "julia.executablePath": "~/scoop/shims/julia.exe",
-    "snippets.ultisnips.pythonPrompt": false
 }
 
