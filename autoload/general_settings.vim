@@ -70,15 +70,16 @@ endtry
 
 if has('nvim') && has('win32')
     g:python3_host_prog = '~/scoop/apps/miniconda3/current/'
-elseif !has('nvim') && has('win32')
+elseif !has('nvim')
     set wildoptions=pum,fuzzy,tagfile                       # Popupmenu and fuzzy finder for wildmenu
+    if has("win32")
+        # Python for vim
+        set pythonthreedll=~/scoop/apps/miniconda3/current/python3.dll
+        set pythonthreehome=~/scoop/apps/miniconda3/current/
 
-    # Python for vim
-    set pythonthreedll=~/scoop/apps/miniconda3/current/python3.dll
-    set pythonthreehome=~/scoop/apps/miniconda3/current/
-
-    # Lua for vim
-    set luadll=~/scoop/apps/lua/current/lua54.dll
+        # Lua for vim
+        set luadll=~/scoop/apps/lua/current/lua54.dll
+    endif
 endif
 
 if has("win32") && has("gui_running")
