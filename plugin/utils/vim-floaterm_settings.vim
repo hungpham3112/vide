@@ -13,6 +13,7 @@ g:floaterm_autoinsert = 1
 g:floaterm_width      = 0.85
 g:floaterm_height     = 0.85
 g:floaterm_autoclose  = 1
+g:floaterm_borderchars = '─│─│╭╮╯╰'
 if has("win32")
     g:floaterm_shell      = 'pwsh --nologo'
 endif
