@@ -28,16 +28,13 @@ distro.
 ### Windows (Powershell 5.1+)
 
 ```powershell
-Invoke-WebRequest
-https://raw.githubusercontent.com/hungpham3112/vide/main/bin/install.ps1
--UseBasicParsing | Invoke-Expression
+Invoke-WebRequest https://raw.githubusercontent.com/hungpham3112/vide/main/bin/install.ps1 -UseBasicParsing | Invoke-Expression
 ```
 
 ### Linux (Ubuntu-Based)
 
 ```sh
-bash <(curl -s
-https://raw.githubusercontent.com/hungpham3112/vide/main/bin/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/hungpham3112/vide/main/bin/install.sh)
 ```
 
 ## :gear: Plugins
@@ -93,19 +90,15 @@ If you use Python or Julia, you may find the following plugins handy
 #### Windows (Powershell 5.1+)
 
 ```powershell
-Invoke-WebRequest
-https://raw.githubusercontent.com/hungpham3112/vide/main/bin/uninstall.ps1
--UseBasicParsing | Invoke-Expression
+Invoke-WebRequest https://raw.githubusercontent.com/hungpham3112/vide/main/bin/uninstall.ps1 -UseBasicParsing | Invoke-Expression
 ```
 
 #### Linux (Ubuntu-Based)
 
 ```sh
-bash <(curl -s
-https://raw.githubusercontent.com/hungpham3112/vide/main/bin/install.sh)
+bash <(curl -s https://raw.githubusercontent.com/hungpham3112/vide/main/bin/install.sh)
 ```
 
 ## License
 
-[![License:
-MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License:MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
