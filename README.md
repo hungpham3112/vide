@@ -42,32 +42,23 @@ bash <(curl -s https://raw.githubusercontent.com/hungpham3112/vide/main/bin/inst
 | Purpose | Plugin | Notes |
 | ------ | ------ | ------ |
 | Plugin manager | [vim-plug](https://github.com/junegunn/vim-plug.git) ||
-| Intellisense | [coc-nvim](https://github.com/neoclide/coc.nvim.git) |
-Requires `node.js`|
-| LSP client | [LSP](https://github.com/yegappan/lsp) | Could be an
-alternative to coc-vim, very little tweaking, only for Vim9 |
-| Navigation | [vim-easymotion](https://github.com/easymotion/vim-easymotion)
-||
+| Intellisense | [coc-nvim](https://github.com/neoclide/coc.nvim.git) | Requires `node.js`|
+| LSP client | [LSP](https://github.com/yegappan/lsp) | Could be an alternative to coc-vim, very little tweaking, only for Vim9 |
+| Navigation | [vim-easymotion](https://github.com/easymotion/vim-easymotion) ||
 | File search | [fileselect](https://github.com/yegappan/fileselect) ||
 | Buffer list | [bufselect](https://github.com/yegappan/bufselect) ||
 | Snippets | [vim-snippets](https://github.com/honza/vim-snippets) ||
 | File explorer | [nerd-tree](https://github.com/preservim/nerdtree.git) ||
 | Comments | [vim-commentary](https://github.com/tpope/vim-commentary) ||
-| Highlight yank |
-[vim-highlight-yanked](https://github.com/ubaldot/vim-highlight-yanked)
-|lightweight, only for Vim9|
-| Theme | [edge](https://github.com/sainnhe/edge.git)| Another relaxing theme
-for eye strain is [everforest](https://github.com/sainnhe/everforest)|
-| Vertical line like VScode|
-[indentLine](https://github.com/Yggdroot/indentLine.git) ||
-| Floating terminal | [floaterm](https://github.com/voldikss/vim-floaterm.git)
-||
-| Powerful way to edit(br)brackets, parentheses, quotes |
-[vim-surround](https://github.com/tpope/vim-surround.git)||
-| Insert or delete(br)brackets, parentheses, quotes |
-[auto-pairs](https://github.com/LunarWatcher/auto-pairs.git) ||
-| Beautiful statusline | [lightline](https://github.com/itchyny/lightline.vim)
-||
+| Highlight yank | [vim-highlight-yanked](https://github.com/ubaldot/vim-highlight-yanked)|lightweight, only for Vim9|
+| Theme | [edge](https://github.com/sainnhe/edge.git)| Another relaxing theme for eye strain is [everforest](https://github.com/sainnhe/everforest)|
+| Vertical line like VScode|[indentLine](https://github.com/Yggdroot/indentLine.git) ||
+| Floating terminal | [floaterm](https://github.com/voldikss/vim-floaterm.git)||
+| Powerful way to edit(br)brackets, parentheses, quotes |[vim-surround](https://github.com/tpope/vim-surround.git)||
+| Insert or delete(br)brackets, parentheses, quotes |[auto-pairs](https://github.com/LunarWatcher/auto-pairs.git) ||
+| Beautiful statusline | [lightline](https://github.com/itchyny/lightline.vim)||
+
+
 and more ...
 
 If you use Python or Julia, you may find the following plugins handy
