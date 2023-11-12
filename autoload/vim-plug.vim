@@ -61,7 +61,6 @@ Plug 'https://github.com/honza/vim-snippets.git'
 Plug 'https://github.com/hungpham3112/nerdtree-visual-selection.git', { 'for': ['nerdtree'] }
 Plug 'https://github.com/preservim/nerdcommenter.git'
 Plug 'https://github.com/preservim/nerdtree.git'
-Plug 'https://github.com/preservim/tagbar.git'
 Plug 'https://github.com/unkiwii/vim-nerdtree-sync.git'
 
 "IndentLine
@@ -84,7 +83,7 @@ Plug 'https://github.com/junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'https://github.com/junegunn/fzf.vim.git'
 
 "Theme for vim
-Plug 'https://github.com/rakr/vim-one.git', {'as':'one'}
+" Plug 'https://github.com/rakr/vim-one.git', {'as':'one'}
 Plug 'https://github.com/sainnhe/edge.git', {'as': 'edge'}
 
 "Syntax highlighting
@@ -113,7 +112,7 @@ Plug 'https://github.com/ryanoasis/vim-devicons.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
 
 "Animation and resize
-Plug 'https://github.com/kovetskiy/vim-autoresize.git'
+" Plug 'https://github.com/kovetskiy/vim-autoresize.git'
 
 "Markdown preview
 Plug 'https://github.com/iamcco/markdown-preview.nvim.git', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
