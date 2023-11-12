@@ -1,6 +1,7 @@
 {
     "suggest.noselect": false,
-    "snippets.priority": 99,
+    "suggest.enablePreselect": false,
+    "snippets.priority": 100,
     "snippets.ultisnips.pythonPrompt": false,
     "vimlsp.trace.server": "verbose",
     "vimlsp.debug": true,
