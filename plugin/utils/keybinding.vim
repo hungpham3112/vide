@@ -32,15 +32,12 @@ nnoremap <C-l> <C-W><C-l>
 nnoremap <C-h> <C-W><C-h>
 
 # Searching
-nmap s <Plug>(easymotion-bd-f)
+nmap f <Plug>(easymotion-bd-f)
 omap f <Plug>(easymotion-bd-f)
 xmap f <Plug>(easymotion-bd-f)
+nmap t <Plug>(easymotion-bd-t)
 omap t <Plug>(easymotion-bd-t)
 xmap t <Plug>(easymotion-bd-t)
-omap j <Plug>(easymotion-j)
-xmap j <Plug>(easymotion-j)
-omap k <Plug>(easymotion-k)
-xmap k <Plug>(easymotion-k)
 
 # Pattern matching
 map n  <Plug>(incsearch-nohl-n)
