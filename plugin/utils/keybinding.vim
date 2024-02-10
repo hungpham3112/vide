@@ -35,9 +35,6 @@ nnoremap <C-h> <C-W><C-h>
 nmap f <Plug>(easymotion-bd-f)
 omap f <Plug>(easymotion-bd-f)
 xmap f <Plug>(easymotion-bd-f)
-nmap t <Plug>(easymotion-bd-t)
-omap t <Plug>(easymotion-bd-t)
-xmap t <Plug>(easymotion-bd-t)
 
 # Pattern matching
 map n  <Plug>(incsearch-nohl-n)
