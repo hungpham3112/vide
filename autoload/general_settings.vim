@@ -83,7 +83,7 @@ elseif !has('nvim')
 endif
 
 if has("win32") && has("gui_running")
-  set guifont=Cousine\ Nerd\ Font\ Mono:h11
+  set guifont=Cousine\ Nerd\ Font\ Mono:h10
   autocmd GUIEnter * simalt ~x                              # GUI fullscreen by default
 else
   set guifont=Cousine\ Nerd\ Font\ Mono\ 13
