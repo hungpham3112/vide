@@ -59,7 +59,7 @@ augroup dynamic_smartcase
 augroup END
 
 # Open help file in vertical
-autocmd BufWinEnter * if &buftype == 'help' | wincmd L | execute "vertical resize " .. g:autoresize_width | endif
+autocmd BufWinEnter * if &buftype == 'help' | wincmd L | endif
 
 # Default colorscheme for VIDE
 try

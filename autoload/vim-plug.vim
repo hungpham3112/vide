@@ -58,7 +58,7 @@ endif
 Plug 'https://github.com/honza/vim-snippets.git'
 
 "Tree explorer
-Plug 'https://github.com/hungpham3112/nerdtree-visual-selection.git', { 'for': ['nerdtree'] }
+Plug 'https://github.com/PhilRunninger/nerdtree-visual-selection.git', { 'for': ['nerdtree'] }
 Plug 'https://github.com/preservim/nerdcommenter.git'
 Plug 'https://github.com/preservim/nerdtree.git'
 Plug 'https://github.com/unkiwii/vim-nerdtree-sync.git'
@@ -83,7 +83,6 @@ Plug 'https://github.com/junegunn/fzf.git', { 'do': { -> fzf#install() } }
 Plug 'https://github.com/junegunn/fzf.vim.git'
 
 "Theme for vim
-" Plug 'https://github.com/rakr/vim-one.git', {'as':'one'}
 Plug 'https://github.com/sainnhe/edge.git', {'as': 'edge'}
 
 "Syntax highlighting
@@ -111,9 +110,6 @@ Plug 'https://github.com/ryanoasis/vim-devicons.git'
 "Git
 Plug 'https://github.com/tpope/vim-fugitive.git'
 
-"Animation and resize
-" Plug 'https://github.com/kovetskiy/vim-autoresize.git'
-
 "Markdown preview
 Plug 'https://github.com/iamcco/markdown-preview.nvim.git', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
@@ -127,7 +123,7 @@ Plug 'https://github.com/dstein64/vim-startuptime.git'
 Plug 'https://github.com/mhinz/vim-startify.git', {'branch': 'center'}
 
 "Multiple cursor
-Plug 'https://github.com/mg979/vim-visual-multi.git'
+" Plug 'https://github.com/mg979/vim-visual-multi.git'
 
 "Moving block of code
 Plug 'https://github.com/matze/vim-move.git'

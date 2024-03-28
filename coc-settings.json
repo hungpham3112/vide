@@ -13,6 +13,7 @@
     //python
     "python.formatting.provider": "black",
     //rust
+    "rust-analyzer.server.path": "~/.cargo/bin/rust-analyzer",
     "rust-analyzer.cargo.unsetTest": [
         "derivative"
     ],
@@ -29,4 +30,3 @@
     "powershell.developer.editorServicesLogLevel": "Error",
     "powershell.debugging.createTemporaryIntegratedConsole": false,
 }
-
