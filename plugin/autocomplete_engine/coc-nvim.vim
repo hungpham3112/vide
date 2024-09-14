@@ -1,9 +1,9 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Coc-nvim                               "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CheckBackSpace()
+function! CheckBackspace() abort
   let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 inoremap <silent><expr> <Tab>
@@ -35,21 +35,17 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
 endif
 
 
-function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
-        execute 'h '.expand('<cword>')
-    elseif (coc#rpc#ready())
-        call CocActionAsync('doHover')
-    else
-        execute '!' . &keywordprg . " " . expand('<cword>')
-    endif
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
 endfunction
 
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
-if exists('g:did_coc_loaded')
-    autocmd CursorHold * silent call CocActionAsync('highlight')
-endif
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 let g:coc_global_extensions = ['coc-json', 
             \'coc-vimlsp', 
@@ -57,6 +53,6 @@ let g:coc_global_extensions = ['coc-json',
             \'coc-markdownlint', ]
 
 nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gy <Plug>(coc-type-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)

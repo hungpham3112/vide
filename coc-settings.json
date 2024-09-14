@@ -7,11 +7,12 @@
     "vimlsp.debug": true,
     //coc
     "coc.preferences.extensionUpdateCheck": "weekly",
-    "coc.preferences.formatOnType": true,
-    "coc.preferences.formatOnTypeFiletypes": ["c", "rust", "julia"],
-    "coc.preferences.formatOnSaveFiletypes": ["python", "c", "rust", "cpp", "julia", "lua"],
+    "[c][cpp][python][rust][julia][lua]": {
+        "coc.preferences.formatOnType": true,
+        "coc.preferences.formatOnSave": true,
+    },
     //python
-    "python.formatting.provider": "black",
+    "python.formatting.provider": "ruff",
     //rust
     "rust-analyzer.server.path": "~/.cargo/bin/rust-analyzer",
     "rust-analyzer.cargo.unsetTest": [
@@ -29,4 +30,5 @@
     "powershell.enableProfileLoading": false,
     "powershell.developer.editorServicesLogLevel": "Error",
     "powershell.debugging.createTemporaryIntegratedConsole": false,
+    // c-family
 }

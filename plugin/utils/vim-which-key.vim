@@ -8,7 +8,7 @@ nnoremap <silent> g :silent WhichKey 'g'<CR>
 vnoremap <silent> g :silent <c-u> :silent WhichKeyVisual 'g'<CR>
 
 # Create map to add keys to
-g:which_key_map =  {}
+g:which_key_map = {}
 
 # Define a separator
 g:which_key_sep = '→'
@@ -33,11 +33,13 @@ autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
+command! -bar CloseBuffer silent! update | if len(filter(range(1, bufnr('$')), 'buflisted(v:val)')) == 1 | quit | else | bdelete | endif
+
 # Single mappings
 g:which_key_map['/'] = [ ':call incsearch#call(Config_easyfuzzymotion())', 'Fuzzy incsearch' ]
 g:which_key_map[';'] = [ ':silent Startify', 'Startify' ]
 g:which_key_map['c'] = [ '<Plug>NERDCommenterToggle', '(C)omment' ]
-g:which_key_map['d'] = [ ':silent | :up | if last_buffer_nr() == 1 | quit | else | bdelete | endif"', '(D)elete Buffer' ]
+g:which_key_map['d'] = [ ':CloseBuffer', '(D)elete Buffer' ]
 g:which_key_map['e'] = [ ':call NerdTreeToggleFind()', '(E)xplorer' ]
 g:which_key_map['f'] = [ ':Files ~', 'Search (F)iles' ]
 g:which_key_map['g'] = [ ':Rg', 'Search Text' ]
