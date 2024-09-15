@@ -105,7 +105,7 @@ Plug 'https://github.com/itchyny/vim-gitbranch.git'
 Plug 'https://github.com/mengelbrecht/lightline-bufferline.git'
 
 "Icon for vim
-Plug 'https://github.com/ryanoasis/vim-devicons.git'
+Plug 'https://github.com/hungpham3112/vim-devicons.git'
 
 "Git
 Plug 'https://github.com/tpope/vim-fugitive.git'
