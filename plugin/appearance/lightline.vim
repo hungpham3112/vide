@@ -5,7 +5,7 @@ let g:lightline#bufferline#unnamed = 'Unnamed'
 let g:lightline#bufferline#enable_devicons = 1
 let g:lightline#bufferline#buffer_filter = "LightlineBufferlineFilter"
 let g:lightline = {
-    \ 'colorscheme': 'edge',
+    \ 'colorscheme': g:colorscheme,
     \ 'active': {
     \   'left': [ [ 'mode', 'paste' ],
     \             [ 'cocstatus', 'readonly' ],

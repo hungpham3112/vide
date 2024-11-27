@@ -20,6 +20,7 @@ set incsearch                                               # Highlight pattern 
 set laststatus=2                                            # Always show status line
 set linespace=8                                             # Gap between line (easier to see text) (only for GUI)
 set nocompatible                                            # No compatible with vi (Never remove this line)
+set noequalalways                                           # Turn off automatically resize
 set noshowmode                                              # Turn off default status line
 set nostartofline                                           # Don't move the cursor to the beginning of line
 set noswapfile                                              # Don't generate swapfile
@@ -62,8 +63,9 @@ augroup END
 autocmd BufWinEnter * if &buftype == 'help' | wincmd L | endif
 
 # Default colorscheme for VIDE
+g:colorscheme = 'edge'
 try
-    colorscheme edge
+    execute 'colorscheme ' .. g:colorscheme
 catch
     colorscheme evening
 endtry
