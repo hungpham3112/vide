@@ -19,8 +19,4 @@ command! -bang -nargs=* Rg
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview({'options': ['--info=inline']}), <bang>0)
 
-if has('unix')
-    let $FZF_DEFAULT_COMMAND='find . \! \( -type d -path ./.git -prune \) \! -type d -printf ''%P\n'''
-else
-    let $FZF_DEFAULT_COMMAND='dir /b /s /a-d | findstr /vi "\\.git\\"'
-endif
+let $FZF_DEFAULT_COMMAND='fd --type file --follow --hidden --exclude .git'
