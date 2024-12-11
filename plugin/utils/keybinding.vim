@@ -21,9 +21,16 @@ nnoremap Y "+y$
 nnoremap y "+y
 xnoremap y "+y
 
+# Hien tai 2 dong o duoi nay hoat dong
+# tren cmd and window powershell, con alacritty thi khong
+# nmap <C-/> :Commentary<CR>
+# nmap <C-/> :Commentary<CR>
+
 # Buffers navigation
 nnoremap <S-Tab> :bpre<CR>
 nnoremap <Tab> :bnext<CR>
+nnoremap <S-l> :tabnext<CR>
+nnoremap <S-H> :tabprevious<CR>
 
 # Windows navigation
 nnoremap <C-j> <C-W><C-j>

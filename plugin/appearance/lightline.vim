@@ -1,34 +1,22 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "                             Plugin: Lightline                              "
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:lightline#bufferline#unnamed = 'Unnamed'
-let g:lightline#bufferline#enable_devicons = 1
-let g:lightline#bufferline#buffer_filter = "LightlineBufferlineFilter"
+" """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:lightline = {
-    \ 'colorscheme': g:colorscheme,
-    \ 'active': {
-    \   'left': [ [ 'mode', 'paste' ],
-    \             [ 'cocstatus', 'readonly' ],
-    \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-    \ },
-    \ 'component': {
-    \   'filename': '%F',
-    \ },
-    \ 'component_function': {
-    \   'cocstatus': 'coc#status',
-    \   'filetype': 'MyFiletype',
-    \   'fileformat': 'MyFileformat',
-    \   'gitbranch': 'gitbranch#name',
-    \ },
-    \ 'tabline': {
-    \   'left': [ ['buffers'] ],
-    \ },
-    \ 'component_expand': {
-    \   'buffers': 'lightline#bufferline#buffers'
-    \ },
-    \ 'component_type': {
-    \   'buffers': 'tabsel',
-    \ },
+  \ 'colorscheme': g:colorscheme,
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'cocstatus', 'readonly' ],
+  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component': {
+  \   'filename': '%F'
+  \ },
+  \ 'component_function': {
+  \   'cocstatus': 'coc#status',
+  \   'filetype': 'MyFiletype',
+  \   'fileformat': 'MyFileformat',
+  \   'gitbranch': 'gitbranch#name'
+  \ },
 \ }
 function! MyFiletype()
     return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
@@ -36,10 +24,6 @@ endfunction
 
 function! MyFileformat()
     return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
-endfunction
-
-function LightlineBufferlineFilter(buffer)
-   return getbufvar(a:buffer, '&buftype') !=# 'terminal'
 endfunction
 
 "Use autocmd to force lightline update.

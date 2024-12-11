@@ -38,7 +38,6 @@ command! -bar CloseBuffer silent! update | if len(filter(range(1, bufnr('$')), '
 # Single mappings
 g:which_key_map['/'] = [ ':call incsearch#call(Config_easyfuzzymotion())', 'Fuzzy incsearch' ]
 g:which_key_map[';'] = [ ':silent Startify', 'Startify' ]
-g:which_key_map['c'] = [ '<Plug>NERDCommenterToggle', '(C)omment' ]
 g:which_key_map['d'] = [ ':CloseBuffer', '(D)elete Buffer' ]
 g:which_key_map['e'] = [ ':call NerdTreeToggleFind()', '(E)xplorer' ]
 g:which_key_map['f'] = [ ':Files ~', 'Search (F)iles' ]
@@ -90,3 +89,4 @@ g:which_key_map.p = {
 if isdirectory($HOME .. "/vimfiles/plugged/vim-which-key") || isdirectory($HOME .. "/.vim/plugged/vim-which-key")
     call which_key#register('<Space>', "g:which_key_map")
 endif
+

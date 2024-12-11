@@ -59,9 +59,11 @@ Plug 'https://github.com/honza/vim-snippets.git'
 
 "Tree explorer
 Plug 'https://github.com/PhilRunninger/nerdtree-visual-selection.git', { 'for': ['nerdtree'] }
-Plug 'https://github.com/preservim/nerdcommenter.git'
 Plug 'https://github.com/preservim/nerdtree.git'
 Plug 'https://github.com/unkiwii/vim-nerdtree-sync.git'
+
+"Commenting
+Plug 'https://github.com/tpope/vim-commentary'
 
 "IndentLine
 Plug 'https://github.com/Yggdroot/indentLine.git'
@@ -102,7 +104,6 @@ Plug 'https://github.com/LunarWatcher/auto-pairs.git', {'branch': 'develop'}
 "Statusline and bufferline
 Plug 'https://github.com/itchyny/lightline.vim.git'
 Plug 'https://github.com/itchyny/vim-gitbranch.git'
-Plug 'https://github.com/mengelbrecht/lightline-bufferline.git'
 
 "Icon for vim
 Plug 'https://github.com/hungpham3112/vim-devicons.git'
