@@ -34,7 +34,7 @@ set sidescroll=1                                            # The minimal number
 set signcolumn=number                                       # Display signs in the 'number' column
 set splitbelow splitright                                   # Open file in reasonable location
 set t_Co=256                                                # Number of colors
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab # Default tab = 4 spaces
+set tabstop=4 softtabstop=4 expandtab shiftwidth=4 smarttab # Default tab = 4 spaces
 set termguicolors                                           # Colors for terminal
 set textwidth=120                                           # Maximum width of text in buffer
 set timeout timeoutlen=200 ttimeoutlen=50                   # Time response keystroke

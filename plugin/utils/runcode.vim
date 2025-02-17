@@ -27,7 +27,7 @@ augroup exe_code
         endif
     elseif has("unix")
         au FileType c nnoremap <buffer> <silent> <Enter> :w <bar> vert term ++shell clang -Wall -std=c11 % -o ./%< && ./%< && rm ./%<<CR>
-        au FileType cpp nnoremap <buffer> <silent> <Enter> :w <bar> vert term ++shell clang++ -Wall -std=c++17 -stdlib=libc++ % -o ./%< && ./%< && rm ./%<<CR>
+        au FileType cpp nnoremap <buffer> <silent> <Enter> :w <bar> vert term ++shell clang++ -Wall -std=c++17 % -o ./%< && ./%< && rm ./%<<CR>
         au FileType cuda nnoremap <buffer> <silent> <Enter> :w <bar> vert term ++shell nvcc % -o ./%< && ./%<<CR>
         au Filetype html nnoremap <buffer> <silent> <Enter> :w <bar> !start %<Cr>
         au Filetype julia nnoremap <buffer> <silent> <Enter> :w <bar> vert term ++shell julia %<Cr>
