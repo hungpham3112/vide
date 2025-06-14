@@ -76,8 +76,8 @@ elseif !has('nvim')
     set wildoptions=pum,fuzzy,tagfile                       # Popupmenu and fuzzy finder for wildmenu
     if has("win32")
         # Python for vim
-        set pythonthreedll=~/scoop/apps/miniconda3/current/python3.dll
-        set pythonthreehome=~/scoop/apps/miniconda3/current/
+        set pythonthreedll=~/scoop/apps/mambaforge/current/python3.dll
+        set pythonthreehome=~/scoop/apps/mambaforge/current/
 
         # Lua for vim
         set luadll=~/scoop/apps/lua/current/lua54.dll
