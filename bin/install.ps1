@@ -83,11 +83,11 @@ function InstallNodejs {
 }
 
 function InstallPython {
-    if (Test-Path -Path "~/scoop/apps/python/current/python.exe" -PathType Leaf) {
+    if (Test-Path -Path "~/scoop/apps/mambaforge/current/python.exe" -PathType Leaf) {
         Write-Host "[Success] " -ForegroundColor Green -NoNewline
         Write-Host "Python is already installed."
     } else {
-        scoop install python >$null
+        scoop install mambaforge >$null
         python -m pip install pynvim
     }
 }
@@ -108,8 +108,8 @@ function UpdateScoop {
 
 function InstallNerdFonts {
     scoop bucket add nerd-fonts 2>$null
-    scoop install sudo
-    sudo scoop install -g cousine-NF-Mono 2>$null
+    scoop install gsudo
+    gsudo scoop install -g cousine-NF-Mono 2>$null
 }
 
 function CreateCocPath {
